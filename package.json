@@ -1,0 +1,22 @@
+{
+    "name": "chat",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.html",
+    "scripts": {
+        "dev": "node ./server.js",
+        "start": "./node_modules/.bin/parcel index.html.njk -p 3000",
+        "build": "./node_modules/.bin/parcel build index.html"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "express": "4.17.1",
+        "parcel": "2.0.0-beta.2"
+    },
+    "dependencies": {
+        "nunjucks": "3.2.3",
+        "parcel-plugin-nunjucks": "2.2.2"
+    }
+}
