@@ -1,0 +1,32 @@
+@import "../../styles/variables";
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+
+  &__title {
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  &__description {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 70px;
+  }
+  &__link {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    color: @link-color;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
