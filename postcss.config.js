@@ -10,7 +10,6 @@ module.exports = {
     }),
     require("postcss-autoreset")(),
     require("postcss-utilities")(),
-    // require("precss")(),
     require("postcss-less"),
     sorting({
       order: [

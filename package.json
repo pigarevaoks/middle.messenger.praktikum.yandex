@@ -14,11 +14,28 @@
     "devDependencies": {
         "@parcel/transformer-less": "2.0.0-beta.2",
         "babel-plugin-module-resolver": "4.1.0",
+        "eslint": "^7.30.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-import-resolver-webpack": "^0.13.1",
+        "eslint-loader": "^4.0.2",
+        "eslint-plugin-babel": "^5.3.1",
+        "eslint-plugin-import": "^2.23.4",
+        "eslint-plugin-no-use-extend-native": "^0.5.0",
+        "eslint-plugin-optimize-regex": "^1.2.0",
+        "eslint-plugin-promise": "^5.1.0",
         "express": "4.17.1",
         "parcel": "2.0.0-beta.2",
-        "parcel-bundler": "1.12.5"
+        "parcel-bundler": "1.12.5",
+        "parcel-plugin-handlebars-precompile": "^1.0.2",
+        "stylelint": "^13.13.1"
     },
     "dependencies": {
         "handlebars": "4.7.7"
+    },
+    "alias": {
+        "~components": "./src/components",
+        "~layouts": "./src/layouts",
+        "~modules": "./src/modules",
+        "~pages": "./src/pages"
     }
 }

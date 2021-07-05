@@ -1,5 +1,5 @@
-import Button from "../../components/button/button.js";
+import { compiledLogin } from '../../components/form/form';
 
-const container = document.getElementById("login");
+const container = document.getElementById('login');
 
-container.insertAdjacentHTML("afterbegin", Button({ title: "Логин" }));
+container.insertAdjacentHTML('afterbegin', compiledLogin);

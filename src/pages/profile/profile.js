@@ -1,5 +1,5 @@
-import Button from "../../components/button/button.js";
+import ButtonGeneral from "../../components/buttonGeneral/buttonGeneral.js";
 
 const container = document.getElementById("profile");
 
-container.insertAdjacentHTML("afterbegin", Button({ title: "Профиль" }));
+container.insertAdjacentHTML("afterbegin", ButtonGeneral({ title: "Профиль" }));

@@ -1,5 +1,5 @@
-import Button from "../../components/button/button.js";
+import ButtonGeneral from "../../components/buttonGeneral/buttonGeneral.js";
 
 const container = document.getElementById("chats");
 
-container.insertAdjacentHTML("afterbegin", Button({ title: "Чаты" }));
+container.insertAdjacentHTML("afterbegin", ButtonGeneral({ title: "Чаты" }));

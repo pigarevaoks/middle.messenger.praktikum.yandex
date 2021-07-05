@@ -1,0 +1,70 @@
+@import './variables';
+
+* {
+  all: initial;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  color: @black-color;
+}
+
+body {
+  font-size: 13px;
+  line-height: 15px;
+}
+
+.overflowHidden {
+  overflow: hidden;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visuallyHidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@font-face {
+  src: url('../fonts/Inter-Thin.ttf') format('ttf');
+  font-family: 'Inter';
+  font-weight: 100;
+}
+@font-face {
+  src: url('../fonts/Inter-ExtraLight.ttf') format('ttf');
+  font-family: 'Inter';
+  font-weight: 200;
+}
+@font-face {
+  src: url('../fonts/Inter-Light.ttf') format('ttf');
+  font-family: 'Inter';
+  font-weight: 300;
+}
+@font-face {
+  src: url('../fonts/Inter-Regular.ttf') format('ttf');
+  font-family: 'Inter';
+  font-weight: 400;
+}
+@font-face {
+  src: url('../fonts/Inter-Medium.ttf') format('ttf');
+  font-family: 'Inter';
+  font-weight: 500;
+}
+@font-face {
+  src: url('../fonts/Inter-Bold.ttf') format('ttf');
+  font-family: 'Inter';
+  font-weight: 600;
+}
+@font-face {
+  src: url('../fonts/Inter-Bold.ttf') format('ttf');
+  font-family: 'Inter';
+  font-weight: 700;
+}
