@@ -2,7 +2,7 @@ export const context = {
   title: 'Регистрация',
   inputs: [
     {
-      name: 'mail',
+      name: 'email',
       label: 'Почта',
       type: 'text',
       error: 'Введите почту',
@@ -16,14 +16,14 @@ export const context = {
       required: true,
     },
     {
-      name: 'name',
+      name: 'first_name',
       label: 'Имя',
       type: 'text',
       error: 'Введите имя',
       required: true,
     },
     {
-      name: 'surname',
+      name: 'second_name',
       label: 'Фамилия',
       type: 'text',
       error: 'Введите логин',
