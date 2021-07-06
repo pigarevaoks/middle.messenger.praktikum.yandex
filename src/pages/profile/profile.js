@@ -1,5 +1,5 @@
-import { compiledButton } from '../../components/button/button';
+import { compiledProfile } from '../../modules/profile/profile';
 
 const container = document.getElementById('profile');
 
-container.insertAdjacentHTML('afterbegin', compiledButton({ title: 'Профиль' }));
+container.insertAdjacentHTML('afterbegin', compiledProfile);
