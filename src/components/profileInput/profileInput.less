@@ -1,15 +1,15 @@
 @import '../../styles/variables';
 
-.input {
+.profileInput {
   display: block;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   &:last-child {
     margin-bottom: 50px;
   }
   &__field {
     display: flex;
-    flex-flow: column-reverse;
+    // flex-flow: column-reverse;
     position: relative;
   }
   &__error {
@@ -21,22 +21,27 @@
   &__label {
     display: block;
     position: absolute;
-    top: 12px;
-    color: @gray-color;
-    font-size: 14px;
+    top: 4px;
+    color: @black-color;
+    font-size: 13px;
     font-weight: 500;
     line-height: 1;
     transition: all 0.2s ease;
   }
   &__input {
     display: block;
-    height: 37px;
+    height: 33px;
     width: 100%;
-    border-bottom: 1px solid @blue-color;
-    &:focus + .input__label {
-      position: absolute;
-      top: -8px;
-      font-size: 12px;
-    }
+    padding-left: 30%;
+    text-align: right;
+    border-bottom: 1px solid @light-color;
+    font-size: 13px;
+    font-weight: 500;
+    color: @gray-color;
+    // &:focus + .input__label {
+    //   position: absolute;
+    //   top: -8px;
+    //   font-size: 12px;
+    // }
   }
 }
