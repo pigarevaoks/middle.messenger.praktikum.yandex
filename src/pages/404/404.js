@@ -1,8 +1,7 @@
-import Error from "../../components/error/error.js";
+import { compiledError } from '../../components/error/error.js';
 
-const container = document.getElementById("404");
+const context = { title: '404', description: 'Не туда попали' };
+export const compiled404 = compiledError({ context });
+const container = document.getElementById('404');
 
-container.insertAdjacentHTML(
-  "afterbegin",
-  Error({ title: "404", description: "Не туда попали" })
-);
+container.insertAdjacentHTML('afterbegin', compiled404);

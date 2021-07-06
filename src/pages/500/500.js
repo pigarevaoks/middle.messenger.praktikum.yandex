@@ -1,8 +1,7 @@
-import Error from "../../components/error/error.js";
+import { compiledError } from '../../components/error/error.js';
 
-const container = document.getElementById("500");
+const context = { title: '500', description: 'Мы уже фиксим' };
+export const compiled500 = compiledError({ context });
+const container = document.getElementById('500');
 
-container.insertAdjacentHTML(
-  "afterbegin",
-  Error({ title: "500", description: "Мы уже фиксим" })
-);
+container.insertAdjacentHTML('afterbegin', compiled500);

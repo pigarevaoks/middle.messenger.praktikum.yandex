@@ -1,4 +1,5 @@
 export const context = {
+  title: 'Вход',
   inputs: [
     {
       name: 'login',

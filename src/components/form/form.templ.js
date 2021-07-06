@@ -2,7 +2,7 @@ export const formTemplate = `
   <section class="form">
     <form class="form__content" class="login__form">
       <div>
-        <h1 class="form__title">Вход</h1>
+        <h1 class="form__title">{{this.context.title}}</h1>
         <div class="form__fields">
         {{#each this.context.inputs}}
           {{> input this}}

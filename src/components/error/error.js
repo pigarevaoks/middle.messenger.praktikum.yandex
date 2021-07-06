@@ -1,5 +1,5 @@
-import ErrorTemplate from "./error.tmpl";
-import renderTemplate from "../../utils/renderTemplate";
-import "./error.less";
+import Handlebars from 'handlebars';
+import { errorTemplate } from './error.tmpl.js';
+import './error.less';
 
-export default Error = (props) => renderTemplate(ErrorTemplate, props);
+export const compiledError = Handlebars.compile(errorTemplate);

@@ -1,9 +1,12 @@
 @import '../../styles/variables';
 
-.textInput {
+.input {
   display: block;
   width: 100%;
   margin-bottom: 20px;
+  &:last-child {
+    margin-bottom: 50px;
+  }
   &__field {
     display: flex;
     flex-flow: column-reverse;
@@ -30,7 +33,7 @@
     height: 37px;
     width: 100%;
     border-bottom: 1px solid #3369f3;
-    &:focus + .textInput__label {
+    &:focus + .input__label {
       position: absolute;
       top: -8px;
       font-size: 12px;
