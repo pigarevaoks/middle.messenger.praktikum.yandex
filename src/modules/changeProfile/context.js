@@ -56,9 +56,6 @@ export const context = {
       required: true,
     },
   ],
-  //   avatar: '',
-  //   oldPassword: '',
-  //   newPassword: '',
   buttons: [
     {
       type: 'submit',
