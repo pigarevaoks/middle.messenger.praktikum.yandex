@@ -12,7 +12,11 @@ export const profileFormTemplate = `
       </div>
       <div class="profile__buttons">
         {{#each this.context.buttons}}
-          {{> button this}}
+          {{#if_eq this.category 'linkButton'}}
+            {{> linkedbutton this}}
+          {{else}}
+            {{> button this}}
+          {{/if_eq}}
         {{/each}}
       </div>
     </form>

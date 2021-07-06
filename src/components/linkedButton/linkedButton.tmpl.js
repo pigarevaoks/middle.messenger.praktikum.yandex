@@ -1,3 +1,3 @@
 export const linkedButtonTemplate = `
-  <button class="linkedButton {{class}}" type={{type}} name={{name}}>{{title}}</button>
+  <a class="linkedButton {{class}}" href={{href}}>{{title}}</a>
 `;

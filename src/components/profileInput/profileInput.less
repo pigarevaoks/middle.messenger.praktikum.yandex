@@ -9,7 +9,6 @@
   }
   &__field {
     display: flex;
-    // flex-flow: column-reverse;
     position: relative;
   }
   &__error {
@@ -37,11 +36,9 @@
     border-bottom: 1px solid @light-color;
     font-size: 13px;
     font-weight: 500;
-    color: @gray-color;
-    // &:focus + .input__label {
-    //   position: absolute;
-    //   top: -8px;
-    //   font-size: 12px;
-    // }
+    color: @black-color;
+    &:disabled {
+      color: @gray-color;
+    }
   }
 }
