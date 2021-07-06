@@ -1,31 +1,32 @@
 export const context = {
-  inputs: {
-    login: {
+  inputs: [
+    {
       name: 'login',
       label: 'Логин',
       type: 'text',
       error: 'Неверный логин',
       required: true,
     },
-    password: {
+    {
       name: 'password',
       label: 'Пароль',
       type: 'password',
       error: 'Неверный пароль',
       required: true,
     },
-  },
-  buttons: {
-    submit: {
+  ],
+  buttons: [
+    {
       type: 'submit',
-      name: 'login_button',
+      name: 'login',
       title: 'Авторизоваться',
+      class: 'primary',
     },
-    signIn: {
+    {
       type: 'button',
-      name: 'login_form',
+      name: 'signIn',
       title: 'Нет аккаунта?',
+      class: 'secondary',
     },
-  },
+  ],
 };
-// }

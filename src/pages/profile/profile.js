@@ -1,5 +1,5 @@
-import ButtonGeneral from "../../components/buttonGeneral/buttonGeneral.js";
+import { compiledButton } from '../../components/button/button';
 
-const container = document.getElementById("profile");
+const container = document.getElementById('profile');
 
-container.insertAdjacentHTML("afterbegin", ButtonGeneral({ title: "Профиль" }));
+container.insertAdjacentHTML('afterbegin', compiledButton({ title: 'Профиль' }));

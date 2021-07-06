@@ -1,18 +1,15 @@
 import Handlebars from 'handlebars';
 import { formTemplate } from './form.templ.js';
 import { compiledInput } from '../../components/textInput/textInput';
-import { compiledButton } from '../../components/buttonGeneral/buttonGeneral';
+import { compiledButton } from '../../components/button/button';
 import './form.less';
-import { context } from './context';
-
-const template = Handlebars.compile(formTemplate);
 
 Handlebars.registerPartial({
   input: compiledInput,
   button: compiledButton,
 });
 
-export const compiledLogin = template({ context });
+export const compiledForm = Handlebars.compile(formTemplate);
 
 // const loginForm = document.querySelector('.login__form');
 // loginForm.addEventListener('submit', (e) => {
