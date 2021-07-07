@@ -9,7 +9,7 @@
         "build": "./node_modules/.bin/parcel build src/layouts/*.html"
     },
     "keywords": [],
-    "author": "",
+    "author": "klimova oksana",
     "license": "ISC",
     "devDependencies": {
         "@parcel/transformer-less": "2.0.0-beta.2",
@@ -24,18 +24,31 @@
         "eslint-plugin-optimize-regex": "^1.2.0",
         "eslint-plugin-promise": "^5.1.0",
         "express": "4.17.1",
+        "husky": "7.0.1",
         "parcel": "2.0.0-beta.2",
         "parcel-bundler": "1.12.5",
         "parcel-plugin-handlebars-precompile": "^1.0.2",
+        "prettier": "2.3.2",
         "stylelint": "^13.13.1"
     },
     "dependencies": {
         "handlebars": "4.7.7"
     },
     "alias": {
-        "~components": "./src/components",
-        "~layouts": "./src/layouts",
-        "~modules": "./src/modules",
-        "~pages": "./src/pages"
+        "components": "./src/components",
+        "layouts": "./src/layouts",
+        "modules": "./src/modules",
+        "pages": "./src/pages",
+        "styles": "./src/styles"
+    },
+    "lint-staged": {
+        "*.(css|scss)": [
+            "stylelint --fix"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
     }
 }
