@@ -1,5 +1,6 @@
 export const profileFormTemplate = `
   <section class="profile">
+    {{> backButton this.context}}
     <div class="profile__image">
       {{> image this}}
     </div>

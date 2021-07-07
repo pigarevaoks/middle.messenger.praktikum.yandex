@@ -22,12 +22,14 @@ export const context = {
       name: 'login',
       title: 'Авторизоваться',
       class: 'primary',
+      href: './chats.html',
     },
     {
       type: 'button',
       name: 'signIn',
       title: 'Нет аккаунта?',
       class: 'secondary',
+      href: './registration.html',
     },
   ],
 };

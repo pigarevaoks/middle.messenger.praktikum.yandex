@@ -57,12 +57,14 @@ export const context = {
       name: 'registration',
       title: 'Зарегистрироваться',
       class: 'primary',
+      href: './chats.html',
     },
     {
       type: 'button',
       name: 'login',
       title: 'Войти',
       class: 'secondary',
+      href: './chats.html',
     },
   ],
 };

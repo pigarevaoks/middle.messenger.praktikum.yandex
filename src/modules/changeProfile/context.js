@@ -1,4 +1,5 @@
 export const context = {
+  href: './profile.html',
   inputs: [
     {
       name: 'email',

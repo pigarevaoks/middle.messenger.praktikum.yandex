@@ -1,5 +1,6 @@
 export const context = {
   name: 'Иван',
+  href: './chats.html',
   inputs: [
     {
       name: 'email',
@@ -58,7 +59,7 @@ export const context = {
     {
       title: 'Изменить пароль',
       class: 'secondary',
-      href: '',
+      href: './changePassword.html',
       category: 'linkButton',
     },
     {
