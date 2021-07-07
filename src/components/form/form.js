@@ -1,4 +1,5 @@
 import Handlebars from 'handlebars'
+// const Handlebars = require('handlebars')
 import {formTemplate} from './form.templ.js'
 import {compiledInput} from '../input/input'
 import {compiledButton} from 'components/button/button'
