@@ -6,7 +6,7 @@
         "dev": "./node_modules/.bin/parcel src/layouts/*.html --port 3000",
         "clear": "rm -rf ./dist ./.cache",
         "build": "npm run clear && ./node_modules/.bin/parcel build src/layouts/*  --no-scope-hoist",
-        "start": "npm run build && node server.js",
+        "start": "npm run clear && ./node_modules/.bin/parcel build src/layouts/*  --no-scope-hoist  && node server.js",
         "prettier-format": "prettier --config .prettierrc 'src/**/*.js' --write"
     },
     "keywords": [],
