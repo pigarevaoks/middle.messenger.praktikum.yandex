@@ -1,5 +1,5 @@
-import Handlebars from 'handlebars';
-import { imageTemplate } from './image.templ.js';
-import './image.less';
+import Handlebars from 'handlebars'
+import {imageTemplate} from './image.templ.js'
+import './image.less'
 
-export const compiledImage = Handlebars.compile(imageTemplate);
+export const compiledImage = Handlebars.compile(imageTemplate)

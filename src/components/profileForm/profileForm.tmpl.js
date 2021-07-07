@@ -21,4 +21,4 @@ export const profileFormTemplate = `
         {{/each}}
       </div>
     </form>
-  </section>`;
+  </section>`

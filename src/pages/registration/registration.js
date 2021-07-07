@@ -1,5 +1,5 @@
-import { compiledRegistration } from 'modules/registrationForm/registrationForm';
+import {compiledRegistration} from 'modules/registrationForm/registrationForm'
 
-const container = document.getElementById('registration');
+const container = document.getElementById('registration')
 
-container.insertAdjacentHTML('afterbegin', compiledRegistration);
+container.insertAdjacentHTML('afterbegin', compiledRegistration)

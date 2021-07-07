@@ -1,5 +1,5 @@
-import { compiledProfile } from 'modules/profile/profile';
+import {compiledProfile} from 'modules/profile/profile'
 
-const container = document.getElementById('profile');
+const container = document.getElementById('profile')
 
-container.insertAdjacentHTML('afterbegin', compiledProfile);
+container.insertAdjacentHTML('afterbegin', compiledProfile)

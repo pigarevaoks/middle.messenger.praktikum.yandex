@@ -1,4 +1,4 @@
-import { compiledProfileForm } from 'components/profileForm/profileForm';
-import { context } from './context';
+import {compiledProfileForm} from 'components/profileForm/profileForm'
+import {context} from './context'
 
-export const compiledChangePassword = compiledProfileForm({ context });
+export const compiledChangePassword = compiledProfileForm({context})

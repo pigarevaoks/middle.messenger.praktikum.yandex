@@ -1,5 +1,5 @@
-import { compiledLogin } from 'modules/loginForm/loginForm';
+import {compiledLogin} from 'modules/loginForm/loginForm'
 
-const container = document.getElementById('login');
+const container = document.getElementById('login')
 
-container.insertAdjacentHTML('afterbegin', compiledLogin);
+container.insertAdjacentHTML('afterbegin', compiledLogin)

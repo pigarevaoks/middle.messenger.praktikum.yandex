@@ -1,22 +1,21 @@
-let sorting = require('postcss-sorting');
-module.exports = {
-  plugins: [
+const fs = require('fs')
+const less = require('postcss-less')
+const postcss = require('postcss')
+
+const code = fs.readFileSync('input.less', 'utf8')
+
+postcss([
+    require('stylelint')({}),
+    require('postcss-reporter')({clearReportedMessages: true}),
     require('autoprefixer'),
-    require('postcss-nested'),
-    require('stylelint'),
-    require('postcss-flexbugs-fixes'),
-    require('postcss-modules')({
-      generateScopedName: '[name]__[local]___[hash:base64:5]',
-    }),
     require('postcss-autoreset')(),
     require('postcss-utilities')(),
-    require('postcss-less'),
-    sorting({
-      order: ['custom-properties', 'dollar-variables', 'declarations', 'at-rules', 'rules'],
-
-      'properties-order': 'alphabetical',
-
-      'unspecified-properties-position': 'bottom',
-    }),
-  ],
-};
+    require('postcss-nested'),
+    require('postcss-flexbugs-fixes'),
+])
+    .process(code, {
+        from: 'input.less',
+        syntax: less,
+    })
+    .then(() => {})
+    .catch((err) => console.error(err.stack))

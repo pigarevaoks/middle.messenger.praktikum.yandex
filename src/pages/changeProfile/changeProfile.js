@@ -1,5 +1,5 @@
-import { compiledChangeProfile } from 'modules/changeProfile/changeProfile';
+import {compiledChangeProfile} from 'modules/changeProfile/changeProfile'
 
-const container = document.getElementById('changeProfile');
+const container = document.getElementById('changeProfile')
 
-container.insertAdjacentHTML('afterbegin', compiledChangeProfile);
+container.insertAdjacentHTML('afterbegin', compiledChangeProfile)

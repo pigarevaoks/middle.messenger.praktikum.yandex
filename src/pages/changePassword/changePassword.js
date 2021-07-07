@@ -1,5 +1,5 @@
-import { compiledChangePassword } from 'modules/changePassword/changePassword';
+import {compiledChangePassword} from 'modules/changePassword/changePassword'
 
-const container = document.getElementById('changePassword');
+const container = document.getElementById('changePassword')
 
-container.insertAdjacentHTML('afterbegin', compiledChangePassword);
+container.insertAdjacentHTML('afterbegin', compiledChangePassword)

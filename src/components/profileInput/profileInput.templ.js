@@ -24,4 +24,4 @@ export const profileInputTemplate = `
 		</div>
 	 	<div class="input__error">{{error}}</div>
 	 </div>
-    `;
+    `

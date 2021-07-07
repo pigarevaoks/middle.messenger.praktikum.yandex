@@ -15,4 +15,4 @@ export const formTemplate = `
         {{/each}}
       </div>
     </form>
-  </section>`;
+  </section>`

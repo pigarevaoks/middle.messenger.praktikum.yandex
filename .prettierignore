@@ -4,3 +4,5 @@
 dist
 !.prettierrc
 package.json
+package-lock.json
+src/fonts

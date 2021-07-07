@@ -4,4 +4,4 @@ export const buttonTemplate = `
   {{else}}
     <button class="button {{class}}" type={{type}} name={{name}}>{{title}}</button>
   {{/if}}
-`;
+`
