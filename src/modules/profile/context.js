@@ -65,7 +65,7 @@ export const context = {
         {
             title: 'Выйти',
             class: 'danger',
-            href: './login.html',
+            href: './index.html',
             category: 'linkButton',
         },
     ],
