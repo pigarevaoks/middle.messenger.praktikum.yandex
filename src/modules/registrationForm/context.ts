@@ -1,4 +1,7 @@
-export const context = {
+import IContext from './model'
+import {EButtonType} from 'common/Enums'
+
+export const context: IContext = {
     title: 'Регистрация',
     inputs: [
         {
@@ -53,14 +56,14 @@ export const context = {
     ],
     buttons: [
         {
-            type: 'submit',
+            type: EButtonType.Submit,
             name: 'registration',
             title: 'Зарегистрироваться',
             class: 'primary',
             href: './chats.html',
         },
         {
-            type: 'button',
+            type: EButtonType.Button,
             name: 'login',
             title: 'Войти',
             class: 'secondary',
