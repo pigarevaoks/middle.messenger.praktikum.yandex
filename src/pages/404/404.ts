@@ -1,4 +1,4 @@
-import {compiledError} from 'components/error/error.js'
+import {compiledError} from '../../components/error/error'
 
 const context = {
     title: '404',

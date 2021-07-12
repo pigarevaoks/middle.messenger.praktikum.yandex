@@ -1,8 +1,7 @@
 import Handlebars from 'handlebars'
-// const Handlebars = require('handlebars')
-import {formTemplate} from './form.templ.js'
+import {formTemplate} from './form.templ'
 import {compiledInput} from '../input/input'
-import {compiledButton} from 'components/button/button'
+import {compiledButton} from '../button/button'
 import './form.less'
 
 Handlebars.registerPartial({

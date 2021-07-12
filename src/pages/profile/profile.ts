@@ -1,4 +1,4 @@
-import {compiledProfile} from 'modules/profile/profile'
+import {compiledProfile} from '../../modules/profile/profile'
 
 const container = document.getElementById('profile')
 
