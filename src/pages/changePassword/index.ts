@@ -1,4 +1,4 @@
-import {compiledChangePassword} from '../../modules/changePassword/changePassword'
+import {compiledChangePassword} from 'modules/changePassword'
 
 const container = document.getElementById('changePassword')
 

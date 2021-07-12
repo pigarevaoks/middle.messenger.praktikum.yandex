@@ -1,4 +1,4 @@
-import {compiledChangeProfile} from '../../modules/changeProfile/changeProfile'
+import {compiledChangeProfile} from 'modules/changeProfile'
 
 const container = document.getElementById('changeProfile')
 

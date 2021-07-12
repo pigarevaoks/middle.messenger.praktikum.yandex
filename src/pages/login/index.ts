@@ -1,4 +1,4 @@
-import {compiledLogin} from '../../modules/loginForm/loginForm'
+import {compiledLogin} from 'modules/loginForm'
 
 const container = document.getElementById('login')
 

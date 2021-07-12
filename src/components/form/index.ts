@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars'
 import {formTemplate} from './form.templ'
-import {compiledInput} from '../input/input'
-import {compiledButton} from '../button/button'
+import {compiledInput} from '../input'
+import {compiledButton} from '../button'
 import './form.less'
 
 Handlebars.registerPartial({

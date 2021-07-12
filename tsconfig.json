@@ -8,14 +8,16 @@
         "rootDir": "./src",
         "strict": true,
         "noImplicitAny": false,
-        "strictNullChecks": false,
+        "strictNullChecks": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "sourceMap": true,
         "esModuleInterop": true,
-        "noImplicitThis": false
+        "noImplicitThis": false,
+        "baseUrl": ".",
+        "paths": {
+            "*": ["./src/*"]
+        }
     },
-    "exclude": [
-        "node_modules/**/*"
-    ]
+    "exclude": ["node_modules/**/*"]
 }

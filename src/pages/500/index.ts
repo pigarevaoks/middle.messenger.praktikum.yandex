@@ -1,4 +1,4 @@
-import {compiledError} from '../../components/error/error'
+import {compiledError} from 'components/error'
 
 const context = {
     title: '500',

@@ -32,5 +32,12 @@
         "hooks": {
             "pre-commit": "lint-staged"
         }
+    },
+    "alias": {
+        "components": "./src/components",
+        "layouts": "./src/layouts",
+        "modules": "./src/modules",
+        "pages": "./src/pages",
+        "styles": "./src/styles"
     }
 }

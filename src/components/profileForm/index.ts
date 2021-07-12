@@ -1,10 +1,10 @@
 import Handlebars from 'handlebars'
 import {profileFormTemplate} from './profileForm.tmpl'
-import {compiledBackButton} from '../backButton/backButton'
-import {compiledImage} from '../image/image'
-import {compiledLinkedButton} from '../linkedButton/linkedButton'
-import {compiledButton} from '../button/button'
-import {compiledProfileInput} from '../profileInput/profileInput'
+import {compiledBackButton} from '../backButton'
+import {compiledImage} from '../image'
+import {compiledLinkedButton} from '../linkedButton'
+import {compiledButton} from '../button'
+import {compiledProfileInput} from '../profileInput'
 import './profileForm.less'
 
 Handlebars.registerPartial({

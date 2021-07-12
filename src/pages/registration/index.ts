@@ -1,4 +1,4 @@
-import {compiledRegistration} from '../../modules/registrationForm/registrationForm'
+import {compiledRegistration} from 'modules/registrationForm'
 
 const container = document.getElementById('registration')
 
