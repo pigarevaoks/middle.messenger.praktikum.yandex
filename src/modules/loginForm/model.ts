@@ -1,4 +1,4 @@
-import {IInput, IButton} from 'common/Models'
+import { IInput, IButton } from 'common/Models'
 
 export default interface IContext {
     title: string

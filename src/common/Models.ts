@@ -1,4 +1,4 @@
-import {EButtonType} from 'common/Enums'
+import { EButtonType } from './Enums'
 
 export interface IInput {
     name: string

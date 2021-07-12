@@ -1,41 +1,48 @@
 @import 'styles/variables';
 
 .button {
-    height: 37px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background: @blue-color;
-    border-radius: 8px;
-    color: @white-color;
-    font-size: 13px;
-    line-height: 1;
-    text-align: center;
-    cursor: pointer;
-    margin-bottom: 10px;
-    align-items: center;
-    transition: all 0.2s ease;
+  height: 37px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: @blue-color;
+  border-radius: 8px;
+  color: @white-color;
+  font-size: 13px;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+  align-items: center;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: @black-color;
+  }
+
+  &.profile {
+    width: 280px;
+  }
+
+  &.secondary {
+    background: transparent;
+    color: @blue-color;
+
     &:hover {
-        background: @black-color;
+      color: @black-color;
     }
-    &.profile {
-        width: 280px;
+  }
+
+  &.danger {
+    background: transparent;
+    color: @red-color;
+
+    &:hover {
+      color: @blue-color;
     }
-    &.secondary {
-        background: transparent;
-        color: @blue-color;
-        &:hover {
-            color: @black-color;
-        }
-    }
-    &.danger {
-        background: transparent;
-        color: @red-color;
-        &:hover {
-            color: @blue-color;
-        }
-    }
-    &:last-child {
-        margin-bottom: 0;
-    }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
