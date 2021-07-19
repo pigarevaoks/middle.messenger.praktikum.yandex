@@ -1,11 +1,11 @@
-import { compiledError } from 'components/error'
+import { Error } from 'components/error/index'
 
 const context = {
   title: '500',
   description: 'Мы уже фиксим',
   link: { title: 'Назад к чатам', href: './chats.html' },
 }
-export const compiled500 = compiledError({ context })
-const container = document.getElementById('500')
 
-container.insertAdjacentHTML('afterbegin', compiled500)
+const container = document.getElementById('500') as HTMLElement
+
+container.insertAdjacentHTML('afterbegin', new Error(context).render())

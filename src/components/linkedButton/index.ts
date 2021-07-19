@@ -1,5 +1,16 @@
-import Handlebars from 'handlebars'
+import Block from 'utils/block'
+import { renderTemplate } from 'utils/renderTemplate'
+import { ILinkedButton } from 'common/Models'
 import { linkedButtonTemplate } from './linkedButton.tmpl'
 import './linkedButton.less'
 
-export const compiledLinkedButton = Handlebars.compile(linkedButtonTemplate)
+export class LinkedButton extends Block {
+  constructor(props: ILinkedButton) {
+    super('div', props)
+    this.props = props
+  }
+
+  render() {
+    return renderTemplate(linkedButtonTemplate, this.props)
+  }
+}

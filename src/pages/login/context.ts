@@ -1,7 +1,6 @@
 import { EButtonType } from 'common/Enums'
-import IContext from './model'
 
-export const context: IContext = {
+export const context = {
   title: 'Вход',
   inputs: [
     {

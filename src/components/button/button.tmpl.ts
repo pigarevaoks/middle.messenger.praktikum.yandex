@@ -1,4 +1,4 @@
-export const buttonTemplate = `
+export const buttonTemplate = () => `
   {{#if href}}
     <a class="button {{class}}" href={{href}}>{{title}}</a>
   {{else}}

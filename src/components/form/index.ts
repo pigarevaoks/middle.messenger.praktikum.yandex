@@ -1,12 +1,16 @@
-import Handlebars from 'handlebars'
+import Block from 'utils/block'
+import { renderTemplate } from 'utils/renderTemplate'
+import { IContext } from 'common/Models'
 import { formTemplate } from './form.templ'
-import { compiledInput } from '../input'
-import { compiledButton } from '../button'
 import './form.less'
 
-Handlebars.registerPartial({
-  input: compiledInput,
-  button: compiledButton,
-})
+export class Form extends Block {
+  constructor(props: IContext) {
+    super()
+    this.props = props
+  }
 
-export const compiledForm = Handlebars.compile(formTemplate)
+  public render() {
+    return renderTemplate(formTemplate, this.props)
+  }
+}

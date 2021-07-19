@@ -1,6 +1,4 @@
-import IContext from './model'
-
-export const context: IContext = {
+export const context = {
   name: 'Иван',
   href: './chats.html',
   inputs: [

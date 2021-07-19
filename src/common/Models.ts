@@ -28,3 +28,22 @@ export interface ILinkedButton {
     category?: string
     href: string
 }
+
+export interface IContext {
+    title: string
+    inputs: string
+    buttons: string
+}
+
+export interface IError {
+    title?: string
+    description: string
+    link?: {title: string; href: string}
+}
+export interface IProfile {
+    image: string
+    name?: string
+    backButton: string
+    inputs: string
+    buttons: string
+}

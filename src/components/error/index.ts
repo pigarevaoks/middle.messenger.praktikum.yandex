@@ -1,5 +1,16 @@
-import Handlebars from 'handlebars'
+import Block from 'utils/block'
+import { renderTemplate } from 'utils/renderTemplate'
+import { IError } from 'common/Models'
 import { errorTemplate } from './error.tmpl'
 import './error.less'
 
-export const compiledError = Handlebars.compile(errorTemplate)
+export class Error extends Block {
+  constructor(props: IError) {
+    super('div', props)
+    this.props = props
+  }
+
+  render() {
+    return renderTemplate(errorTemplate, this.props)
+  }
+}
