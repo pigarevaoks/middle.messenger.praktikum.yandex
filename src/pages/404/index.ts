@@ -1,9 +1,9 @@
-import { Error } from 'components/error/index'
+import {Error} from 'components/error/index'
 
 const context = {
-  title: '404',
-  description: 'Не туда попали',
-  link: { title: 'Назад к чатам', href: './chats.html' },
+    title: '404',
+    description: 'Не туда попали',
+    link: {title: 'Назад к чатам', href: './chats.html'},
 }
 
 const container = document.getElementById('404') as HTMLElement
