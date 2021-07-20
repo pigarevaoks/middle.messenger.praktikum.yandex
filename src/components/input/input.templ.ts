@@ -2,11 +2,11 @@ export const inputTemplate = () => `
   <div class="input">
     <div class="input__field">
       <input
-        type="text"
         class="input__input"
-        id={{name}}
+        name={{name}}
         type={{type}}
-        required={{required}}
+        id={{name}}
+        data-validation={{validation}}
       >
       <label for={{name}} class="input__label">{{label}}</label>
     </div>

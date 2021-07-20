@@ -1,4 +1,4 @@
-import {EButtonType} from 'common/enums'
+import {EButtonType, EFieldsTypes} from 'common/enums'
 
 export const context = {
     title: 'Вход',
@@ -7,15 +7,15 @@ export const context = {
             name: 'login',
             label: 'Логин',
             type: 'text',
-            error: 'Неверный логин',
-            required: true,
+            error: 'Логин должен быть больше 2 символов',
+            validation: EFieldsTypes.Text,
         },
         {
             name: 'password',
             label: 'Пароль',
             type: 'password',
-            error: 'Неверный пароль',
-            required: true,
+            error: 'Пароль должен состоять из заглавных и обычных букв, цифр, доп символов и длиной более 6 символов',
+            validation: EFieldsTypes.Password,
         },
     ],
     buttons: [
@@ -24,14 +24,14 @@ export const context = {
             name: 'login',
             title: 'Авторизоваться',
             class: 'primary',
-            href: './chats.html',
+            // href: './chats.html',
         },
         {
             type: EButtonType.Button,
             name: 'signIn',
             title: 'Нет аккаунта?',
             class: 'secondary',
-            href: './registration.html',
+            // href: './registration.html',
         },
     ],
 }
