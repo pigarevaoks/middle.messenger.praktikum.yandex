@@ -1,11 +1,14 @@
-import {Error} from 'components/error/index'
-
-const context = {
-    title: 'Чаты',
-    description: 'Будут чуть позже',
-    link: {title: 'Назад к странице профиля', href: './profile.html'},
-}
+import {ChatContainer} from 'components/chatContainer/index'
+import {ChatListItem} from 'components/chatListItem/index'
+import {ChatList} from 'components/chatList'
+import {context} from './context'
 
 const container = document.getElementById('chats') as HTMLElement
 
-container.insertAdjacentHTML('afterbegin', new Error(context).render())
+const chatListItems = context.messages
+    ?.map((message) => new ChatListItem(message).render())
+    .join('')
+
+const list = new ChatList({searchInput: 'searchInput', list: chatListItems}).render()
+
+container.insertAdjacentHTML('afterbegin', new ChatContainer({list, chat: '123'}).render())

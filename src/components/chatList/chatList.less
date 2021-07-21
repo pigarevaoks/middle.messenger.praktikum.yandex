@@ -1,0 +1,29 @@
+@import 'styles/variables';
+
+.chatList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    &__link {
+        a {
+            justify-content: flex-end;
+            display: flex;
+            padding: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1;
+            transition: all 0.2s ease;
+            &:hover {
+                cursor: pointer;
+                color: @blue-color;
+            }
+        }
+    }
+    &__searchInput {
+        display: flex;
+        padding: 10px;
+        border-bottom: 1px solid @light-color;
+    }
+    &__list {
+    }
+}
