@@ -4,9 +4,10 @@ export enum EButtonType {
     Reset = 'reset',
 }
 
-export enum EFieldsTypes {
+export enum EFieldType {
     Phone = 'phone',
     Email = 'email',
     Password = 'password',
+    DoublePassword = 'double_password',
     Text = 'text',
 }

@@ -1,4 +1,4 @@
-import {EButtonType} from 'common/enums'
+import {EButtonType, EFieldType} from 'common/enums'
 
 export const context = {
     title: 'Регистрация',
@@ -8,49 +8,49 @@ export const context = {
             label: 'Почта',
             type: 'text',
             error: 'Введите почту',
-            required: true,
+            validation: EFieldType.Email,
         },
         {
             name: 'login',
             label: 'Логин',
             type: 'text',
             error: 'Введите логин',
-            required: true,
+            validation: EFieldType.Text,
         },
         {
             name: 'first_name',
             label: 'Имя',
             type: 'text',
             error: 'Введите имя',
-            required: true,
+            validation: EFieldType.Text,
         },
         {
             name: 'second_name',
             label: 'Фамилия',
             type: 'text',
-            error: 'Введите логин',
-            required: true,
+            error: 'Введите фамилию',
+            validation: EFieldType.Text,
         },
         {
             name: 'phone',
             label: 'Телефон',
             type: 'text',
-            error: 'Введите логин',
-            required: true,
+            error: 'Введите номер телефона',
+            validation: EFieldType.Phone,
         },
         {
             name: 'password',
             label: 'Пароль',
             type: 'password',
             error: 'Введите пароль',
-            required: true,
+            validation: EFieldType.Password,
         },
         {
             name: 'password',
             label: 'Пароль (ещё раз)',
             type: 'password',
             error: 'Пароли не совпадают',
-            required: true,
+            validation: EFieldType.Password,
         },
     ],
     buttons: [
@@ -59,14 +59,13 @@ export const context = {
             name: 'registration',
             title: 'Зарегистрироваться',
             class: 'primary',
-            href: './chats.html',
         },
         {
             type: EButtonType.Button,
             name: 'login',
             title: 'Войти',
             class: 'secondary',
-            href: './chats.html',
+            href: './login.html',
         },
     ],
 }

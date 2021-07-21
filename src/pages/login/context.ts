@@ -1,4 +1,4 @@
-import {EButtonType, EFieldsTypes} from 'common/enums'
+import {EButtonType, EFieldType} from 'common/enums'
 
 export const context = {
     title: 'Вход',
@@ -8,14 +8,14 @@ export const context = {
             label: 'Логин',
             type: 'text',
             error: 'Логин должен быть больше 2 символов',
-            validation: EFieldsTypes.Text,
+            validation: EFieldType.Text,
         },
         {
             name: 'password',
             label: 'Пароль',
             type: 'password',
             error: 'Пароль должен состоять из заглавных и обычных букв, цифр, доп символов и длиной более 6 символов',
-            validation: EFieldsTypes.Password,
+            validation: EFieldType.Password,
         },
     ],
     buttons: [
