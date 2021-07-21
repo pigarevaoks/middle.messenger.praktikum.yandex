@@ -8,6 +8,5 @@ export enum EFieldType {
     Phone = 'phone',
     Email = 'email',
     Password = 'password',
-    DoublePassword = 'double_password',
     Text = 'text',
 }

@@ -23,10 +23,6 @@ const checkValidation = (input: HTMLInputElement) => {
             return input.value.length > 2
         case EFieldType.Password:
             return input.value.search(PASSWORD_REGEXP) !== -1
-        case EFieldType.DoublePassword: {
-            const samePasswords = input.value === validatedInputs[EFieldType.Password]
-            return input.value.search(PASSWORD_REGEXP) !== -1 && samePasswords
-        }
         default:
             return true
     }

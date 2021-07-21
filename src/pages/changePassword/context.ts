@@ -1,4 +1,4 @@
-import {EButtonType} from 'common/enums'
+import {EButtonType, EFieldType} from 'common/enums'
 
 export const context = {
     href: './profile.html',
@@ -6,39 +6,35 @@ export const context = {
         {
             name: 'oldPassword',
             label: 'Старый пароль',
-            value: 'Oksana',
             placeholder: 'Введите cтарый пароль',
             type: 'password',
-            error: '',
-            required: true,
+            error: 'Пароль должен состоять из заглавных и обычных букв, цифр, доп символов и длиной более 6 символов',
+            validation: EFieldType.Password,
         },
 
         {
             name: 'newPassword',
             label: 'Новый пароль',
-            value: 'Oksana',
             placeholder: 'Введите новый пароль',
             type: 'password',
-            error: '',
-            required: true,
+            error: 'Пароль должен состоять из заглавных и обычных букв, цифр, доп символов и длиной более 6 символов',
+            validation: EFieldType.Password,
         },
         {
             name: 'repeatNewPassword',
             label: 'Повторите новый пароль',
-            value: 'Oksana',
             placeholder: 'Повторите ввод нового пароля',
             type: 'password',
-            error: '',
-            required: true,
+            error: 'Пароль должен состоять из заглавных и обычных букв, цифр, доп символов и длиной более 6 символов',
+            validation: EFieldType.Password,
         },
     ],
     buttons: [
         {
             type: EButtonType.Submit,
-            name: 'save',
+            name: 'savePassword',
             title: 'Сохранить',
             class: 'profile',
-            category: 'button',
         },
     ],
 }

@@ -42,11 +42,11 @@ export const context = {
             name: 'password',
             label: 'Пароль',
             type: 'password',
-            error: 'Введите пароль',
+            error: 'Пароль должен состоять из заглавных и обычных букв, цифр, доп символов и длиной более 6 символов',
             validation: EFieldType.Password,
         },
         {
-            name: 'password',
+            name: 'double_password',
             label: 'Пароль (ещё раз)',
             type: 'password',
             error: 'Пароли не совпадают',
