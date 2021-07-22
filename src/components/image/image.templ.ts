@@ -1,4 +1,4 @@
-import defaultImage from 'url:./defaultImage.svg'
+import defaultImage from 'url:./images/defaultImage.svg'
 
 export const imageTemplate = () => `
   <div class="image">

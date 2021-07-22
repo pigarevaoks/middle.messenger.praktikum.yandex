@@ -1,4 +1,4 @@
-import searchIcon from 'url:./searchIcon.svg'
+import searchIcon from 'url:./images/searchIcon.svg'
 
 export const searchInputTemplate = () => `
     <div class="searchInput">

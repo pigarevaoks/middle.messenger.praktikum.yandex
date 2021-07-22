@@ -10,7 +10,20 @@
         padding: 0 10px;
     }
     &__chat {
+        height: 100%;
         display: flex;
         flex: 1;
+        width: 100%;
+        flex-direction: column;
+        position: relative;
+    }
+    &__messageBlock {
+        display: flex;
+        padding: 11px 20px;
+        border-top: 1px solid @light-color;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
     }
 }

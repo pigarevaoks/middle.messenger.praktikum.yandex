@@ -1,4 +1,4 @@
-export interface ISearchInput {
+export interface IMessageBlock {
     name: string
     type: string
     placeholder: string
