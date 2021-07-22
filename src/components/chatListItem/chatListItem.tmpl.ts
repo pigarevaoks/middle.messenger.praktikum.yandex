@@ -1,5 +1,5 @@
 export const chatListItemTemplate = () => `
-  <div class="chatListItem">
+  <div class="chatListItem" id={{{id}}}>
     <div class="chatListItem__avatar">{{{avatar}}}</div>
     <div class="chatListItem__content">
       <div class="chatListItem__title">{{{title}}}</div>
@@ -9,5 +9,4 @@ export const chatListItemTemplate = () => `
     {{#if count}}
       <div class="chatListItem__count">{{{count}}}</div>  
     {{/if}}
-    
   </div>`
