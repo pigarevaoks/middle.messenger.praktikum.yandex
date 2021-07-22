@@ -5,7 +5,7 @@ export const profileFormTemplate = () => `
       {{{image}}}
     </div>
     <div class="profile__name">{{{name}}}</div>
-    <form>
+    <form class="profile__form">
       <div class="profile__inputs">
         {{{inputs}}}
       </div>

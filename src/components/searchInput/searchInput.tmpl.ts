@@ -1,3 +1,5 @@
+import searchIcon from 'url:./searchIcon.svg'
+
 export const searchInputTemplate = () => `
     <div class="searchInput">
         <input
@@ -7,5 +9,6 @@ export const searchInputTemplate = () => `
           id={{name}}
           placeholder={{placeholder}}
         >
+        <img class="searchInput__icon" src=${searchIcon} />
     </div>
 `
