@@ -2,7 +2,7 @@
 
 ### ПР
 
-https://github.com/pigarevaoks/middle.messenger.praktikum.yandex/pull/1
+https://github.com/pigarevaoks/middle.messenger.praktikum.yandex/pull/2
 
 ### Netify
 
