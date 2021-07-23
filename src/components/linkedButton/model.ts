@@ -1,4 +1,4 @@
-import {EButtonType} from '../../common/enums'
+import { EButtonType } from '../../common/enums'
 
 export interface ILinkedButton {
     type?: EButtonType
