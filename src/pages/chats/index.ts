@@ -24,9 +24,7 @@ const chatListItems = context.messages
     ?.map((message) => new ChatListItem({...message, avatar}).render())
     .join('')
 
-const messages = context?.messages[0]?.chats
-    .map((message) => new Message({text: message}).render())
-    .join('')
+const messages = context.chats.map((message) => new Message({text: message}).render()).join('')
 
 const messageInput = new MessageInput({
     name: 'message',
@@ -43,8 +41,6 @@ const chat = new Chat({messages, messageBlock}).render()
 container.insertAdjacentHTML('afterbegin', new ChatContainer({list, chat}).render())
 
 const submitButton = document.getElementById('sendMessage') as HTMLFormElement
-const formInputs = document
-    .getElementById('messageForm')
-    .querySelectorAll('input') as NodeListOf<HTMLInputElement>
+const formInputs = document.querySelectorAll('input#message') as NodeListOf<HTMLInputElement>
 
 formValidation(submitButton, formInputs)
