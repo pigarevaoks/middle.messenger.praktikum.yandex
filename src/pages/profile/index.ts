@@ -1,8 +1,8 @@
-import {ProfileForm} from 'components/profileForm/index'
-import {LinkedButton} from 'components/linkedButton/index'
-import {ProfileInput} from 'components/profileInput/index'
-import {BackButton} from 'components/backButton/index'
-import {Image} from 'components/image/index'
+import {ProfileForm} from 'components/profileForm'
+import {LinkedButton} from 'components/linkedButton'
+import {ProfileInput} from 'components/profileInput'
+import {BackButton} from 'components/backButton'
+import {Image} from 'components/image'
 import {context} from './context'
 
 const container = document.getElementById('profile') as HTMLElement

@@ -1,5 +1,5 @@
 import Block from 'utils/block'
-import {renderTemplate} from 'utils/renderTemplate'
+import renderTemplate from 'utils/renderTemplate'
 import {imageTemplate} from './image.templ'
 import './image.less'
 

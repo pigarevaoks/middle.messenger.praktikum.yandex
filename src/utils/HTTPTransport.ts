@@ -1,5 +1,5 @@
-import {queryStringify} from './queryStringify'
 import {EMethod} from 'common/enums'
+import queryStringify from './queryStringify'
 interface OptionsType {
     method?: string
     timeout?: number

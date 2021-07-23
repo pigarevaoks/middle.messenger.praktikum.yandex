@@ -1,5 +1,5 @@
 import Block from 'utils/block'
-import {renderTemplate} from 'utils/renderTemplate'
+import renderTemplate from 'utils/renderTemplate'
 import {messageInputTemplate} from './messageInput.tmpl'
 import {IMessageInput} from './model'
 import './messageInput.less'

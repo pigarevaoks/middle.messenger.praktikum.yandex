@@ -1,5 +1,5 @@
 import Block from 'utils/block'
-import {renderTemplate} from 'utils/renderTemplate'
+import renderTemplate from 'utils/renderTemplate'
 import {backButtonTemplate} from './backButton.tmpl'
 import {IBackButton} from './model'
 import './backButton.less'

@@ -1,5 +1,5 @@
 import Block from 'utils/block'
-import {renderTemplate} from 'utils/renderTemplate'
+import renderTemplate from 'utils/renderTemplate'
 import {errorTemplate} from './error.tmpl'
 import {IError} from './model'
 import './error.less'

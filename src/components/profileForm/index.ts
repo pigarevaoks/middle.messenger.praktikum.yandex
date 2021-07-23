@@ -1,5 +1,5 @@
 import Block from 'utils/block'
-import {renderTemplate} from 'utils/renderTemplate'
+import renderTemplate from 'utils/renderTemplate'
 import {profileFormTemplate} from './profileForm.tmpl'
 import {IProfile} from './model'
 import './profileForm.less'

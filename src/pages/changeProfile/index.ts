@@ -1,8 +1,8 @@
-import {ProfileForm} from 'components/profileForm/index'
-import {Button} from 'components/button/index'
-import {ProfileInput} from 'components/profileInput/index'
-import {BackButton} from 'components/backButton/index'
-import {Image} from 'components/image/index'
+import {ProfileForm} from 'components/profileForm'
+import {Button} from 'components/button'
+import {ProfileInput} from 'components/profileInput'
+import {BackButton} from 'components/backButton'
+import {Image} from 'components/image'
 import formValidation from 'utils/formValidation'
 import {context} from './context'
 

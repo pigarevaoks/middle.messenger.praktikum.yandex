@@ -1,5 +1,5 @@
 import Block from 'utils/block'
-import {renderTemplate} from 'utils/renderTemplate'
+import renderTemplate from 'utils/renderTemplate'
 import {linkedButtonTemplate} from './linkedButton.tmpl'
 import {ILinkedButton} from './model'
 import './linkedButton.less'

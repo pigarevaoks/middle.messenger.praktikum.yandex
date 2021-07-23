@@ -1,5 +1,5 @@
 import Block from 'utils/block'
-import {renderTemplate} from 'utils/renderTemplate'
+import renderTemplate from 'utils/renderTemplate'
 import {chatContainerTemplate} from './chatContainer.tmpl'
 import {IChatContainer} from './model'
 import './chatContainer.less'

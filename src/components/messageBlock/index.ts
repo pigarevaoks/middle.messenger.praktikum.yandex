@@ -1,5 +1,5 @@
 import Block from 'utils/block'
-import {renderTemplate} from 'utils/renderTemplate'
+import renderTemplate from 'utils/renderTemplate'
 import {messageBlockTemplate} from './messageBlock.tmpl'
 import {IMessageBlock} from './model'
 import './messageBlock.less'

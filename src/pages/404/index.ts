@@ -1,4 +1,4 @@
-import {Error} from 'components/error/index'
+import {Error} from 'components/error'
 
 const context = {
     title: '404',

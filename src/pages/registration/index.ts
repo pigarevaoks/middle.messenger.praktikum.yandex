@@ -1,6 +1,6 @@
-import {Form} from 'components/form/index'
-import {Button} from 'components/button/index'
-import {Input} from 'components/input/index'
+import {Form} from 'components/form'
+import {Button} from 'components/button'
+import {Input} from 'components/input'
 import formValidation from 'utils/formValidation'
 import {context} from './context'
 
