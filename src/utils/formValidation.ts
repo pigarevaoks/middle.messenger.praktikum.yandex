@@ -1,5 +1,5 @@
-import {MOBILE_RULE, EMAIL_RULE, PASSWORD_RULE, MESSAGE_RULE} from 'common/consts'
-import {EFieldType} from 'common/enums'
+import {MOBILE_RULE, EMAIL_RULE, PASSWORD_RULE, MESSAGE_RULE} from '../common/consts'
+import {EFieldType} from '../common/enums'
 
 const errorToggle = (isValid: boolean, input: HTMLInputElement) => {
     const error = input.closest('#input') as HTMLInputElement
