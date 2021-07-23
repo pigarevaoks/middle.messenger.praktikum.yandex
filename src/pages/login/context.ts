@@ -24,14 +24,12 @@ export const context = {
             name: 'loginButton',
             title: 'Авторизоваться',
             class: 'primary',
-            // href: './chats.html',
         },
         {
             type: EButtonType.Button,
             name: 'signIn',
             title: 'Нет аккаунта?',
             class: 'secondary',
-            // href: './registration.html',
         },
     ],
 }
