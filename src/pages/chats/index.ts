@@ -8,7 +8,7 @@ import {MessageBlock} from 'components/messageBlock'
 import {Message} from 'components/message'
 import {Chat} from 'components/chat'
 import formValidation from 'utils/formValidation'
-import {EFieldType} from 'common/enums'
+import {EFieldType} from '../../common/enums'
 import {context} from './context'
 
 const container = document.getElementById('chats') as HTMLElement

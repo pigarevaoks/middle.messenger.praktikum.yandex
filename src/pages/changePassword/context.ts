@@ -1,4 +1,4 @@
-import {EButtonType, EFieldType} from 'common/enums'
+import {EButtonType, EFieldType} from '../../common/enums'
 
 export const context = {
     href: './profile.html',

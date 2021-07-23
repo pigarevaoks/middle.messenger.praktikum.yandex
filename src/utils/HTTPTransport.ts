@@ -1,4 +1,4 @@
-import {EMethod} from 'common/enums'
+import {EMethod} from '../common/enums'
 import queryStringify from './queryStringify'
 interface OptionsType {
     method?: string
