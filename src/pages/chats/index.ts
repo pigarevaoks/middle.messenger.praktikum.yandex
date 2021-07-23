@@ -11,6 +11,8 @@ import formValidation from 'utils/formValidation'
 import {EFieldType} from 'common/enums'
 import {context} from './context'
 
+const container = document.getElementById('chats') as HTMLElement
+
 const avatar = new Image({}).render()
 const searchInput = new SearchInput({
     name: 'search',
@@ -38,15 +40,11 @@ const messageBlock = new MessageBlock({messageInput}).render()
 const list = new ChatList({searchInput, list: chatListItems}).render()
 const chat = new Chat({messages, messageBlock}).render()
 
-const container = document.getElementById('chats') as HTMLElement
 container.insertAdjacentHTML('afterbegin', new ChatContainer({list, chat}).render())
 
 const submitButton = document.getElementById('sendMessage') as HTMLFormElement
 const formInputs = document
     .getElementById('messageForm')
     .querySelectorAll('input') as NodeListOf<HTMLInputElement>
-
-// console.log(submitButton)
-// console.log(formInputs)
 
 formValidation(submitButton, formInputs)

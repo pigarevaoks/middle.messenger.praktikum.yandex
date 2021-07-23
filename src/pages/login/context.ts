@@ -21,7 +21,7 @@ export const context = {
     buttons: [
         {
             type: EButtonType.Submit,
-            name: 'login',
+            name: 'loginButton',
             title: 'Авторизоваться',
             class: 'primary',
             // href: './chats.html',

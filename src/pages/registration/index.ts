@@ -18,7 +18,7 @@ container.insertAdjacentHTML(
     }).render()
 )
 
-const submitButton = document.getElementById('registration') as HTMLFormElement
+const submitButton = document.getElementById('registrationButton') as HTMLFormElement
 const formInputs = document.querySelectorAll('input')
 
 formValidation(submitButton, formInputs)

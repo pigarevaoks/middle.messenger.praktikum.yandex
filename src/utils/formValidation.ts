@@ -32,7 +32,6 @@ const onSubmitForm = (e: Event, inputs: NodeListOf<HTMLInputElement>) => {
     e.preventDefault()
 
     const validatedInputs: {[key: string]: string | null} = {}
-
     Array.from(inputs).forEach((input) => {
         const isValid = checkValidation(input)
         if (!isValid) {
@@ -57,7 +56,7 @@ const onValidate = (input: HTMLInputElement) => {
 }
 
 const formValidation = (submitButton: HTMLFormElement, inputs: NodeListOf<HTMLInputElement>) => {
-    submitButton.addEventListener('submit', (e) => onSubmitForm(e, inputs))
+    submitButton.addEventListener('click', (e) => onSubmitForm(e, inputs))
     Array.from(inputs).forEach((input) => {
         input.addEventListener('focus', () => onValidate(input))
         input.addEventListener('blur', () => onValidate(input))

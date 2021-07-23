@@ -1,27 +1,20 @@
 export const profileInputTemplate = () => `
-   <div class="profileInput">
+  <div class="profileInput" id="input">
 	 	<div class="profileInput__field">
-		 <label for={{name}} class="profileInput__label">{{label}}</label>
-		 {{#if disabled}}
-		 <input
-			class="profileInput__input"
-			id={{name}}
-			value={{value}}
-			placeholder={{placeholder}}
-			type={{type}}
-			disabled={{disabled}}
-		>
-		{{else}}
-		<input
-		 	class="profileInput__input"
-			id={{name}}
-			value={{value}}
-			placeholder={{placeholder}}
-			type={{type}}
-			required={{required}}	
-		 >
-		{{/if}}
+      <label for={{{name}}} class="profileInput__label">{{{label}}}</label>
+      <input
+        class="profileInput__input"
+        value={{{value}}}
+        name="{{{name}}}"
+        type="{{{type}}}"
+        id="{{{name}}}"
+        placeholder="{{{placeholder}}}"
+        data-validation="{{{validation}}}"
+        {{#if disabled}}
+        disabled={{{disabled}}}
+        {{/if}}
+      >
 		</div>
-	 	<div class="input__error">{{error}}</div>
-	 </div>
-    `
+	 	<div class="profileInput__error">{{{error}}}</div>
+	</div>
+`

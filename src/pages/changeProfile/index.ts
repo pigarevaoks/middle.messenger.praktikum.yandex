@@ -3,6 +3,7 @@ import {Button} from 'components/button/index'
 import {ProfileInput} from 'components/profileInput/index'
 import {BackButton} from 'components/backButton/index'
 import {Image} from 'components/image/index'
+import formValidation from 'utils/formValidation'
 import {context} from './context'
 
 const container = document.getElementById('changeProfile') as HTMLElement
@@ -21,3 +22,8 @@ container.insertAdjacentHTML(
         inputs,
     }).render()
 )
+
+const submitButton = document.getElementById('saveProfile') as HTMLFormElement
+const formInputs = document.querySelectorAll('input')
+
+formValidation(submitButton, formInputs)

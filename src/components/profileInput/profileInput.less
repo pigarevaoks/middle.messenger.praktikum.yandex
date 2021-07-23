@@ -1,50 +1,58 @@
 @import 'styles/variables';
 
 .profileInput {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
-
-  &:last-child {
-    margin-bottom: 50px;
-  }
-
-  &__field {
-    display: flex;
-    position: relative;
-  }
-
-  &__error {
-    display: none;
-    color: @red-color;
-    font-size: 12px;
-    margin-top: 7px;
-  }
-
-  &__label {
     display: block;
-    position: absolute;
-    top: 4px;
-    color: @black-color;
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 1;
-    transition: all 0.2s ease;
-  }
-
-  &__input {
-    display: block;
-    height: 33px;
     width: 100%;
-    padding-left: 30%;
-    text-align: right;
-    border-bottom: 1px solid @light-color;
-    font-size: 13px;
-    font-weight: 500;
-    color: @black-color;
+    margin-bottom: 10px;
 
-    &:disabled {
-      color: @gray-color;
+    &:last-child {
+        margin-bottom: 50px;
     }
-  }
+
+    &__field {
+        display: flex;
+        position: relative;
+    }
+
+    &__error {
+        display: none;
+        color: @red-color;
+        font-size: 12px;
+        margin-top: 7px;
+    }
+
+    &__label {
+        display: block;
+        position: absolute;
+        top: 4px;
+        color: @black-color;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1;
+        transition: all 0.2s ease;
+    }
+
+    &__input {
+        display: block;
+        height: 33px;
+        width: 100%;
+        padding-left: 30%;
+        text-align: right;
+        border-bottom: 1px solid @light-color;
+        font-size: 13px;
+        font-weight: 500;
+        color: @black-color;
+
+        &:disabled {
+            color: @gray-color;
+        }
+    }
+    &.withError {
+        .profileInput__input {
+            border-bottom: 1px solid @red-color;
+        }
+        .profileInput__error {
+            display: block;
+        }
+    }
 }

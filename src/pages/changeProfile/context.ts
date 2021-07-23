@@ -1,4 +1,4 @@
-import {EButtonType} from 'common/enums'
+import {EButtonType, EFieldType} from 'common/enums'
 
 export const context = {
     href: './profile.html',
@@ -9,8 +9,8 @@ export const context = {
             value: 'pochta1@yandex.ru',
             placeholder: 'Введите почту',
             type: 'text',
-            error: '',
-            required: true,
+            error: 'Введите почту',
+            validation: EFieldType.Email,
         },
         {
             name: 'login',
@@ -18,8 +18,8 @@ export const context = {
             value: 'oksanaklimova',
             placeholder: 'Введите логин',
             type: 'text',
-            error: '',
-            required: true,
+            error: 'Логин должен быть длиннее 2 символов',
+            validation: EFieldType.Text,
         },
         {
             name: 'first_name',
@@ -27,8 +27,8 @@ export const context = {
             value: 'Оксана',
             placeholder: 'Введите имя',
             type: 'text',
-            error: '',
-            required: true,
+            error: 'Имя должно быть длиннее 2 символов',
+            validation: EFieldType.Text,
         },
         {
             name: 'second_name',
@@ -36,8 +36,8 @@ export const context = {
             value: 'Климова',
             placeholder: 'Введите фамилию',
             type: 'text',
-            error: '',
-            required: true,
+            error: 'Фамилия должна быть длиннее 2 символов',
+            validation: EFieldType.Text,
         },
 
         {
@@ -46,8 +46,8 @@ export const context = {
             value: 'Окс',
             placeholder: 'Введите имя в чате',
             type: 'text',
-            error: '',
-            required: true,
+            error: 'Имя в чате должно быть длиннее 2 символов',
+            validation: EFieldType.Text,
         },
         {
             name: 'phone',
@@ -55,17 +55,16 @@ export const context = {
             value: '+79208532323',
             placeholder: 'Введите номер телефона',
             type: 'text',
-            error: '',
-            required: true,
+            error: 'Введите номер телефона',
+            validation: EFieldType.Phone,
         },
     ],
     buttons: [
         {
             type: EButtonType.Submit,
-            name: 'save',
+            name: 'saveProfile',
             title: 'Сохранить',
             class: 'profile',
-            category: 'button',
         },
     ],
 }

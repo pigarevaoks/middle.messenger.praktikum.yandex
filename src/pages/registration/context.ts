@@ -56,7 +56,7 @@ export const context = {
     buttons: [
         {
             type: EButtonType.Submit,
-            name: 'registration',
+            name: 'registrationButton',
             title: 'Зарегистрироваться',
             class: 'primary',
         },

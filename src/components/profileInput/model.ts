@@ -1,10 +1,10 @@
 export interface IInput {
-    name: string
-    label: string
-    type: string
     value?: string
-    placeholder?: string
+    name: string
+    type: string
+    label: string
+    placeholder: string
+    validation: string
     error?: string
-    required?: boolean
     disabled?: boolean
 }
