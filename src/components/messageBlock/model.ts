@@ -1,5 +1,3 @@
 export interface IMessageBlock {
-    name: string
-    type: string
-    placeholder: string
+    messageInput: string
 }

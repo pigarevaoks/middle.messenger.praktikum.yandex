@@ -1,5 +1,5 @@
 export const inputTemplate = () => `
-  <div class="input">
+  <div class="input" id="input">
     <div class="input__field">
       <input
         class="input__input"

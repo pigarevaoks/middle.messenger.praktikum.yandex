@@ -1,6 +1,5 @@
-export interface IInput {
+export interface IMessageInput {
     name: string
-    label: string
     type: string
     placeholder?: string
     error?: string

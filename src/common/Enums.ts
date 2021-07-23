@@ -9,6 +9,7 @@ export enum EFieldType {
     Email = 'email',
     Password = 'password',
     Text = 'text',
+    Message = 'message',
 }
 
 export enum EMethod {
