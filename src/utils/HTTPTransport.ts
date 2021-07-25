@@ -2,7 +2,7 @@ import { EMethod } from '../common/enums'
 import queryStringify from './queryStringify'
 
 interface OptionsType {
-    method?: string
+    method?: EMethod
     timeout?: number
     headers?: any
     data?: any

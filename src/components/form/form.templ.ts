@@ -1,5 +1,5 @@
 export const formTemplate = () => `
-  <section class="form">
+  <form class="form">
     <div class="form__content">
       <div>
         <h1 class="form__title">{{{title}}}</h1>
@@ -11,5 +11,5 @@ export const formTemplate = () => `
         {{{buttons}}}
       </div>
     </div>
-  </section>
+  </form>
   `
