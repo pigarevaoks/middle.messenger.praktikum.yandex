@@ -1,3 +1,3 @@
-export const identity = (value) => {
-    return value
+export default function identity(value) {
+  return value
 }

@@ -1,7 +1,7 @@
-export const last = (list) => {
-    if (Array.isArray(list)) {
-        return list.pop()
-    } else {
-        return undefined
-    }
+export default function last(list) {
+  if (Array.isArray(list)) {
+    return list.pop()
+  }
+
+  return undefined
 }

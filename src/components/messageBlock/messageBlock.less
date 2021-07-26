@@ -1,0 +1,40 @@
+@import 'styles/variables';
+
+.messageBlock {
+  width: 100%;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+
+  &__buttonFile {
+    width: 32px;
+    height: 32px;
+    transition: all 0.2s ease;
+
+    img {
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__buttonAction {
+    width: 28px;
+    height: 28px;
+    transition: all 0.2s ease;
+
+    img {
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}

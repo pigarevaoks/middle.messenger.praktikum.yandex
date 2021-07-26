@@ -1,0 +1,23 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "target": "ES2015",
+        "module": "commonjs",
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "noImplicitThis": false,
+        "baseUrl": ".",
+        "paths": {
+            "*": ["./src/*"]
+        }
+    },
+    "exclude": ["node_modules/**/*"]
+}

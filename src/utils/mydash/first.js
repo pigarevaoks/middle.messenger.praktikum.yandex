@@ -1,7 +1,7 @@
-export const first = (list) => {
-    if (Array.isArray(list)) {
-        return list.shift()
-    } else {
-        return undefined
-    }
+export default function first(list) {
+  if (Array.isArray(list)) {
+    return list.shift()
+  }
+
+  return undefined
 }
