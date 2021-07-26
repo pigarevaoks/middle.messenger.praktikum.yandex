@@ -1,0 +1,42 @@
+{
+    "name": "chat",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "dev": "./node_modules/.bin/parcel src/layouts/*.html --port 3000",
+        "clear": "rm -rf ./dist ./.cache",
+        "build": "npm run clear && ./node_modules/.bin/parcel build src/layouts/*  --no-scope-hoist",
+        "start": "npm run clear && ./node_modules/.bin/parcel build src/layouts/*  --no-scope-hoist  && node server.js",
+        "prettier-format": "prettier --config .prettierrc 'src/**/*.js' --write"
+    },
+    "keywords": [],
+    "author": "klimova oksana",
+    "license": "ISC",
+    "devDependencies": {
+        "@parcel/transformer-less": "2.0.0-beta.2",
+        "express": "4.17.1",
+        "husky": "7.0.1",
+        "parcel": "2.0.0-beta.2",
+        "parcel-bundler": "1.12.5",
+        "parcel-plugin-handlebars-precompile": "^1.0.2",
+        "prettier": "2.3.2"
+    },
+    "dependencies": {
+        "handlebars": "4.7.7"
+    },
+    "alias": {
+        "components": "./src/components",
+        "layouts": "./src/layouts",
+        "modules": "./src/modules",
+        "pages": "./src/pages",
+        "styles": "./src/styles"
+    },
+    "lint-staged": {
+        "*.(js)": "prettier --config .prettierrc 'src/**/*.js' --write"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    }
+}
