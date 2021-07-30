@@ -1,24 +1,26 @@
-import { Form } from 'components/form'
-import { Button } from 'components/button'
-import { Input } from 'components/input'
-import formValidation from 'utils/formValidation'
-import { context } from './context'
+import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
+import {Button} from 'components/button'
+import {Input} from 'components/input'
+import Block from 'utils/block'
+import {formTemplate} from 'components/form/form.templ'
+import {context} from './context'
+// formValidation(submitButton, formInputs)
 
-const container = document.getElementById('login') as HTMLElement
+export default class Login extends Block {
+    constructor() {
+        const inputs = context.inputs?.map((item) => new Input(item))
+        const buttons = context.buttons?.map((item) => new Button(item))
 
-const buttons = context.buttons?.map((item) => new Button(item).render()).join('')
-const inputs = context.inputs?.map((item) => new Input(item).render()).join('')
+        super('fragment', {
+            title: 'Вход',
+            components: {
+                buttons: buttons,
+                inputs: inputs,
+            },
+        })
+    }
 
-container.insertAdjacentHTML(
-  'afterbegin',
-  new Form({
-    title: context.title,
-    buttons,
-    inputs,
-  }).render(),
-)
-
-const submitButton = document.getElementById('loginButton') as HTMLFormElement
-const formInputs = document.querySelectorAll('input')
-
-formValidation(submitButton, formInputs)
+    render(): string {
+        return makeHtmlFromTemplate(formTemplate, this.props)
+    }
+}

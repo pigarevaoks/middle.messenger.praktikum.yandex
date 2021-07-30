@@ -1,4 +1,4 @@
-export const inputTemplate = () => `
+export const inputTemplate = `
   <div class="input" id="input">
     <div class="input__field">
       <input

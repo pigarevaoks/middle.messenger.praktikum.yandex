@@ -1,16 +1,17 @@
 import Block from 'utils/block'
-import renderTemplate from 'utils/renderTemplate'
-import { formTemplate } from './form.templ'
-import { IContext } from './model'
+import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
+import {formTemplate} from './form.templ'
+import {IForm} from './model'
 import './form.less'
 
-export class Form extends Block {
-  constructor(props: IContext) {
-    super()
-    this.props = props
-  }
+class Form extends Block {
+    constructor(props: IForm) {
+        super('fragment', props)
+    }
 
-  public render() {
-    return renderTemplate(formTemplate, this.props)
-  }
+    render(): string {
+        return makeHtmlFromTemplate(formTemplate, this.props)
+    }
 }
+
+export {Form, IForm}

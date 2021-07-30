@@ -1,16 +1,17 @@
 import Block from 'utils/block'
-import renderTemplate from 'utils/renderTemplate'
-import { inputTemplate } from './input.templ'
-import { IInput } from './model'
+import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
+import {inputTemplate} from './input.templ'
+import {IInput} from './model'
 import './input.less'
 
-export class Input extends Block {
-  constructor(props: IInput) {
-    super('div', props)
-    this.props = props
-  }
+class Input extends Block {
+    constructor(props: IInput) {
+        super('fragment', props)
+    }
 
-  render() {
-    return renderTemplate(inputTemplate, this.props)
-  }
+    render(): string {
+        return makeHtmlFromTemplate(inputTemplate, this.props)
+    }
 }
+
+export {Input, IInput}

@@ -4,5 +4,7 @@ export interface IInput {
     type: string
     placeholder?: string
     error?: string
-    validation: string
+    validation?: string
+    settings?: Record<string, boolean>
+    events?: Record<string, (event: Event) => void>
 }
