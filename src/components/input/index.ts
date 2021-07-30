@@ -1,4 +1,4 @@
-import Block from 'utils/block'
+import Block from 'modules/block'
 import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
 import {inputTemplate} from './input.templ'
 import {IInput} from './model'

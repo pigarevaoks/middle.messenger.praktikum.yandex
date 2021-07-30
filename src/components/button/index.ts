@@ -1,4 +1,4 @@
-// import Block from 'utils/block'
+// import Block from 'modules/block'
 // import renderTemplate from 'utils/renderTemplate'
 // import { buttonTemplate } from './button.tmpl'
 // import { IButton } from './model'
@@ -15,10 +15,11 @@
 //   }
 // }
 
-import Block from 'utils/block'
-import {buttonTemplate} from './button.tmpl'
+import Block from 'modules/block'
 import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
+import {buttonTemplate} from './button.tmpl'
 import './button.less'
+
 interface IButton {
     title: string
     events?: Record<string, (event: Event) => void>

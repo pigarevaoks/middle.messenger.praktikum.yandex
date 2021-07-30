@@ -10,5 +10,16 @@
     "bracketSpacing": false,
     "jsxBracketSameLine": false,
     "arrowParens": "always",
-    "endOfLine": "auto"
+    "endOfLine": "auto",
+    "overrides": [
+        {
+            "files": [
+                "*.tmpl.ts"
+            ],
+            "options": {
+                "parser": "go-template",
+                "goTemplateBracketSpacing": true
+            }
+        }
+    ]
 }

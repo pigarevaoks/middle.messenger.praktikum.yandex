@@ -1,4 +1,4 @@
-import Block from 'utils/block'
+import Block from 'modules/block'
 import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
 import {formTemplate} from './form.templ'
 import {IForm} from './model'

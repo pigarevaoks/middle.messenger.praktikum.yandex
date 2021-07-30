@@ -1,7 +1,7 @@
 import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
 import {Button} from 'components/button'
 import {Input} from 'components/input'
-import Block from 'utils/block'
+import Block from 'modules/block'
 import {formTemplate} from 'components/form/form.templ'
 import {context} from './context'
 // formValidation(submitButton, formInputs)
@@ -14,8 +14,8 @@ export default class Login extends Block {
         super('fragment', {
             title: 'Вход',
             components: {
-                buttons: buttons,
-                inputs: inputs,
+                buttons,
+                inputs,
             },
         })
     }

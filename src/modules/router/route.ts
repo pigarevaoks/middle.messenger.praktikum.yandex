@@ -1,4 +1,4 @@
-import Block from 'utils/block'
+import Block from 'modules/block'
 import {render} from 'utils/render'
 
 class Route {

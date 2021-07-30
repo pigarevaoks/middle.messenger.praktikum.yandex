@@ -1,4 +1,5 @@
 import {Route} from './route'
+
 class Router {
     constructor(rootQuery) {
         if (Router.__instance) {

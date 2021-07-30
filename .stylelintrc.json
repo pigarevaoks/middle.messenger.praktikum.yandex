@@ -1,17 +1,22 @@
 {
-    "extends": "stylelint-config-standard",
+    "extends": [
+        "stylelint-config-standard",
+        "stylelint-config-rational-order",
+        "stylelint-prettier/recommended"
+    ],
+    "plugins": [
+        "stylelint-order",
+        "prettier"
+    ],
     "rules": {
-        "color-hex-case": "lower"
+        "declaration-colon-space-after": "always-single-line"
     },
     "ignoreFiles": [
-        "src/fonts/*",
         "dist/*",
         "node_modules/*",
         ".parcel-cache/*",
         "package.json",
         "package-lock.json",
-        "tsconfig.json",
-        ".*",
-        "*.config"
+        "tsconfig.json"
     ]
 }

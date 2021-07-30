@@ -1,16 +1,16 @@
-import Block from 'utils/block'
+import Block from 'modules/block'
 import renderTemplate from 'utils/renderTemplate'
-import { chatTemplate } from './chat.tmpl'
-import { IChat } from './model'
+import {chatTemplate} from './chat.tmpl'
+import {IChat} from './model'
 import './chat.less'
 
 export class Chat extends Block {
-  constructor(props: IChat) {
-    super()
-    this.props = props
-  }
+    constructor(props: IChat) {
+        super()
+        this.props = props
+    }
 
-  public render() {
-    return renderTemplate(chatTemplate, this.props)
-  }
+    public render() {
+        return renderTemplate(chatTemplate, this.props)
+    }
 }
