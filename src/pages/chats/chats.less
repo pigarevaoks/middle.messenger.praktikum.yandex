@@ -5,37 +5,14 @@
     height: 100vh;
 
     &__list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
         display: flex;
         width: 350px;
         background-color: @white-ligth-color;
         padding: 0 10px;
     }
-
-    &__chat {
-        height: 100%;
-        display: flex;
-        flex: 1;
-        width: 100%;
-        flex-direction: column;
-        position: relative;
-        padding: 20px;
-    }
-
-    &__messageBlock {
-        display: flex;
-        padding: 11px 20px;
-        border-top: 1px solid @light-color;
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    }
-}
-
-.chatList {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
 
     &__arrow {
         display: inline-block;
@@ -44,6 +21,16 @@
         padding: 2px;
         transform: rotate(-45deg);
         -webkit-transform: rotate(-45deg);
+    }
+
+    &__searchInput {
+        display: flex;
+        padding: 10px;
+        border-bottom: 1px solid @light-color;
+    }
+
+    &__list {
+        overflow-y: scroll;
     }
 
     &__link {
@@ -71,17 +58,23 @@
         }
     }
 
-    &__searchInput {
+    &__chat {
+        height: 100%;
         display: flex;
-        padding: 10px;
-        border-bottom: 1px solid @light-color;
+        flex: 1;
+        width: 100%;
+        flex-direction: column;
+        position: relative;
+        padding: 20px;
     }
 
-    &__list {
-        overflow-y: scroll;
+    &__messageBlock {
+        display: flex;
+        padding: 11px 20px;
+        border-top: 1px solid @light-color;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
     }
-}
-
-.chat {
-    display: block;
 }

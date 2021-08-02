@@ -1,6 +1,18 @@
 import {v4 as makeUUID} from 'uuid'
 import EventBus from '../eventBus'
 
+export interface IBlock {
+    element: HTMLElement
+    init: () => void
+    hide: () => void
+    show: () => void
+    render: () => void
+    componentDidMount: () => void
+    componentDidUpdate: () => boolean
+    setProps: (nextProps: unknown) => void
+    getElement: () => HTMLElement
+}
+
 enum EVENTS {
     INIT = 'init',
     FLOW_CDM = 'flow:component-did-mount',

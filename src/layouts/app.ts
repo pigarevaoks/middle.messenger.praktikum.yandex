@@ -1,9 +1,5 @@
-import {Router} from 'modules/router'
+import {router, ROUTES} from 'modules/router'
 import Login from 'pages/login'
 import Chats from 'pages/chats'
 
-const router = new Router('#app')
-
-router.use('/', Login)
-router.use('/chats', Chats)
-router.start()
+router.use(ROUTES.CHAT, Chats).use(ROUTES.LOGIN, Login).start()

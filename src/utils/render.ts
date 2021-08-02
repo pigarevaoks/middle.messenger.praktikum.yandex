@@ -1,10 +1,7 @@
-import Block from 'modules/block'
+import {IBlock} from 'modules/block'
 
-function render(query: string, block: Block) {
+export const render = (query: string, block: IBlock) => {
     const root = document.querySelector(query)
-
-    root?.append(block.getContent())
+    root && root.append(block.element)
     return root
 }
-
-export {render}
