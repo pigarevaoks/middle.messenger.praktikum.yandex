@@ -1,16 +1,17 @@
 import Block from 'modules/block'
-import renderTemplate from 'utils/renderTemplate'
+import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
 import {chatListItemTemplate} from './chatListItem.tmpl'
 import {IChatListItem} from './model'
 import './chatListItem.less'
 
-export class ChatListItem extends Block {
+class ChatListItem extends Block {
     constructor(props: IChatListItem) {
-        super()
-        this.props = props
+        super('fragment', props)
     }
 
-    public render() {
-        return renderTemplate(chatListItemTemplate, this.props)
+    render(): string {
+        return makeHtmlFromTemplate(chatListItemTemplate, this.props)
     }
 }
+
+export {ChatListItem, IChatListItem}

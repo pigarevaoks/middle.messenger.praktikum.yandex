@@ -60,12 +60,12 @@
         "*.{js,ts}": "prettier --config .prettierrc 'src/**/*.{js,ts}' --write"
     },
     "alias": {
-        "common": "./src/common",
+        "common": "./src/common/",
         "components": "./src/components",
-        "layouts": "./src/layouts",
+        "utils": "./src/utils",
         "modules": "./src/modules",
+        "layouts": "./src/layouts",
         "pages": "./src/pages",
-        "styles": "./src/styles",
-        "utils": "./src/utils"
+        "styles": "./src/styles"
     }
 }

@@ -1,16 +1,17 @@
 import Block from 'modules/block'
-import renderTemplate from 'utils/renderTemplate'
+import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
 import {profileFormTemplate} from './profileForm.tmpl'
 import {IProfile} from './model'
 import './profileForm.less'
 
-export class ProfileForm extends Block {
+class ProfileForm extends Block {
     constructor(props: IProfile) {
-        super()
-        this.props = props
+        super('fragment', props)
     }
 
-    public render() {
-        return renderTemplate(profileFormTemplate, this.props)
+    render(): string {
+        return makeHtmlFromTemplate(profileFormTemplate, this.props)
     }
 }
+
+export {ProfileForm, IProfile}

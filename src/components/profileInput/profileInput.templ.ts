@@ -1,4 +1,4 @@
-export const profileInputTemplate = () => `
+export const profileInputTemplate = `
   <div class="profileInput" id="input">
 	 	<div class="profileInput__field">
       <label for={{{name}}} class="profileInput__label">{{{label}}}</label>

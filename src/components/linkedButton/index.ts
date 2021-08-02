@@ -1,16 +1,17 @@
 import Block from 'modules/block'
-import renderTemplate from 'utils/renderTemplate'
+import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
 import {linkedButtonTemplate} from './linkedButton.tmpl'
 import {ILinkedButton} from './model'
 import './linkedButton.less'
 
-export class LinkedButton extends Block {
+class LinkedButton extends Block {
     constructor(props: ILinkedButton) {
-        super('div', props)
-        this.props = props
+        super('fragment', props)
     }
 
-    render() {
-        return renderTemplate(linkedButtonTemplate, this.props)
+    render(): string {
+        return makeHtmlFromTemplate(linkedButtonTemplate, this.props)
     }
 }
+
+export {LinkedButton, ILinkedButton}

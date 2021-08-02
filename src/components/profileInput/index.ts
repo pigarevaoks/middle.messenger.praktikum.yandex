@@ -1,16 +1,17 @@
 import Block from 'modules/block'
-import renderTemplate from 'utils/renderTemplate'
+import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
 import {profileInputTemplate} from './profileInput.templ'
 import {IInput} from './model'
 import './profileInput.less'
 
-export class ProfileInput extends Block {
+class ProfileInput extends Block {
     constructor(props: IInput) {
-        super('div', props)
-        this.props = props
+        super('fragment', props)
     }
 
-    render() {
-        return renderTemplate(profileInputTemplate, this.props)
+    render(): string {
+        return makeHtmlFromTemplate(profileInputTemplate, this.props)
     }
 }
+
+export {ProfileInput, IInput}

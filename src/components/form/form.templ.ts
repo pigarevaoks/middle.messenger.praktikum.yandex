@@ -1,4 +1,5 @@
 export const formTemplate = `
+<section class="form__container">
   <form class="form">
     <div class="form__content">
       <div>
@@ -12,4 +13,5 @@ export const formTemplate = `
       </div>
     </div>
   </form>
+  </section>
 `

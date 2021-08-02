@@ -1,16 +1,30 @@
 import Block from 'modules/block'
-import renderTemplate from 'utils/renderTemplate'
+import {EFieldType} from 'common/enums'
+import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
 import {messageBlockTemplate} from './messageBlock.tmpl'
 import {IMessageBlock} from './model'
+import {MessageInput} from 'components/messageInput'
 import './messageBlock.less'
 
-export class MessageBlock extends Block {
+class MessageBlock extends Block {
     constructor(props: IMessageBlock) {
-        super('div', props)
-        this.props = props
+        const messageInput = new MessageInput({
+            name: 'message',
+            type: 'text',
+            placeholder: 'Сообщение',
+            validation: EFieldType.Message,
+            error: 'Сообщение содержит недопустимые символы ~, #, %, &, *, { } , , /, :, <>, ?, -, |',
+        })
+        super('fragment', {
+            components: {
+                messageInput,
+            },
+        })
     }
 
-    render() {
-        return renderTemplate(messageBlockTemplate, this.props)
+    render(): string {
+        return makeHtmlFromTemplate(messageBlockTemplate, this.props)
     }
 }
+
+export {MessageBlock, IMessageBlock}

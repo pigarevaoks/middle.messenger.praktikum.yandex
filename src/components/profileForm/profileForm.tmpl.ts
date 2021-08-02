@@ -1,4 +1,4 @@
-export const profileFormTemplate = () => `
+export const profileFormTemplate = `
 <section class="profile">
     {{ {backButton }}}
     <div class="profile__image">{{ {image }}}</div>

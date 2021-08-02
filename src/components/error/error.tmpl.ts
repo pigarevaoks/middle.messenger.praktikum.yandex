@@ -1,4 +1,4 @@
-export const errorTemplate = () => `
+export const errorTemplate = `
 <div class="error">
     <div class="error__title">{{ {title }}}</div>
     <div class="error__description">{{ {description }}}</div>

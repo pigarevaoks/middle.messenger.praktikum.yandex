@@ -1,16 +1,17 @@
 import Block from 'modules/block'
-import renderTemplate from 'utils/renderTemplate'
+import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
 import {errorTemplate} from './error.tmpl'
 import {IError} from './model'
 import './error.less'
 
-export class Error extends Block {
+class Error extends Block {
     constructor(props: IError) {
-        super('div', props)
-        this.props = props
+        super('fragment', props)
     }
 
-    render() {
-        return renderTemplate(errorTemplate, this.props)
+    render(): string {
+        return makeHtmlFromTemplate(errorTemplate, this.props)
     }
 }
+
+export {Error, IError}

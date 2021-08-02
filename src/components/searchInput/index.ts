@@ -1,16 +1,17 @@
 import Block from 'modules/block'
-import renderTemplate from 'utils/renderTemplate'
+import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
 import {searchInputTemplate} from './searchInput.tmpl'
 import {ISearchInput} from './model'
 import './searchInput.less'
 
-export class SearchInput extends Block {
+class SearchInput extends Block {
     constructor(props: ISearchInput) {
-        super('div', props)
-        this.props = props
+        super('fragment', props)
     }
 
-    render() {
-        return renderTemplate(searchInputTemplate, this.props)
+    render(): string {
+        return makeHtmlFromTemplate(searchInputTemplate, this.props)
     }
 }
+
+export {SearchInput, ISearchInput}
