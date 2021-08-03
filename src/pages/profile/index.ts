@@ -21,8 +21,8 @@ export default class Profile extends Block {
                 backButton,
                 image,
                 buttons,
-                inputs,
-            },
+                inputs
+            }
         })
     }
 

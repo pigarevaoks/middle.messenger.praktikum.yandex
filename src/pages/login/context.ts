@@ -15,16 +15,16 @@ export const context = {
                 },
                 blur: (event: Event) => {
                     console.log('login blur', event)
-                },
-            },
+                }
+            }
         },
         {
             name: 'password',
             label: 'Пароль',
             type: 'password',
             error: 'Пароль должен состоять из заглавных и обычных букв, цифр, доп символов и длиной более 6 символов',
-            validation: EFieldType.Password,
-        },
+            validation: EFieldType.Password
+        }
     ],
     buttons: [
         {
@@ -35,8 +35,8 @@ export const context = {
             events: {
                 click: (event: Event) => {
                     console.log('loginButton click', event)
-                },
-            },
+                }
+            }
         },
         {
             type: EButtonType.Button,
@@ -46,8 +46,8 @@ export const context = {
             events: {
                 click: (event: Event) => {
                     console.log('signIn click', event)
-                },
-            },
-        },
-    ],
+                }
+            }
+        }
+    ]
 }

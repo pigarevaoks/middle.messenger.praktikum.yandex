@@ -1,5 +1,5 @@
 {
-    "extends": ["airbnb-typescript/base"],
+    "extends": ["airbnb-typescript/base", "prettier"],
     "env": {
         "browser": true,
         "node": true
@@ -8,10 +8,9 @@
     "parserOptions": {
         "project": "./tsconfig.json"
     },
-    "plugins": ["@typescript-eslint"],
+    "plugins": ["@typescript-eslint", "prettier"],
     "rules": {
         "semi": [0, "never"],
-        "max-len": [2, 100],
         "no-underscore-dangle": "off",
         "class-methods-use-this": "off",
         "no-param-reassign": "off",

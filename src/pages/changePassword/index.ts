@@ -22,8 +22,8 @@ export default class ChangePassword extends Block {
                 backButton,
                 image,
                 buttons,
-                inputs,
-            },
+                inputs
+            }
         })
     }
 

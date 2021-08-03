@@ -11,7 +11,7 @@ export const context = {
             placeholder: 'Введите почту',
             type: 'text',
             error: 'Введите почту',
-            validation: EFieldType.Email,
+            validation: EFieldType.Email
         },
         {
             name: 'login',
@@ -20,7 +20,7 @@ export const context = {
             placeholder: 'Введите логин',
             type: 'text',
             error: 'Логин должен быть длиннее 2 символов',
-            validation: EFieldType.Text,
+            validation: EFieldType.Text
         },
         {
             name: 'first_name',
@@ -29,7 +29,7 @@ export const context = {
             placeholder: 'Введите имя',
             type: 'text',
             error: 'Имя должно быть длиннее 2 символов',
-            validation: EFieldType.Text,
+            validation: EFieldType.Text
         },
         {
             name: 'second_name',
@@ -38,7 +38,7 @@ export const context = {
             placeholder: 'Введите фамилию',
             type: 'text',
             error: 'Фамилия должна быть длиннее 2 символов',
-            validation: EFieldType.Text,
+            validation: EFieldType.Text
         },
 
         {
@@ -48,7 +48,7 @@ export const context = {
             placeholder: 'Введите имя в чате',
             type: 'text',
             error: 'Имя в чате должно быть длиннее 2 символов',
-            validation: EFieldType.Text,
+            validation: EFieldType.Text
         },
         {
             name: 'phone',
@@ -57,15 +57,15 @@ export const context = {
             placeholder: 'Введите номер телефона',
             type: 'text',
             error: 'Введите номер телефона',
-            validation: EFieldType.Phone,
-        },
+            validation: EFieldType.Phone
+        }
     ],
     buttons: [
         {
             type: EButtonType.Submit,
             name: 'saveProfile',
             title: 'Сохранить',
-            class: 'profile',
-        },
-    ],
+            class: 'profile'
+        }
+    ]
 }

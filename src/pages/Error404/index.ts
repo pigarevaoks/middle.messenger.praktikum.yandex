@@ -9,7 +9,7 @@ export default class Error404 extends Block {
         super('fragment', {
             title: '404',
             description: 'Не туда попали',
-            link: {title: 'Назад к чатам', href: ROUTES.CHAT},
+            link: {title: 'Назад к чатам', href: ROUTES.CHAT}
         })
     }
 

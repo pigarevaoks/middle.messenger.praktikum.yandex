@@ -1,7 +1,7 @@
 export enum EButtonType {
     Submit = 'submit',
     Button = 'buttom',
-    Reset = 'reset',
+    Reset = 'reset'
 }
 
 export enum EFieldType {
@@ -9,12 +9,12 @@ export enum EFieldType {
     Email = 'email',
     Password = 'password',
     Text = 'text',
-    Message = 'message',
+    Message = 'message'
 }
 
 export enum EMethod {
     GET = 'GET',
     POST = 'POST',
     PUT = 'PUT',
-    DELETE = 'DELETE',
+    DELETE = 'DELETE'
 }

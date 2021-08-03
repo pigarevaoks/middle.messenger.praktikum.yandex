@@ -5,11 +5,11 @@ import {ROUTES} from 'modules/router'
 import 'templates/error/error.less'
 
 export default class Error500 extends Block {
-    constructor(props) {
+    constructor() {
         super('fragment', {
             title: '500',
             description: 'Мы уже фиксим',
-            link: {title: 'Назад к чатам', href: ROUTES.CHAT},
+            link: {title: 'Назад к чатам', href: ROUTES.CHAT}
         })
     }
 

@@ -17,7 +17,7 @@ enum EVENTS {
     INIT = 'init',
     FLOW_CDM = 'flow:component-did-mount',
     FLOW_CDU = 'flow:component-did-update',
-    FLOW_RENDER = 'flow:render',
+    FLOW_RENDER = 'flow:render'
 }
 
 interface IMeta {
@@ -36,7 +36,7 @@ export default abstract class Block {
         this.eventBus = new EventBus()
         this._meta = {
             tagName,
-            props,
+            props
         }
 
         this._id = makeUUID()
@@ -173,7 +173,7 @@ export default abstract class Block {
             },
             deleteProperty: () => {
                 throw new Error('Нет доступа')
-            },
+            }
         })
     }
 

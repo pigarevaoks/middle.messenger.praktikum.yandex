@@ -1,12 +1,12 @@
-const fs = require('fs')
-const less = require('postcss-less')
-const postcss = require('postcss')
+const fs = require('fs');
+const less = require('postcss-less');
+const postcss = require('postcss');
 
-const code = fs.readFileSync('input.less', 'utf8')
+const code = fs.readFileSync('input.less', 'utf8');
 
 postcss([
     require('stylelint')(),
-    require('postcss-reporter')({clearReportedMessages: true}),
+    require('postcss-reporter')({ clearReportedMessages: true }),
     require('autoprefixer'),
     require('postcss-utilities')(),
     require('postcss-nested'),
@@ -19,4 +19,4 @@ postcss([
         syntax: less,
     })
     .then(() => {})
-    .catch((err) => console.error(err.stack))
+    .catch((err) => console.error(err.stack));

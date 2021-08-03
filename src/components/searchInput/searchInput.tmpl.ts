@@ -1,5 +1,5 @@
 import searchIcon from 'url:./images/searchIcon.svg'
-{{/* prettier-ignore */}}
+
 export const searchInputTemplate = `
 <div class="searchInput">
     <input

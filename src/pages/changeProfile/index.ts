@@ -22,8 +22,8 @@ export default class ChangeProfile extends Block {
                 backButton,
                 image,
                 buttons,
-                inputs,
-            },
+                inputs
+            }
         })
     }
 

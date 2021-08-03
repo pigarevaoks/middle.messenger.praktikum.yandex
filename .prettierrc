@@ -6,20 +6,9 @@
     "singleQuote": true,
     "quoteProps": "as-needed",
     "jsxSingleQuote": false,
-    "trailingComma": "es5",
+    "trailingComma": "none",
     "bracketSpacing": false,
     "jsxBracketSameLine": false,
     "arrowParens": "always",
-    "endOfLine": "auto",
-    "overrides": [
-        {
-            "files": [
-                "*.tmpl.ts"
-            ],
-            "options": {
-                "parser": "go-template",
-                "goTemplateBracketSpacing": true
-            }
-        }
-    ]
+    "endOfLine": "auto"
 }

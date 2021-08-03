@@ -16,12 +16,12 @@ export default class Chats extends Block {
             type: 'text',
             placeholder: 'Сообщение',
             validation: EFieldType.Message,
-            error: 'Сообщение содержит недопустимые символы ~, #, %, &, *, { } , , /, :, <>, ?, -, |',
+            error: 'Сообщение содержит недопустимые символы ~, #, %, &, *, { } , , /, :, <>, ?, -, |'
         })
         const searchInput = new SearchInput({
             name: 'search',
             type: 'text',
-            placeholder: 'Поиск',
+            placeholder: 'Поиск'
         })
         const list = context.messages?.map((message) => new ChatListItem(message))
         const messages = context.chats.map((message) => new Message({text: message}))
@@ -31,8 +31,8 @@ export default class Chats extends Block {
                 searchInput,
                 list,
                 messages,
-                messageInput,
-            },
+                messageInput
+            }
         })
     }
 

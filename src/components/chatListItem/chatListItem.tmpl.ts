@@ -1,5 +1,5 @@
 import defaultImage from 'url:./images/defaultImage.svg'
-{{/* prettier-ignore */}}
+
 export const chatListItemTemplate = `
 <a class="chatListItem" id="{{ id }}">
     <div class="chatListItem__avatar" id="avatar">

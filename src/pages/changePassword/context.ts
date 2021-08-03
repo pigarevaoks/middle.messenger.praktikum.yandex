@@ -10,7 +10,7 @@ export const context = {
             placeholder: 'Введите cтарый пароль',
             type: 'password',
             error: 'Пароль должен состоять из заглавных и обычных букв, цифр, доп символов и длиной более 6 символов',
-            validation: EFieldType.Password,
+            validation: EFieldType.Password
         },
 
         {
@@ -19,7 +19,7 @@ export const context = {
             placeholder: 'Введите новый пароль',
             type: 'password',
             error: 'Пароль должен состоять из заглавных и обычных букв, цифр, доп символов и длиной более 6 символов',
-            validation: EFieldType.Password,
+            validation: EFieldType.Password
         },
         {
             name: 'repeatNewPassword',
@@ -27,15 +27,15 @@ export const context = {
             placeholder: 'Повторите ввод нового пароля',
             type: 'password',
             error: 'Пароль должен состоять из заглавных и обычных букв, цифр, доп символов и длиной более 6 символов',
-            validation: EFieldType.Password,
-        },
+            validation: EFieldType.Password
+        }
     ],
     buttons: [
         {
             type: EButtonType.Submit,
             name: 'savePassword',
             title: 'Сохранить',
-            class: 'profile',
-        },
-    ],
+            class: 'profile'
+        }
+    ]
 }

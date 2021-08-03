@@ -8,7 +8,7 @@ export enum ROUTES {
     PROFILE = '/profile',
     CHANGE_PROFILE = '/change_profile',
     CHANGE_PASSWORD = '/change_password',
-    REGISTRATION = '/registration',
+    REGISTRATION = '/registration'
 }
 
 export const router = new Router('#app')
