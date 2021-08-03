@@ -1,6 +1,6 @@
 export const formTemplate = `
-<section class="form__container">
-  <form class="form">
+<section class="form">
+  <form class="form__container">
     <div class="form__content">
       <div>
         <h1 class="form__title">{{{title}}}</h1>

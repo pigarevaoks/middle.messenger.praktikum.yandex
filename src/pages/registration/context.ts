@@ -1,4 +1,5 @@
-import {EButtonType, EFieldType} from '../../common/enums'
+import {EButtonType, EFieldType} from 'common/enums'
+import {ROUTES} from 'modules/router'
 
 export const context = {
     title: 'Регистрация',
@@ -65,7 +66,7 @@ export const context = {
             name: 'login',
             title: 'Войти',
             class: 'secondary',
-            href: './login.html',
+            href: ROUTES.LOGIN,
         },
     ],
 }

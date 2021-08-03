@@ -1,7 +1,8 @@
-import {EButtonType, EFieldType} from '../../common/enums'
+import {EButtonType, EFieldType} from 'common/enums'
+import {ROUTES} from 'modules/router'
 
 export const context = {
-    href: './profile.html',
+    href: ROUTES.PROFILE,
     inputs: [
         {
             name: 'email',

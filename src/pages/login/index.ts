@@ -5,6 +5,7 @@ import Block from 'modules/block'
 import {formTemplate} from 'components/form/form.templ'
 import {context} from './context'
 import {router, ROUTES} from 'modules/router'
+import 'components/form/form.less'
 
 export default class Login extends Block {
     constructor() {

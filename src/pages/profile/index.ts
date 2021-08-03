@@ -1,24 +1,31 @@
-import {ProfileForm} from 'components/profileForm'
+import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
+import {profileFormTemplate} from 'components/profileForm/profileForm.tmpl'
 import {LinkedButton} from 'components/linkedButton'
 import {ProfileInput} from 'components/profileInput'
 import {BackButton} from 'components/backButton'
 import {Image} from 'components/image'
+import Block from 'modules/block'
 import {context} from './context'
 
-const container = document.getElementById('profile') as HTMLElement
+export default class Profile extends Block {
+    constructor() {
+        const backButton = new BackButton({href: context.href})
+        const image = new Image({})
+        const buttons = context.buttons?.map((item) => new LinkedButton(item))
+        const inputs = context.inputs?.map((item) => new ProfileInput(item))
 
-const backButton = new BackButton({href: context.href}).render()
-const image = new Image({}).render()
-const buttons = context.buttons?.map((item) => new LinkedButton(item).render()).join('')
-const inputs = context.inputs?.map((item) => new ProfileInput(item).render()).join('')
+        super('fragment', {
+            name: context.name,
+            components: {
+                backButton,
+                image,
+                buttons,
+                inputs,
+            },
+        })
+    }
 
-container.insertAdjacentHTML(
-    'afterbegin',
-    new ProfileForm({
-        name: context.name,
-        backButton,
-        image,
-        buttons,
-        inputs,
-    }).render()
-)
+    render(): string {
+        return makeHtmlFromTemplate(profileFormTemplate, this.props)
+    }
+}

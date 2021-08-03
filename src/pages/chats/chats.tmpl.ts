@@ -2,7 +2,7 @@ export const chatsTemplate = `
 <section class="chatContainer">
     <section class="chatContainer__list">
         <div class="chatContainer__link">
-            <a href="./profile.html">
+            <a href="./profile">
                 Профиль
                 <span class="chatContainer__arrow"></span>
             </a>

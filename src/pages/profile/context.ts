@@ -1,6 +1,8 @@
+import {ROUTES} from 'modules/router'
+
 export const context = {
     name: 'Иван',
-    href: './chats.html',
+    href: ROUTES.CHAT,
     inputs: [
         {
             name: 'email',
@@ -50,19 +52,19 @@ export const context = {
         {
             title: 'Изменить данные',
             class: 'secondary',
-            href: './changeProfile.html',
+            href: './changeProfile', // TODO
             category: 'linkButton',
         },
         {
             title: 'Изменить пароль',
             class: 'secondary',
-            href: './changePassword.html',
+            href: './changePassword', // TODO
             category: 'linkButton',
         },
         {
             title: 'Выйти',
             class: 'danger',
-            href: './index.html',
+            href: ROUTES.LOGIN,
             category: 'linkButton',
         },
     ],
