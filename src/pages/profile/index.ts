@@ -1,5 +1,5 @@
 import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
-import {profileFormTemplate} from 'components/profileForm/profileForm.tmpl'
+import template from 'templates/profileForm'
 import {LinkedButton} from 'components/linkedButton'
 import {ProfileInput} from 'components/profileInput'
 import {BackButton} from 'components/backButton'
@@ -26,6 +26,6 @@ export default class Profile extends Block {
     }
 
     render(): string {
-        return makeHtmlFromTemplate(profileFormTemplate, this.props)
+        return makeHtmlFromTemplate(template, this.props)
     }
 }

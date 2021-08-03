@@ -1,8 +1,18 @@
 import Block from 'modules/block'
 import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
 import {inputTemplate} from './input.templ'
-import {IInput} from './model'
 import './input.less'
+
+interface IInput {
+    name: string
+    label: string
+    type: string
+    placeholder?: string
+    error?: string
+    validation?: string
+    settings?: Record<string, boolean>
+    events?: Record<string, (event: Event) => void>
+}
 
 class Input extends Block {
     constructor(props: IInput) {

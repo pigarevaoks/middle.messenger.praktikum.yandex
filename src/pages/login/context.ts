@@ -9,6 +9,14 @@ export const context = {
             type: 'text',
             error: 'Логин должен быть больше 2 символов',
             validation: EFieldType.Text,
+            events: {
+                focus: (event: Event) => {
+                    console.log('login focus', event)
+                },
+                blur: (event: Event) => {
+                    console.log('login blur', event)
+                },
+            },
         },
         {
             name: 'password',
@@ -24,12 +32,22 @@ export const context = {
             name: 'loginButton',
             title: 'Авторизоваться',
             class: 'primary',
+            events: {
+                click: (event: Event) => {
+                    console.log('loginButton click', event)
+                },
+            },
         },
         {
             type: EButtonType.Button,
             name: 'signIn',
             title: 'Нет аккаунта?',
             class: 'secondary',
+            events: {
+                click: (event: Event) => {
+                    console.log('signIn click', event)
+                },
+            },
         },
     ],
 }

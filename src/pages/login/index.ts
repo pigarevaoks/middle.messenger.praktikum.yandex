@@ -2,10 +2,10 @@ import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
 import {Button} from 'components/button'
 import {Input} from 'components/input'
 import Block from 'modules/block'
-import {formTemplate} from 'components/form/form.templ'
+import template from 'templates/form'
 import {context} from './context'
 import {router, ROUTES} from 'modules/router'
-import 'components/form/form.less'
+import 'templates/form/form.less'
 
 export default class Login extends Block {
     constructor() {
@@ -28,6 +28,6 @@ export default class Login extends Block {
     }
 
     render(): string {
-        return makeHtmlFromTemplate(formTemplate, this.props)
+        return makeHtmlFromTemplate(template, this.props)
     }
 }

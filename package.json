@@ -62,6 +62,7 @@
     "alias": {
         "common": "./src/common/",
         "components": "./src/components",
+        "templates": "./src/templates",
         "utils": "./src/utils",
         "modules": "./src/modules",
         "layouts": "./src/layouts",
