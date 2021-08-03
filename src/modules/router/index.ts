@@ -6,6 +6,8 @@ export enum ROUTES {
     NOT_FOUND = '/404',
     SERVER_ERROR = '/500',
     PROFILE = '/profile',
+    CHANGE_PROFILE = '/change_profile',
+    CHANGE_PASSWORD = '/change_password',
     REGISTRATION = '/registration',
 }
 

@@ -1,8 +1,8 @@
 import Block from 'modules/block'
-import {errorTemplate} from 'components/error/error.tmpl'
+import template from 'templates/error'
 import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
 import {ROUTES} from 'modules/router'
-import 'components/error/error.less'
+import 'templates/error/error.less'
 
 export default class Error404 extends Block {
     constructor() {
@@ -14,6 +14,6 @@ export default class Error404 extends Block {
     }
 
     render(): string {
-        return makeHtmlFromTemplate(errorTemplate, this.props)
+        return makeHtmlFromTemplate(template, this.props)
     }
 }

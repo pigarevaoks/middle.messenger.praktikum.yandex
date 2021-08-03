@@ -3,12 +3,11 @@ import {EFieldType} from 'common/enums'
 import {ChatListItem} from 'components/chatListItem'
 import {SearchInput} from 'components/searchInput'
 import {MessageInput} from 'components/messageInput'
-import {MessageBlock} from 'components/messageBlock'
 import {Message} from 'components/message'
 import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
-import {chatsTemplate} from './chats.tmpl'
+import template from 'templates/chats'
 import {context} from './context'
-import './chats.less'
+import 'templates/chats/chats.less'
 
 export default class Chats extends Block {
     constructor() {
@@ -24,7 +23,6 @@ export default class Chats extends Block {
             type: 'text',
             placeholder: 'Поиск',
         })
-        const messageBlock = new MessageBlock({messageInput})
         const list = context.messages?.map((message) => new ChatListItem(message))
         const messages = context.chats.map((message) => new Message({text: message}))
 
@@ -33,12 +31,12 @@ export default class Chats extends Block {
                 searchInput,
                 list,
                 messages,
-                messageBlock,
+                messageInput,
             },
         })
     }
 
     render(): string {
-        return makeHtmlFromTemplate(chatsTemplate, this.props)
+        return makeHtmlFromTemplate(template, this.props)
     }
 }

@@ -6,6 +6,7 @@ import {BackButton} from 'components/backButton'
 import {Image} from 'components/image'
 import Block from 'modules/block'
 import {context} from './context'
+import 'templates/profileForm/profileForm.less'
 
 export default class Profile extends Block {
     constructor() {

@@ -52,13 +52,13 @@ export const context = {
         {
             title: 'Изменить данные',
             class: 'secondary',
-            href: './changeProfile', // TODO
+            href: ROUTES.CHANGE_PROFILE,
             category: 'linkButton',
         },
         {
             title: 'Изменить пароль',
             class: 'secondary',
-            href: './changePassword', // TODO
+            href: ROUTES.CHANGE_PASSWORD,
             category: 'linkButton',
         },
         {

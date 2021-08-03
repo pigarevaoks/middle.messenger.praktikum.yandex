@@ -1,29 +1,33 @@
-import {ProfileForm} from 'components/profileForm'
-import {Button} from 'components/button'
+// formValidation(submitButton, formInputs)
+
+import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
+import template from 'templates/profileForm'
+import {LinkedButton} from 'components/linkedButton'
 import {ProfileInput} from 'components/profileInput'
 import {BackButton} from 'components/backButton'
 import {Image} from 'components/image'
-import formValidation from 'utils/formValidation'
+import Block from 'modules/block'
 import {context} from './context'
+import 'templates/profileForm/profileForm.less'
 
-const container = document.getElementById('changeProfile') as HTMLElement
+export default class ChangeProfile extends Block {
+    constructor() {
+        const backButton = new BackButton({href: context.href})
+        const image = new Image({})
+        const buttons = context.buttons?.map((item) => new LinkedButton(item))
+        const inputs = context.inputs?.map((item) => new ProfileInput(item))
 
-const backButton = new BackButton({href: context.href}).render()
-const image = new Image({}).render()
-const buttons = context.buttons?.map((item) => new Button(item).render()).join('')
-const inputs = context.inputs?.map((item) => new ProfileInput(item).render()).join('')
+        super('fragment', {
+            components: {
+                backButton,
+                image,
+                buttons,
+                inputs,
+            },
+        })
+    }
 
-container.insertAdjacentHTML(
-    'afterbegin',
-    new ProfileForm({
-        backButton,
-        image,
-        buttons,
-        inputs,
-    }).render()
-)
-
-const submitButton = document.getElementById('saveProfile') as HTMLFormElement
-const formInputs = document.querySelectorAll('input')
-
-formValidation(submitButton, formInputs)
+    render(): string {
+        return makeHtmlFromTemplate(template, this.props)
+    }
+}
