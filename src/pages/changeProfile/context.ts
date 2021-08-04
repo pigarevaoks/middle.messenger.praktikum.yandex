@@ -2,7 +2,7 @@ import {EButtonType, EFieldType} from 'common/enums'
 import {ROUTES} from 'modules/router'
 
 export const context = {
-    href: ROUTES.PROFILE,
+    href: ROUTES.SETTINGS,
     inputs: [
         {
             name: 'email',

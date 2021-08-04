@@ -1,4 +1,5 @@
 import {EButtonType, EFieldType} from 'common/enums'
+import {router, ROUTES} from 'modules/router'
 
 export const context = {
     title: 'Вход',
@@ -35,6 +36,7 @@ export const context = {
             events: {
                 click: (event: Event) => {
                     console.log('loginButton click', event)
+                    router.go(ROUTES.MESSENGER)
                 }
             }
         },
@@ -46,6 +48,7 @@ export const context = {
             events: {
                 click: (event: Event) => {
                     console.log('signIn click', event)
+                    router.go(ROUTES.SIGNUP)
                 }
             }
         }

@@ -9,7 +9,7 @@ export default class Error500 extends Block {
         super('fragment', {
             title: '500',
             description: 'Мы уже фиксим',
-            link: {title: 'Назад к чатам', href: ROUTES.CHAT}
+            link: {title: 'Назад к чатам', href: ROUTES.MESSENGER}
         })
     }
 

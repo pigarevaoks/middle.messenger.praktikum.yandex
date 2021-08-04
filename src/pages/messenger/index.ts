@@ -9,7 +9,7 @@ import template from 'templates/chats'
 import {context} from './context'
 import 'templates/chats/chats.less'
 
-export default class Chats extends Block {
+export default class Messenger extends Block {
     constructor() {
         const messageInput = new MessageInput({
             name: 'message',

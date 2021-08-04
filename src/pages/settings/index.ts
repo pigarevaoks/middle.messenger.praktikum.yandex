@@ -8,7 +8,7 @@ import Block from 'modules/block'
 import {context} from './context'
 import 'templates/profileForm/profileForm.less'
 
-export default class Profile extends Block {
+export default class Settings extends Block {
     constructor() {
         const backButton = new BackButton({href: context.href})
         const image = new Image({})

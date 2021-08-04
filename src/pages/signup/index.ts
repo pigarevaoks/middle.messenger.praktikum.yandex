@@ -9,7 +9,7 @@ import {router, ROUTES} from 'modules/router'
 import {context} from './context'
 import 'templates/form/form.less'
 
-export default class Registration extends Block {
+export default class Signup extends Block {
     constructor() {
         const buttons = context.buttons?.map((item) => new Button(item))
         const inputs = context.inputs?.map((item) => new Input(item))
@@ -23,7 +23,7 @@ export default class Registration extends Block {
             events: {
                 submit: (event: Event) => {
                     event.preventDefault()
-                    router.go(ROUTES.CHAT)
+                    router.go(ROUTES.MESSENGER)
                 }
             }
         })

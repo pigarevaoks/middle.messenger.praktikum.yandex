@@ -2,7 +2,7 @@ import {ROUTES} from 'modules/router'
 
 export const context = {
     name: 'Иван',
-    href: ROUTES.CHAT,
+    href: ROUTES.MESSENGER,
     inputs: [
         {
             name: 'email',

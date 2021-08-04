@@ -1,11 +1,12 @@
 import fileImage from 'url:./images/fileImage.svg'
 import arrowImage from 'url:./images/arrowImage.svg'
+import {ROUTES} from 'modules/router'
 
 export const chatsTemplate = `
 <section class="chatContainer">
 	<section class="chatContainer__list">
 		<div class="chatContainer__link">
-			<a href="./profile">
+			<a href=${ROUTES.SETTINGS}>
 				Профиль
 				<span class="chatContainer__arrow"></span>
 			</a>
