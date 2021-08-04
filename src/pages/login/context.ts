@@ -35,6 +35,7 @@ export const context = {
             class: 'primary',
             events: {
                 click: (event: Event) => {
+                    event.preventDefault()
                     console.log('loginButton click', event)
                     router.go(ROUTES.MESSENGER)
                 }
@@ -47,6 +48,7 @@ export const context = {
             class: 'secondary',
             events: {
                 click: (event: Event) => {
+                    event.preventDefault()
                     console.log('signIn click', event)
                     router.go(ROUTES.SIGNUP)
                 }

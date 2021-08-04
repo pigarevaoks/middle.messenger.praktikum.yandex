@@ -1,5 +1,5 @@
 import {EButtonType, EFieldType} from 'common/enums'
-import {ROUTES} from 'modules/router'
+import {router, ROUTES} from 'modules/router'
 
 export const context = {
     title: 'Регистрация',
@@ -59,14 +59,27 @@ export const context = {
             type: EButtonType.Submit,
             name: 'registrationButton',
             title: 'Зарегистрироваться',
-            class: 'primary'
+            class: 'primary',
+            events: {
+                click: (event: Event) => {
+                    event.preventDefault()
+                    console.log('loginButton click', event)
+                    router.go(ROUTES.MESSENGER)
+                }
+            }
         },
         {
             type: EButtonType.Button,
             name: 'login',
             title: 'Войти',
             class: 'secondary',
-            href: ROUTES.LOGIN
+            events: {
+                click: (event: Event) => {
+                    event.preventDefault()
+                    console.log('loginButton click', event)
+                    router.go(ROUTES.MESSENGER)
+                }
+            }
         }
     ]
 }

@@ -19,12 +19,6 @@ export default class Signup extends Block {
             components: {
                 buttons,
                 inputs
-            },
-            events: {
-                submit: (event: Event) => {
-                    event.preventDefault()
-                    router.go(ROUTES.MESSENGER)
-                }
             }
         })
     }
