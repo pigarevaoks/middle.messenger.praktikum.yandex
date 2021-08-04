@@ -1,5 +1,6 @@
 import {EButtonType, EFieldType} from 'common/enums'
 import {router, ROUTES} from 'modules/router'
+import {inputValidation, formValidation} from 'modules/validation'
 
 export const context = {
     title: 'Вход',
@@ -12,10 +13,10 @@ export const context = {
             validation: EFieldType.Text,
             events: {
                 focus: (event: Event) => {
-                    console.log('login focus', event)
+                    inputValidation(event)
                 },
                 blur: (event: Event) => {
-                    console.log('login blur', event)
+                    inputValidation(event)
                 }
             }
         },
@@ -24,7 +25,15 @@ export const context = {
             label: 'Пароль',
             type: 'password',
             error: 'Пароль должен состоять из заглавных и обычных букв, цифр, доп символов и длиной более 6 символов',
-            validation: EFieldType.Password
+            validation: EFieldType.Password,
+            events: {
+                focus: (event: Event) => {
+                    inputValidation(event)
+                },
+                blur: (event: Event) => {
+                    inputValidation(event)
+                }
+            }
         }
     ],
     buttons: [
@@ -36,7 +45,7 @@ export const context = {
             events: {
                 click: (event: Event) => {
                     event.preventDefault()
-                    console.log('loginButton click', event)
+                    formValidation(event)
                     router.go(ROUTES.MESSENGER)
                 }
             }
@@ -49,7 +58,6 @@ export const context = {
             events: {
                 click: (event: Event) => {
                     event.preventDefault()
-                    console.log('signIn click', event)
                     router.go(ROUTES.SIGNUP)
                 }
             }
