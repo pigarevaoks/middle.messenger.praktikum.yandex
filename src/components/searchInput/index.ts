@@ -1,12 +1,17 @@
 import Block from 'modules/block'
 import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
 import {searchInputTemplate} from './searchInput.tmpl'
-import {ISearchInput} from './model'
 import './searchInput.less'
+
+interface ISearchInput {
+    name: string
+    type: string
+    placeholder: string
+}
 
 class SearchInput extends Block {
     constructor(props: ISearchInput) {
-        super('fragment', props)
+        super({tagName: 'template', ...props})
     }
 
     render(): string {

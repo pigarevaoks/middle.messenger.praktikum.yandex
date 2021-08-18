@@ -1,17 +1,20 @@
-import Block from 'modules/block'
+import Block, {IBlock} from 'modules/block'
 import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
-import {messageInputTemplate} from './messageInput.tmpl'
-import {IMessageInput} from './model'
+import {template} from './messageInput.tmpl'
 import './messageInput.less'
 
+interface IMessageInput extends IBlock {}
 class MessageInput extends Block {
     constructor(props: IMessageInput) {
-        super('fragment', props)
+        super({
+            tagName: 'template',
+            ...props
+        })
     }
 
     render(): string {
-        return makeHtmlFromTemplate(messageInputTemplate, this.props)
+        return makeHtmlFromTemplate(template, this.props)
     }
 }
 
-export {MessageInput, IMessageInput}
+export {MessageInput}

@@ -1,42 +1,66 @@
-import Block from 'modules/block'
-import {EFieldType} from 'common/enums'
-import {ChatListItem} from 'components/chatListItem'
+import Block, {IBlock} from 'modules/block'
+import {IUser} from 'api/user/models'
+import {IChat} from 'api/messenger/models'
 import {SearchInput} from 'components/searchInput'
-import {MessageInput} from 'components/messageInput'
-import {Message} from 'components/message'
+import {CreateChatButton} from 'components/createChatButton'
+import {router} from 'modules/router'
 import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
-import template from 'templates/chats'
-import {context} from './context'
-import 'templates/chats/chats.less'
+import {template} from './messenger.tmpl'
+import {
+    getChatsController,
+    subscribeChatsUpdateController,
+    createChatController
+} from 'controllers/chat'
+import {authController} from 'controllers/auth'
+import {ChatsList} from 'components/chatsList'
+import './messenger.less'
 
 export default class Messenger extends Block {
-    constructor() {
-        const messageInput = new MessageInput({
-            name: 'message',
-            type: 'text',
-            placeholder: 'Сообщение',
-            validation: EFieldType.Message,
-            error: 'Сообщение содержит недопустимые символы ~, #, %, &, *, { } , , /, :, <>, ?, -, |'
-        })
+    constructor(props: IBlock) {
         const searchInput = new SearchInput({
             name: 'search',
             type: 'text',
             placeholder: 'Поиск'
         })
-        const list = context.messages?.map((message) => new ChatListItem(message))
-        const messages = context.chats.map((message) => new Message({text: message}))
 
-        super('fragment', {
-            components: {
-                searchInput,
-                list,
-                messages,
-                messageInput
+        const createChatButton = new CreateChatButton({
+            events: {
+                click: (event: Event) => {
+                    event.preventDefault()
+                    createChatController()
+                }
             }
         })
+
+        super({
+            tagName: 'main',
+            children: {
+                searchInput,
+                createChatButton
+            },
+            ...props
+        })
+    }
+    // @ts-ignore
+    componentDidMount() {
+        authController((user: IUser) => this.setProps({...this.props, user}))
+        subscribeChatsUpdateController((chats: IChat[]) =>
+            this.setProps({
+                ...this.props,
+                chats,
+                children: {
+                    ...this.props.children,
+                    chatsList: new ChatsList({chats})
+                }
+            })
+        )
+        getChatsController()
     }
 
     render(): string {
-        return makeHtmlFromTemplate(template, this.props)
+        return makeHtmlFromTemplate(template, {
+            ...this.props,
+            chatId: router.getUrlParam()
+        })
     }
 }

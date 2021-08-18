@@ -3,8 +3,10 @@ import {EFieldType} from 'common/enums'
 
 const errorToggle = (isValid: boolean, input: HTMLInputElement) => {
     const error = input.closest('#input') as HTMLInputElement
+    const formError = document.querySelector('#errors') as HTMLInputElement
     if (isValid) {
         error.classList.remove('withError')
+        formError.textContent = ''
     } else {
         error.classList.add('withError')
     }
@@ -28,7 +30,7 @@ export const checkValidation = (input: HTMLInputElement) => {
     }
 }
 
-export const inputValidation = (event: HTMLInputElement | InputEvent) => {
+export const inputValidation = (event: HTMLInputElement | Event) => {
     const input = event.target ?? event
     const isValid = checkValidation(input)
     errorToggle(isValid, input)

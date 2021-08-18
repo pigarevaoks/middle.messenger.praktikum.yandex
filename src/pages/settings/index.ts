@@ -1,29 +1,50 @@
+import Block, {IBlock} from 'modules/block'
 import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
 import template from 'templates/profileForm'
-import {LinkedButton} from 'components/linkedButton'
-import {ProfileInput} from 'components/profileInput'
+import {Avatar} from 'components/avatar'
 import {BackButton} from 'components/backButton'
-import {Image} from 'components/image'
-import Block from 'modules/block'
-import {context} from './context'
+import {userController} from 'controllers/user'
+import {IUser} from 'api/user/models'
+import {EProfileType} from 'common/enums'
+import {router, ROUTES} from 'modules/router'
+import Profile from 'templates/profile'
 import 'templates/profileForm/profileForm.less'
 
 export default class Settings extends Block {
-    constructor() {
-        const backButton = new BackButton({href: context.href})
-        const image = new Image({})
-        const buttons = context.buttons?.map((item) => new LinkedButton(item))
-        const inputs = context.inputs?.map((item) => new ProfileInput(item))
-
-        super('fragment', {
-            name: context.name,
-            components: {
-                backButton,
-                image,
-                buttons,
-                inputs
+    constructor(props: IBlock) {
+        const backButton = new BackButton({
+            events: {
+                click: (event: Event) => {
+                    event.preventDefault()
+                    router.go(ROUTES.MESSENGER)
+                }
             }
         })
+        const avatar = new Avatar({})
+        super({
+            tagName: 'main',
+            children: {
+                ...props?.children,
+                backButton,
+                avatar
+            },
+            ...props
+        })
+    }
+    // @ts-ignore
+    componentDidMount() {
+        userController((user: IUser) =>
+            this.setProps({
+                ...this.props,
+                children: {
+                    ...this.props.children,
+                    profile: new Profile({
+                        type: EProfileType.Profile,
+                        ...user
+                    })
+                }
+            })
+        )
     }
 
     render(): string {

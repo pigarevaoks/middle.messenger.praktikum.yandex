@@ -5,7 +5,7 @@ import './image.less'
 
 class Image extends Block {
     constructor(props: {}) {
-        super('fragment', props)
+        super({tagName: 'template', ...props})
     }
 
     render(): string {

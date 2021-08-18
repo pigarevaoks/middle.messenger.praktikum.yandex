@@ -1,30 +1,43 @@
-// formValidation(submitButton, formInputs)
-
+import Block, {IBlock} from 'modules/block'
+import {IUser} from 'api/user/models'
 import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
 import template from 'templates/profileForm'
-import {LinkedButton} from 'components/linkedButton'
-import {ProfileInput} from 'components/profileInput'
+import {Avatar} from 'components/avatar'
+import Profile from 'templates/profile'
 import {BackButton} from 'components/backButton'
-import {Image} from 'components/image'
-import Block from 'modules/block'
-import {context} from './context'
+import {EProfileType} from 'common/enums'
+import {userController} from 'controllers/user'
 import 'templates/profileForm/profileForm.less'
 
 export default class ChangePassword extends Block {
-    constructor() {
-        const backButton = new BackButton({href: context.href})
-        const image = new Image({})
-        const buttons = context.buttons?.map((item) => new LinkedButton(item))
-        const inputs = context.inputs?.map((item) => new ProfileInput(item))
+    constructor(props: IBlock) {
+        const backButton = new BackButton({})
+        const avatar = new Avatar({})
 
-        super('fragment', {
-            components: {
+        super({
+            tagName: 'main',
+            children: {
                 backButton,
-                image,
-                buttons,
-                inputs
-            }
+                avatar
+            },
+            ...props
         })
+    }
+
+    // @ts-ignore
+    componentDidMount() {
+        userController((user: IUser) =>
+            this.setProps({
+                ...this.props,
+                children: {
+                    ...this.props.children,
+                    profile: new Profile({
+                        type: EProfileType.PasswordEdit,
+                        ...user
+                    })
+                }
+            })
+        )
     }
 
     render(): string {

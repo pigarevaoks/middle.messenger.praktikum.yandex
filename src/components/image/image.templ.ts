@@ -2,7 +2,10 @@ import defaultImage from 'url:./images/defaultImage.svg'
 
 export const imageTemplate = `
   <div class="image">
-    <img class="image__img" src=${defaultImage} />
-    <button class="image__button" type="button">Поменять аватар</button>
+    {{#if avatar}}
+        <img src={{ avatar }} alt="avatar" class="image__img">
+    {{else}}
+      <img class="image__img" alt="img" src=${defaultImage} />
+    {{/if}}
   </div>
 `

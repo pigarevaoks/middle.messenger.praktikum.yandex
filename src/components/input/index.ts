@@ -1,5 +1,6 @@
 import Block from 'modules/block'
 import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
+import {inputValidation} from 'modules/validation'
 import {inputTemplate} from './input.templ'
 import './input.less'
 
@@ -16,7 +17,18 @@ interface IInput {
 
 class Input extends Block {
     constructor(props: IInput) {
-        super('fragment', props)
+        super({
+            tagName: 'template',
+            events: {
+                focus: (event: Event) => {
+                    inputValidation(event)
+                },
+                blur: (event: Event) => {
+                    inputValidation(event)
+                }
+            },
+            ...props
+        })
     }
 
     render(): string {

@@ -1,36 +1,71 @@
-import {EMethod} from 'common/enums'
+import {parseJSON} from '../../utils/parseJSON'
 import queryStringify from './queryStringify'
+import {METHOD, CREDENTIALS, MODE} from './enums'
 
-interface OptionsType {
-    method?: EMethod
+interface Options<TRequest> {
+    method: METHOD
+    isFormData?: boolean
+    headers?: {[key: string]: string}
     timeout?: number
-    headers?: any
-    data?: any
+    credentials?: CREDENTIALS
+    mode?: MODE
+    data?: TRequest | FormData
 }
 
-export default class HTTPTransport {
-    public get(url: string, options: OptionsType = {}): void {
-        this.request(
-            `${url}${queryStringify(options.data)}`,
-            {...options, method: EMethod.GET},
-            options.timeout
-        )
+interface OptionsType {
+    method?: METHOD
+}
+
+interface TPromiseResponse {
+    response: unknown
+    status: number
+}
+
+export default class HTTPTransport<TRequest> {
+    get = async (url: string, options: OptionsType = {}): Promise<unknown> => {
+        const {response, status} = await this.request(url, {...options, method: METHOD.GET})
+        if (status !== 200) {
+            throw new Error(parseJSON(response).reason)
+        }
+        return response
     }
 
-    public post(url: string, options: OptionsType = {}): void {
-        this.request(url, {...options, method: EMethod.POST}, options.timeout)
+    put = async (url: string, options: OptionsType = {}): Promise<unknown> => {
+        const {response, status} = await this.request(url, {...options, method: METHOD.PUT})
+        if (status !== 200) {
+            throw new Error(parseJSON(response).reason)
+        }
+        return response
     }
 
-    public put(url: string, options: OptionsType = {}): void {
-        this.request(url, {...options, method: EMethod.PUT}, options.timeout)
+    post = async (url: string, options: OptionsType = {}): Promise<unknown> => {
+        const {response, status} = await this.request(url, {...options, method: METHOD.POST})
+        if (status !== 200) {
+            throw new Error(parseJSON(response).reason)
+        }
+        return response
     }
 
-    public delete(url: string, options: OptionsType = {}) {
-        this.request(url, {...options, method: EMethod.DELETE}, options.timeout)
+    delete = async (url: string, options: OptionsType = {}): Promise<unknown> => {
+        const {response, status} = await this.request(url, {...options, method: METHOD.DELETE})
+        if (status !== 200) {
+            throw new Error(parseJSON(response).reason)
+        }
+        return response
     }
 
-    private request = (url: string, options: OptionsType = {}, timeout = 5000) => {
-        const {headers = {}, method, data} = options
+    request(
+        url: string,
+        options: Options<TRequest> = {method: METHOD.GET}
+    ): Promise<TPromiseResponse> {
+        const {
+            method,
+            isFormData,
+            data,
+            credentials = CREDENTIALS.include,
+            headers = {'Content-Type': 'application/json'},
+            timeout = 5000
+        } = options
 
         return new Promise((resolve, reject) => {
             if (!method) {
@@ -39,28 +74,39 @@ export default class HTTPTransport {
             }
 
             const xhr = new XMLHttpRequest()
-            const isGet = method === EMethod.GET
+            xhr.open(
+                method,
+                method === METHOD.GET && !!data ? `${url}${queryStringify(data)}` : url
+            )
 
-            xhr.open(method, url)
+            xhr.withCredentials = credentials === CREDENTIALS.include
 
-            Object.keys(headers).forEach((key) => {
-                xhr.setRequestHeader(key, headers[key])
-            })
+            Object.keys(headers).forEach((key) => xhr.setRequestHeader(key, headers[key]))
 
-            xhr.onload = () => {
-                resolve(xhr)
+            xhr.onload = function () {
+                resolve({
+                    response: xhr.response,
+                    status: xhr.status
+                })
+            }
+
+            if (isFormData) {
+                xhr.setRequestHeader('Content-Type', 'multipart/form-data')
             }
 
             xhr.onabort = reject
             xhr.onerror = reject
-
             xhr.timeout = timeout
             xhr.ontimeout = reject
 
-            if (isGet || !data) {
+            if (method === METHOD.GET || !data) {
                 xhr.send()
             } else {
-                xhr.send(data)
+                if (!isFormData) {
+                    xhr.send(JSON.stringify(data))
+                } else {
+                    xhr.send(<FormData>data)
+                }
             }
         })
     }

@@ -14,7 +14,7 @@ interface IButton {
 
 class Button extends Block {
     constructor(props: IButton) {
-        super('fragment', props)
+        super({tagName: 'template', ...props})
     }
 
     render(): string {

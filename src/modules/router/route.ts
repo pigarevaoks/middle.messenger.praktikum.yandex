@@ -1,34 +1,26 @@
-import {IBlock} from 'modules/block'
-import {render} from 'utils/render'
-
-export type TRouteProps = {
-    [key: string]: string
-}
+import Block from 'modules/block'
 
 export default class Route {
     _pathname: string
-    _blockClass: any
-    _block: IBlock | null
-    _props: TRouteProps
-    _lastPathname: string
+    _blockClass: Block
+    _block: Block | null
+    _props: {[key: string]: unknown}
 
-    constructor(pathname: string, view: any, props: TRouteProps) {
+    constructor(pathname: string, view: Block, props: {[key: string]: unknown}) {
         this._pathname = pathname
         this._blockClass = view
         this._block = null
         this._props = props
     }
 
-    navigate(pathname: string) {
+    navigate(pathname: string): void {
         if (this.match(pathname)) {
             this._pathname = pathname
             this.render()
-            this._lastPathname = pathname
         }
     }
 
-    leave() {
-        console.log('leave', this._block)
+    leave(): void {
         if (this._block) {
             this._block.hide()
         }
@@ -38,17 +30,15 @@ export default class Route {
         return !!pathname.match(this._pathname)
     }
 
-    render() {
+    render(): void {
         if (!this._block) {
+            // @ts-ignore
             this._block = new this._blockClass()
-            this._block && render(this._props.rootQuery, this._block)
+            // @ts-ignore
+            this._block.show(this._props.rootQuery)
             return
         }
-
-        this._block.show()
-    }
-
-    getPathname() {
-        return this._lastPathname
+        // @ts-ignore
+        this._block.show(this._props.rootQuery)
     }
 }

@@ -1,0 +1,83 @@
+@import 'styles/variables';
+@import './chatListItem.less';
+
+.chatContainer {
+    display: flex;
+    height: 100vh;
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        display: flex;
+        width: 350px;
+        background-color: @white-ligth-color;
+        padding: 0 10px;
+    }
+
+    &__chat {
+        display: block;
+        width: 100%;
+        // fragment {
+        //     height: 100%;
+        // }
+    }
+
+    &__arrow {
+        display: inline-block;
+        border: solid @gray-color;
+        border-width: 0 2px 2px 0;
+        padding: 2px;
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+    }
+
+    &__searchInput {
+        display: flex;
+        padding: 10px;
+        border-bottom: 1px solid @light-color;
+    }
+
+    &__list {
+        overflow-y: scroll;
+    }
+
+    &__link {
+        a {
+            display: inline-block;
+            padding: 20px 10px 10px;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1;
+            transition: all 0.2s ease;
+            color: @gray-color;
+            width: 100%;
+            text-align: right;
+            vertical-align: middle;
+
+            &:hover {
+                cursor: pointer;
+                color: @blue-color;
+
+                .chatList__arrow {
+                    border: solid @blue-color;
+                    border-width: 0 2px 2px 0;
+                }
+            }
+        }
+    }
+
+    &__empty {
+        display: block;
+        position: relative;
+        width: calc(100% - 350px);
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        span {
+            font-size: 14px;
+            color: @gray-color;
+        }
+    }
+}

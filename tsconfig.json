@@ -13,7 +13,22 @@
         "esModuleInterop": true,
         "inlineSourceMap": true,
         "skipLibCheck": true,
+        "strictPropertyInitialization": false,
         "forceConsistentCasingInFileNames": true,
-        "lib": ["dom", "es5", "scripthost", "es2015.proxy"]
+        "lib": ["dom", "es5", "scripthost", "es2015.proxy"],
+        "baseUrl": "./src",
+        "paths": {
+            "api/*": ["api/*"],
+            "controllers/*": ["controllers/*"],
+            "common/*": ["common/*"],
+            "components/*": ["components/*"],
+            "templates/*": ["templates/*"],
+            "utils/*": ["utils/*"],
+            "modules/*": ["modules/*"],
+            "layouts/*": ["layouts/*"],
+            "pages/*": ["pages/*"],
+            "styles/*": ["styles/*"],
+            "stores/*": ["stores/*"]
+        }
     }
 }

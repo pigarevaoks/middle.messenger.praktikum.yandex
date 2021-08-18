@@ -1,4 +1,4 @@
-import {formValidation} from './formValidation'
+import {formValidation, passwordFormValidation, avatarFormValidation} from './formValidation'
 import {inputValidation} from './inputValidation'
 
-export {formValidation, inputValidation}
+export {formValidation, passwordFormValidation, avatarFormValidation, inputValidation}

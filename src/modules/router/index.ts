@@ -1,14 +1,16 @@
 import Router from './router'
 
 export enum ROUTES {
-    LOGIN = '/',
+    CHAT = '/messenger/',
+    // CHAT = '/chats/',
     MESSENGER = '/messenger',
     SETTINGS = '/settings',
     SIGNUP = '/sign-up',
+    HOME = '/',
+    CHANGE_SETTINGS = '/change_settings',
+    CHANGE_PASSWORD = '/change_password',
     NOT_FOUND = '/404',
-    SERVER_ERROR = '/500',
-    CHANGE_PROFILE = '/change_profile',
-    CHANGE_PASSWORD = '/change_password'
+    SERVER_ERROR = '/500'
 }
 
 export const router = new Router('#app')
