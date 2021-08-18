@@ -31,6 +31,7 @@ export default class Settings extends Block {
             ...props
         })
     }
+
     // @ts-ignore
     componentDidMount() {
         userController((user: IUser) =>

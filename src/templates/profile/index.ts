@@ -1,15 +1,15 @@
 import Block, {IBlock} from 'modules/block'
 import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
-import template from './profile.templ'
 import {ProfileInput} from 'components/profileInput'
-import {EFieldType, EProfileType} from 'common/enums'
+import {EFieldType, EProfileType,EButtonType} from 'common/enums'
 import {Button} from 'components/button'
-import {editProfileController} from 'controllers/editProfile'
+import {editProfileController,editPasswordController} from 'controllers/editProfile'
 import {formValidation, passwordFormValidation} from 'modules/validation'
-import {editPasswordController} from 'controllers/editProfile'
+
 import {router, ROUTES} from 'modules/router'
-import {EButtonType} from 'common/enums'
+
 import logoutController from 'controllers/logout'
+import template from './profile.templ'
 
 interface IProfile extends IBlock {
     type: string
@@ -22,37 +22,37 @@ export default class Profile extends Block {
             name: 'email',
             label: 'Почта',
             type: EFieldType.Text,
-            disabled: disabled
+            disabled
         })
         const login = new ProfileInput({
             name: 'login',
             label: 'Логин',
             type: EFieldType.Text,
-            disabled: disabled
+            disabled
         })
         const firstName = new ProfileInput({
             name: 'first_name',
             label: 'Имя',
             type: EFieldType.Text,
-            disabled: disabled
+            disabled
         })
         const secondName = new ProfileInput({
             name: 'second_name',
             label: 'Фамилия',
             type: EFieldType.Text,
-            disabled: disabled
+            disabled
         })
         const displayName = new ProfileInput({
             name: 'display_name',
             label: 'Имя в чате',
             type: EFieldType.Text,
-            disabled: disabled
+            disabled
         })
         const phone = new ProfileInput({
             name: 'phone',
             label: 'Телефон',
             type: EFieldType.Text,
-            disabled: disabled
+            disabled
         })
         const oldPassword = new ProfileInput({
             name: 'oldPassword',

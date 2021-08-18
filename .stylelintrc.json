@@ -5,8 +5,7 @@
         "stylelint-prettier/recommended"
     ],
     "plugins": [
-        "stylelint-order",
-        "prettier"
+        "stylelint-order"
     ],
     "rules": {
         "declaration-colon-space-after": "always-single-line"

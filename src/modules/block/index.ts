@@ -66,6 +66,7 @@ export default abstract class Block {
     componentDidMount() {
         return this.element as HTMLElement
     }
+
     // @ts-ignore
     private _componentDidUpdate(oldProps, newProps) {
         const response = this.componentDidUpdate(oldProps, newProps)

@@ -8,27 +8,24 @@
     &__list {
         display: flex;
         flex-direction: column;
-        display: flex;
         width: 350px;
-        background-color: @white-ligth-color;
         padding: 0 10px;
+        overflow-y: scroll;
+        background-color: @white-ligth-color;
     }
 
     &__chat {
         display: block;
         width: 100%;
-        // fragment {
-        //     height: 100%;
-        // }
     }
 
     &__arrow {
         display: inline-block;
+        padding: 2px;
         border: solid @gray-color;
         border-width: 0 2px 2px 0;
-        padding: 2px;
-        transform: rotate(-45deg);
         -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
     }
 
     &__searchInput {
@@ -37,26 +34,22 @@
         border-bottom: 1px solid @light-color;
     }
 
-    &__list {
-        overflow-y: scroll;
-    }
-
     &__link {
         a {
             display: inline-block;
-            padding: 20px 10px 10px;
-            font-size: 14px;
-            font-weight: 500;
-            line-height: 1;
-            transition: all 0.2s ease;
-            color: @gray-color;
             width: 100%;
+            padding: 20px 10px 10px;
+            color: @gray-color;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 1;
             text-align: right;
             vertical-align: middle;
+            transition: all 0.2s ease;
 
             &:hover {
-                cursor: pointer;
                 color: @blue-color;
+                cursor: pointer;
 
                 .chatList__arrow {
                     border: solid @blue-color;
@@ -67,17 +60,17 @@
     }
 
     &__empty {
-        display: block;
         position: relative;
-        width: calc(100% - 350px);
-        text-align: center;
+        display: block;
         display: flex;
         align-items: center;
         justify-content: center;
+        width: calc(100% - 350px);
         overflow: hidden;
+        text-align: center;
         span {
-            font-size: 14px;
             color: @gray-color;
+            font-size: 14px;
         }
     }
 }

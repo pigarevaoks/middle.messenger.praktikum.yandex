@@ -23,6 +23,7 @@ export default class ChangeSettings extends Block {
             ...props
         })
     }
+
     // @ts-ignore
     componentDidMount() {
         userController((user: IUser) =>

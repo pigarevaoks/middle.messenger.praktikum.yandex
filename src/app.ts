@@ -3,11 +3,11 @@ import Login from 'pages/login'
 import Chat from 'pages/chat'
 import Messenger from 'pages/messenger'
 import Settings from 'pages/settings'
-import Error404 from 'pages/error404'
-import Error500 from 'pages/error500'
 import Signup from 'pages/signup'
 import ChangeSettings from 'pages/changeSettings'
 import ChangePassword from 'pages/changePassword'
+import Error404 from 'pages/error404'
+import Error500 from 'pages/error500'
 
 router
     .use(ROUTES.CHAT, Chat)

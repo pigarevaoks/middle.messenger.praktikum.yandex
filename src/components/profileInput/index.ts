@@ -3,6 +3,7 @@ import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
 import {inputValidation} from 'modules/validation'
 import {profileInputTemplate} from './profileInput.templ'
 import './profileInput.less'
+
 interface IInput {
     name: string
     label: string

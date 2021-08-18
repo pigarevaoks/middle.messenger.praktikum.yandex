@@ -3,18 +3,18 @@ export default class DOMWorker {
         const el = document.querySelector<HTMLElement>(id)
         if (el) {
             return el
-        } else {
+        } 
             throw new Error(`There is no element with the id ${id} in the DOM`)
-        }
+        
     }
 
     static getAllEls(id: string): NodeListOf<HTMLElement> {
         const els = document.querySelectorAll<HTMLElement>(id)
         if (els) {
             return els
-        } else {
+        } 
             throw new Error(`There is no element with the id ${id} in the DOM`)
-        }
+        
     }
 
     static isInDom(id: string): boolean {

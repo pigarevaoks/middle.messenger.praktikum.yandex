@@ -1,6 +1,5 @@
 const template = `
     <form class="profile__form" id="form">
-    {{type}}
         <div class="profile__inputs">
             <div id="email"></div>
             <div id="login"></div>

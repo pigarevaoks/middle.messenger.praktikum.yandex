@@ -9,6 +9,7 @@ import {editAvatarController} from 'controllers/editProfile'
 // import {userController} from 'controllers/user'
 import template from './avatar.templ'
 import './avatar.less'
+
 interface IAvatar {
     isEdit?: boolean
     id?: string
@@ -28,7 +29,6 @@ class Avatar extends Block {
                 click: (event: Event) => {
                     event.preventDefault()
                     const data = avatarFormValidation(event)
-                    console.log('Avatar', data)
                     editAvatarController(data)
                 }
             }

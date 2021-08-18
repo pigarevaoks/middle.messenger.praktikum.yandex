@@ -24,6 +24,7 @@ export default class EventBus {
             (listener: Function) => listener !== callback
         )
     }
+
     // @ts-ignore
     emit(event: string | number, ...args) {
         if (!this.listeners[event]) {

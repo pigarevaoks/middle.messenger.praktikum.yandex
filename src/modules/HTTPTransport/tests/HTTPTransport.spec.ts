@@ -1,7 +1,7 @@
-import HTTPTransport from '../index'
 
 import chai from 'chai'
 import nock from 'nock'
+import HTTPTransport from '../index'
 
 const {assert} = chai
 

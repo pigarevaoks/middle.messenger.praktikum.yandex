@@ -6,5 +6,5 @@ export default function queryStringify<TRequest>(data: TRequest) {
     for (const key in data) {
         values.push(`${key}=${data[key]}`)
     }
-    return `?${  values.join('&')}`
+    return `?${values.join('&')}`
 }

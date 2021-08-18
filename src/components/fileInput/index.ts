@@ -1,7 +1,6 @@
 import Block from 'modules/block'
 import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
 import {inputTemplate} from './fileInput.templ'
-import './fileInput.less'
 
 interface IFileInput {
     settings?: Record<string, boolean>

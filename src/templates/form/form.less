@@ -1,18 +1,18 @@
 @import 'styles/variables';
 
 .form {
-    align-items: center;
-    justify-content: center;
     display: flex;
     flex: 1;
+    align-items: center;
+    justify-content: center;
     height: 100%;
     &__container {
         display: block;
-        min-height: 460px;
         width: 340px;
+        min-height: 460px;
         padding: 50px 30px 15px;
-        box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
         border-radius: 12px;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
     }
 
     &__content {
@@ -24,12 +24,12 @@
 
     &__title {
         display: block;
-        font-size: 20px;
-        font-weight: 500;
-        line-height: 1;
-        color: @black-color;
-        text-align: center;
         margin-bottom: 40px;
+        color: @black-color;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 1;
+        text-align: center;
     }
 
     &__fields {
@@ -41,11 +41,11 @@
     }
 
     &__errors {
-        margin-top: 20px;
-        font-size: 12px;
-        margin-top: 7px;
         display: flex;
         justify-content: center;
+        margin-top: 20px;
+        margin-top: 7px;
         color: @red-color;
+        font-size: 12px;
     }
 }

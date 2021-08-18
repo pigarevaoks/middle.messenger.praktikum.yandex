@@ -1,25 +1,25 @@
 @import 'styles/variables';
 
 .createChatButton {
+    position: relative;
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
     display: block;
     width: 100px;
     height: 100px;
     background: @blue-color;
     border-radius: 50%;
-    position: relative;
-    position: absolute;
-    bottom: -20px;
-    right: -20px;
     transition: all 0.2s ease;
 
     &__icon {
-        background: transparent;
+        position: absolute;
+        top: 10px;
+        left: 30px;
         color: @white-color;
         font-size: 50px;
         line-height: 1;
-        position: absolute;
-        left: 30px;
-        top: 10px;
+        background: transparent;
     }
     &:hover {
         transform: scale(1.5);

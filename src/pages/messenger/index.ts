@@ -5,7 +5,6 @@ import {SearchInput} from 'components/searchInput'
 import {CreateChatButton} from 'components/createChatButton'
 import {router} from 'modules/router'
 import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
-import {template} from './messenger.tmpl'
 import {
     getChatsController,
     subscribeChatsUpdateController,
@@ -13,6 +12,7 @@ import {
 } from 'controllers/chat'
 import {authController} from 'controllers/auth'
 import {ChatsList} from 'components/chatsList'
+import {template} from './messenger.tmpl'
 import './messenger.less'
 
 export default class Messenger extends Block {
@@ -41,6 +41,7 @@ export default class Messenger extends Block {
             ...props
         })
     }
+
     // @ts-ignore
     componentDidMount() {
         authController((user: IUser) => this.setProps({...this.props, user}))

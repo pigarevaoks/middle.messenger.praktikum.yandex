@@ -36,6 +36,7 @@ export default class Chat extends Block {
             ...props
         })
     }
+
     // @ts-ignore
     componentDidMount() {
         authController((user: IUser) => this.setProps({...this.props, user}))

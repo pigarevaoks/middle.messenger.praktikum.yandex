@@ -8,22 +8,22 @@
     &__input {
         display: flex;
         height: 32px;
+        margin: 0 10px;
+        padding: 0 20px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 12px;
         background-color: @light-color;
         border-bottom: 1px solid @light-color;
-        font-size: 12px;
-        font-weight: 500;
-        line-height: 12px;
         border-radius: 30px;
-        padding: 0 20px;
-        margin: 0 10px;
         transition: all 0.2s ease;
     }
 
     &__error {
         display: none;
+        margin: 7px 10px 0;
         color: @red-color;
         font-size: 12px;
-        margin: 7px 10px 0;
     }
 
     &.withError {

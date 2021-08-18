@@ -1,7 +1,7 @@
 import Block from 'modules/block'
 import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
-import {backButtonTemplate} from './backButton.tmpl'
 import {router} from 'modules/router'
+import {backButtonTemplate} from './backButton.tmpl'
 import './backButton.less'
 
 interface IBackButton {

@@ -72,6 +72,7 @@ export default class Router {
         // @ts-ignore
         return this.routes.find((route) => route.match(pathname))
     }
+
     getUrlParam(): string {
         return document.URL.split('/').reverse()[0]
     }

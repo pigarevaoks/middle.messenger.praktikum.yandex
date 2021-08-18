@@ -15,7 +15,7 @@ export const formValidation = (e: Event) => {
             validatedInputs[input.name] = null
         } else {
             validatedInputs[input.name] =
-                typeof input.value == 'string' ? sanitizeHtml(input.value) : input.value
+                typeof input.value === 'string' ? sanitizeHtml(input.value) : input.value
         }
     })
 
@@ -60,7 +60,7 @@ export const passwordFormValidation = (e: Event) => {
             validatedInputs[input.name] = null
         } else {
             validatedInputs[input.name] =
-                typeof input.value == 'string' ? sanitizeHtml(input.value) : input.value
+                typeof input.value === 'string' ? sanitizeHtml(input.value) : input.value
         }
     })
 

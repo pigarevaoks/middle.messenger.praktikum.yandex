@@ -51,9 +51,7 @@ export const getChatDataController = async () => {
     try {
         const chatID = router.getUrlParam()
         const chatsList = await chatAPI.getChats()
-        console.log('getChatDataController chatsList', chatsList)
         const chat = chatsList.find((chat: IChat) => chat.id.toString() === chatID)
-        console.log('getChatDataController chat', chat)
         chatStore.update(chat)
     } catch (error) {
         console.log(error)
@@ -94,10 +92,9 @@ export const openWSController = async (
         const tokenResponse = await chatAPI.getToken(chatId)
 
         if (tokenResponse && userIdResponse && chatId) {
-            const token = tokenResponse.token
+            const {token} = tokenResponse
             const userId = userIdResponse.id
             onGetUser(userId)
-            console.log('openWSController', userId, chatId, token)
             const socket = wsAPI.connect({userId, chatId, token})
             console.log('!! Соединение установлено')
 

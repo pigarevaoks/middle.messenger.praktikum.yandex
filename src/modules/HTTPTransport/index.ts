@@ -101,13 +101,11 @@ export default class HTTPTransport<TRequest> {
 
             if (method === METHOD.GET || !data) {
                 xhr.send()
-            } else {
-                if (!isFormData) {
+            } else if (!isFormData) {
                     xhr.send(JSON.stringify(data))
                 } else {
                     xhr.send(<FormData>data)
                 }
-            }
         })
     }
 }
