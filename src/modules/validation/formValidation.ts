@@ -1,9 +1,10 @@
 import {sanitizeHtml} from 'utils/sanitizeHtml'
 import {checkValidation, inputValidation} from './inputValidation'
+import DOMWorker from 'modules/block/DOMWorker'
 
 export const formValidation = (e: Event) => {
     e.preventDefault()
-    const form = document.querySelector('#form') as HTMLElement
+    const form = DOMWorker.getEl('#form') as HTMLElement
     const errors = form.querySelector('#errors') as Element
     const inputs = form.querySelectorAll('input')
 
@@ -29,7 +30,7 @@ export const formValidation = (e: Event) => {
 
 export const avatarFormValidation = (e: Event) => {
     e.preventDefault()
-    const avatarForm = document.querySelector('#avatarForm') as HTMLElement
+    const avatarForm = DOMWorker.getEl('#avatarForm') as HTMLElement
     const fileInput = avatarForm.querySelector('input') as HTMLInputElement
     const formData = new FormData()
     // @ts-ignore
@@ -40,7 +41,7 @@ export const avatarFormValidation = (e: Event) => {
 
 export const passwordFormValidation = (e: Event) => {
     e.preventDefault()
-    const form = document.querySelector('#form') as HTMLElement
+    const form = DOMWorker.getEl('#form') as HTMLElement
     const errors = form.querySelector('#errors') as Element
     const inputs = form.querySelectorAll('input')
     const inputsArray = Array.from(inputs)
