@@ -1,21 +1,18 @@
-import Block, {IBlock} from 'modules/block'
-import template from 'templates/error'
-import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
-import {ROUTES} from 'modules/router'
-import 'templates/error/error.less'
+import {Block, IBlock, TChildren, TProps} from "../../modules/block/index";
+import {template} from "../../templates/error/error.tmpl";
+import {ROUTES} from "../../modules/router/index";
+import "../../templates/error/error.less";
 
-export default class Error404 extends Block {
+export default class Error404 extends Block<TProps, TChildren> {
     constructor(props: IBlock) {
-        super({
-            tagName: 'template',
-            title: '404',
-            description: 'Не туда попали',
-            link: {title: 'Назад к чатам', href: ROUTES.MESSENGER},
-            ...props
-        })
+        super({...props}, {});
     }
 
     render(): string {
-        return makeHtmlFromTemplate(template, this.props)
+        return template({
+            title: "404",
+            description: "Не туда попали",
+            link: {title: "Назад к чатам", href: ROUTES.HOME},
+        });
     }
 }

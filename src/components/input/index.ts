@@ -1,39 +1,25 @@
-import Block from 'modules/block'
-import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
-import {inputValidation} from 'modules/validation'
-import {inputTemplate} from './input.templ'
-import './input.less'
+import {Block, TProps, TChildren} from "../../modules/block/index";
+import {template} from "./input.templ";
+import "./input.less";
 
-interface IInput {
+interface IInput extends TProps {
+    isLined?: boolean
     name: string
-    label: string
     type: string
-    placeholder?: string
+    label: string
     error?: string
-    validation?: string
-    settings?: Record<string, boolean>
-    events?: Record<string, (event: Event) => void>
+    value?: string
+    placeholder?: string
+    disabled?: boolean
+    description?: string
 }
 
-class Input extends Block {
+export class Input extends Block<IInput, TChildren> {
     constructor(props: IInput) {
-        super({
-            tagName: 'template',
-            events: {
-                focus: (event: Event) => {
-                    inputValidation(event)
-                },
-                blur: (event: Event) => {
-                    inputValidation(event)
-                }
-            },
-            ...props
-        })
+        super({...props}, {});
     }
 
     render(): string {
-        return makeHtmlFromTemplate(inputTemplate, this.props)
+        return template(this.props);
     }
 }
-
-export {Input, IInput}

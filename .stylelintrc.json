@@ -1,14 +1,7 @@
 {
-    "extends": [
-        "stylelint-config-standard",
-        "stylelint-config-rational-order",
-        "stylelint-prettier/recommended"
-    ],
-    "plugins": [
-        "stylelint-order"
-    ],
+    "extends": "stylelint-config-standard",
     "rules": {
-        "declaration-colon-space-after": "always-single-line"
+        "indentation": 4
     },
     "ignoreFiles": [
         "dist/*",

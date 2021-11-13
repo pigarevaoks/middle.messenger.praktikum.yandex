@@ -1,115 +1,69 @@
-import Block, {IBlock} from 'modules/block'
-import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
-import {Button} from 'components/button'
-import {Input} from 'components/input'
-import template from 'templates/form'
-import {formValidation} from 'modules/validation'
-import signupController from 'controllers/signup'
-import {EButtonType, EFieldType} from 'common/enums'
-import {router, ROUTES} from 'modules/router'
-import 'templates/form/form.less'
+import {Block, IBlock, TChildren, TProps} from "../../modules/block/index";
+import {ISignUpData} from "../../api/auth/models";
+import {Button} from "../../components/button/index";
+import {Input} from "../../components/input/index";
+import {template} from "../../templates/form/form.templ";
+import {AuthController} from "../../controllers/auth";
+import {SignupController} from "../../controllers/signup";
+import {router, ROUTES} from "../../modules/router/index";
+import {getFormValidation, onSubmit} from "../../modules/validation/index";
+import {EButtonType} from "../../common/constants";
+import {INPUTS} from "./const";
+import "../../templates/form/form.less";
 
-export default class Signup extends Block {
+const authController = new AuthController();
+const signupController = new SignupController();
+const formId = "signupForm";
+
+export default class Signup extends Block<TProps & IBlock, TChildren> {
     constructor(props: IBlock) {
-        const email = new Input({
-            name: 'email',
-            label: 'Почта',
-            type: 'text',
-            error: 'Введите почту',
-            validation: EFieldType.Email
-        })
-        const login = new Input({
-            name: 'login',
-            label: 'Логин',
-            type: 'text',
-            error: 'Введите логин',
-            validation: EFieldType.Text
-        })
-        const firstName = new Input({
-            name: 'first_name',
-            label: 'Имя',
-            type: 'text',
-            error: 'Введите имя',
-            validation: EFieldType.Text
-        })
-        const secondName = new Input({
-            name: 'second_name',
-            label: 'Фамилия',
-            type: 'text',
-            error: 'Введите фамилию',
-            validation: EFieldType.Text
-        })
-        const phone = new Input({
-            name: 'phone',
-            label: 'Телефон',
-            type: 'text',
-            error: 'Введите номер телефона',
-            validation: EFieldType.Phone
-        })
-        const password = new Input({
-            name: 'password',
-            label: 'Пароль',
-            type: 'password',
-            error: 'Пароль должен состоять из заглавных и обычных букв, цифр, доп символов и длиной более 6 символов',
-            validation: EFieldType.Password
-        })
-        const doublePassword = new Input({
-            name: 'double_password',
-            label: 'Пароль (ещё раз)',
-            type: 'password',
-            error: 'Пароли не совпадают',
-            validation: EFieldType.Password
-        })
-
-        const registrationButton = new Button({
-            type: EButtonType.Submit,
-            name: 'registrationButton',
-            title: 'Зарегистрироваться',
-            class: 'primary',
-            events: {
-                click: (event: Event) => {
-                    event.preventDefault()
-                    const data = formValidation(event)
-                    if (data) {
-                        // @ts-ignore
-                        signupController(data)
-                    }
-                }
+        super(
+            {...props},
+            {
+                primaryButton: new Button({
+                    type: EButtonType.Submit,
+                    name: "registrationButton",
+                    title: "Зарегистрироваться",
+                    class: "primary",
+                    onClick: (event: Event) => {
+                        event.preventDefault();
+                        const isValid = getFormValidation(formId);
+                        if (isValid) {
+                            const data = onSubmit(event);
+                            signupController.signup(data as ISignUpData);
+                        }
+                    },
+                }),
+                secondaryButton: new Button({
+                    type: EButtonType.Button,
+                    name: "login",
+                    title: "Войти",
+                    class: "secondary",
+                    onClick: (event: Event) => {
+                        event.preventDefault();
+                        router.go(ROUTES.HOME);
+                    },
+                }),
             }
-        })
+        );
+    }
 
-        const loginButton = new Button({
-            type: EButtonType.Button,
-            name: 'login',
-            title: 'Войти',
-            class: 'secondary',
-            events: {
-                click: (event: Event) => {
-                    event.preventDefault()
-                    router.go(ROUTES.HOME)
-                }
-            }
-        })
-
-        super({
-            tagName: 'main',
-            title: 'Регистрация',
-            children: {
-                email,
-                login,
-                firstName,
-                secondName,
-                phone,
-                password,
-                doublePassword,
-                registrationButton,
-                loginButton
-            },
-            ...props
-        })
+    componentDidMount() {
+        authController.redirectToChat();
     }
 
     render(): string {
-        return makeHtmlFromTemplate(template, this.props)
+        return template({
+            title: "Регистрация",
+            formId,
+            inputs: INPUTS.map((input) =>
+                new Input({
+                    value: "",
+                    ...input,
+                }).getElement()
+            ),
+            primaryButton: this.children.primaryButton.getElement(),
+            secondaryButton: this.children.secondaryButton.getElement(),
+        });
     }
 }

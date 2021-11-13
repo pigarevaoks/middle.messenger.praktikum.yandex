@@ -1,40 +1,38 @@
 export default class DOMWorker {
     static getEl(id: string): HTMLElement {
-        const el = document.querySelector<HTMLElement>(id)
+        const el = document.querySelector<HTMLElement>(id);
         if (el) {
-            return el
-        } 
-            throw new Error(`There is no element with the id ${id} in the DOM`)
-        
+            return el;
+        }
+        throw new Error(`There is no element with the id ${id} in the DOM`);
     }
 
     static getAllEls(id: string): NodeListOf<HTMLElement> {
-        const els = document.querySelectorAll<HTMLElement>(id)
+        const els = document.querySelectorAll<HTMLElement>(id);
         if (els) {
-            return els
-        } 
-            throw new Error(`There is no element with the id ${id} in the DOM`)
-        
+            return els;
+        }
+        throw new Error(`There is no element with the id ${id} in the DOM`);
     }
 
     static isInDom(id: string): boolean {
-        const el = document.querySelector<HTMLElement>(id)
-        return !!el
+        const el = document.querySelector<HTMLElement>(id);
+        return !!el;
     }
 
     static append(query: string, element: HTMLElement): HTMLElement {
-        const root = this.getEl(query)
-        root.appendChild(element)
-        return root
+        const root = this.getEl(query);
+        root.appendChild(element);
+        return root;
     }
 
     static createEl(el: string): HTMLElement {
-        return document.createElement(el)
+        return document.createElement(el);
     }
 
     static getEls(ids: string[]): HTMLElement[] {
         return ids.map((id) => {
-            return DOMWorker.getEl(id)
-        })
+            return DOMWorker.getEl(id);
+        });
     }
 }

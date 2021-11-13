@@ -69,18 +69,5 @@
             "stylelint --fix"
         ],
         "*.{js,ts}": "prettier --config .prettierrc 'src/**/*.{js,ts}' --write"
-    },
-    "alias": {
-        "api": "./src/api/",
-        "controllers": "./src/controllers/",
-        "common": "./src/common/",
-        "components": "./src/components",
-        "templates": "./src/templates",
-        "utils": "./src/utils",
-        "modules": "./src/modules",
-        "layouts": "./src/layouts",
-        "pages": "./src/pages",
-        "styles": "./src/styles",
-        "stores": "./src/stores"
     }
 }

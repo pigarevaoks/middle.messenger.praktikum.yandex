@@ -1,1 +1,2 @@
-export const API_URL: string = 'https://ya-praktikum.tech/api/v2'
+export const API_URL = "https://ya-praktikum.tech/api/v2";
+export const WEBSOCKET_URL = "wss://ya-praktikum.tech/ws";

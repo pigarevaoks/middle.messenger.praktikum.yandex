@@ -1,16 +1,15 @@
-import Router from './router'
+import {Router} from "./router";
 
 export enum ROUTES {
-    CHAT = '/messenger/',
-    // CHAT = '/chats/',
-    MESSENGER = '/messenger',
-    SETTINGS = '/settings',
-    SIGNUP = '/sign-up',
-    HOME = '/',
-    CHANGE_SETTINGS = '/change_settings',
-    CHANGE_PASSWORD = '/change_password',
-    NOT_FOUND = '/404',
-    SERVER_ERROR = '/500'
+    HOME = "/",
+    SIGNIN = "/signin",
+    SIGNUP = "/signup",
+    PROFILE_EDIT = "/profile-edit",
+    PASSWORD_EDIT = "/password-edit",
+    CHAT = "/chat/",
+    PROFILE = "/profile",
+    SERVER_ERROR = "/500",
+    NOT_FOUND = "/404",
 }
 
-export const router = new Router('#app')
+export const router = new Router("#app");

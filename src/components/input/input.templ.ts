@@ -1,15 +1,22 @@
-export const inputTemplate = `
-  <div class="input" id="input">
-    <div class="input__field">
-      <input
-        class="input__input"
-        name="{{{name}}}"
-        type="{{{type}}}"
-        id="{{{name}}}"
-        data-validation="{{{validation}}}"
-      >
-      <label for={{{name}}} class="input__label">{{{label}}}</label>
-    </div>
-    <div class="input__error">{{{error}}}</div>
+export const template = Handlebars.compile(`
+  <div class="field {{#if isLined}}field__lined{{/if}}">
+      <label for={{name}} class="field__label ">{{label}}</label>
+        <input
+          class="field__input"
+          type="{{type}}"
+          name="{{name}}"
+          {{#if value}}
+          value={{value}}
+          {{/if}}
+          {{#if placeholder}}
+          placeholder="{{placeholder}}"
+          {{/if}}
+          {{#if disabled}}
+          disabled={{disabled}}
+          {{/if}}
+          autocomplete="on"
+        >
+        {{#if error}}<div class="field__error">{{error}}</div>{{/if}}
+        {{#if description}}<div class="field__description">{{description}}</div>{{/if}}
   </div>
-`
+`);

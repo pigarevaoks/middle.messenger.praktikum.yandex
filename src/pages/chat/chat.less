@@ -1,6 +1,4 @@
-@import 'styles/variables';
-@import '../messenger/messenger';
-@import '../messenger/chatListItem.less';
+@import '../../styles/variables';
 @import './messageBlock';
 
 .chat {
@@ -10,7 +8,15 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
-    padding: 20px;
+
+    &__messages {
+        display: flex;
+        flex-direction: column-reverse;
+        height: 100%;
+        padding: 20px;
+        padding-bottom: 55px;
+        overflow: scroll;
+    }
 
     &__messageBlock {
         position: absolute;
@@ -23,14 +29,24 @@
         border-top: 1px solid @light-color;
     }
 
-    &__messageInput {
+    &__input {
+        display: flex;
         width: 100%;
+        height: 32px;
+        margin: 0 10px;
+        padding: 0 20px;
+        padding: 0 15px;
+        font-size: 14px;
+        line-height: 1;
+        background-color: @light-color;
+        border-bottom: 1px solid @light-color;
+        border-radius: 20px;
     }
 
     &__buttonFile {
         width: 32px;
         height: 32px;
-        transition: all 0.2s ease;
+        transition: transform 0.2s ease;
 
         img {
             width: 100%;
@@ -46,7 +62,7 @@
     &__buttonAction {
         width: 28px;
         height: 28px;
-        transition: all 0.2s ease;
+        transition: transform 0.2s ease;
 
         img {
             width: 100%;
@@ -56,6 +72,55 @@
 
         &:hover {
             transform: scale(1.2);
+        }
+    }
+
+    &__header {
+        position: sticky;
+        top: 0;
+        right: 0;
+        z-index: 10;
+        display: flex;
+        flex-shrink: 1;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+        padding: 10px;
+        background-color: @white-ligth-color;
+        border-bottom: 1px solid @light-color;
+    }
+
+    &__headerLeft {
+        display: flex;
+        align-items: center;
+    }
+
+    &__title {
+        margin: 0;
+        font-weight: 600;
+    }
+
+    &__headerRight {
+        position: relative;
+    }
+
+    &__options {
+        position: absolute;
+        top: 50px;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 15px 20px;
+        background-color: @white-color;
+        transition: transform 0.2s ease;
+
+        &.hide {
+            display: none;
+        }
+
+        button {
+            margin-bottom: 5px;
         }
     }
 }

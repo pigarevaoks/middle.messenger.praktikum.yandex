@@ -34,6 +34,10 @@ body {
 .app {
     display: flex;
     min-height: 100vh;
+
+    & > div {
+        width: 100%;
+    }
 }
 
 .visuallyHidden {
@@ -44,4 +48,30 @@ body {
     white-space: nowrap;
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
+}
+
+.circle-button {
+    position: relative;
+    min-width: 24px;
+    min-height: 24px;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 100%;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.2);
+    }
+}
+
+.form-error {
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 5px;
+    color: @red-color;
+    font-size: 12px;
+    text-align: center;
 }

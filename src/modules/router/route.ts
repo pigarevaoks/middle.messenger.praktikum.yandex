@@ -1,44 +1,53 @@
-import Block from 'modules/block'
+import {IBlock} from "../../modules/block/index";
+
+export type TRouteProps = {
+    [key: string]: string
+}
+
+function render(query: string, block: IBlock) {
+    const root = document.querySelector(query);
+    root && root.append(block.element);
+    return root;
+}
 
 export default class Route {
     _pathname: string
-    _blockClass: Block
-    _block: Block | null
-    _props: {[key: string]: unknown}
+    _blockClass: any
+    _block: IBlock | null
+    _props: TRouteProps
+    _lastPathname: string
 
-    constructor(pathname: string, view: Block, props: {[key: string]: unknown}) {
-        this._pathname = pathname
-        this._blockClass = view
-        this._block = null
-        this._props = props
+    constructor(pathname: string, view: any, props: TRouteProps) {
+        this._pathname = pathname;
+        this._blockClass = view;
+        this._block = null;
+        this._props = props;
     }
 
-    navigate(pathname: string): void {
+    navigate(pathname: string) {
         if (this.match(pathname)) {
-            this._pathname = pathname
-            this.render()
+            this._pathname = pathname;
+            this.render();
+            this._lastPathname = pathname;
         }
     }
 
-    leave(): void {
+    leave() {
         if (this._block) {
-            this._block.hide()
+            this._block.element.remove();
         }
     }
 
     match(pathname: string) {
-        return !!pathname.match(this._pathname)
+        return !!pathname.match(this._pathname);
     }
 
-    render(): void {
-        if (!this._block) {
-            // @ts-ignore
-            this._block = new this._blockClass()
-            // @ts-ignore
-            this._block.show(this._props.rootQuery)
-            return
-        }
-        // @ts-ignore
-        this._block.show(this._props.rootQuery)
+    render() {
+        this._block = new this._blockClass();
+        this._block && render(this._props.rootQuery, this._block);
+    }
+
+    getPathname() {
+        return this._lastPathname;
     }
 }

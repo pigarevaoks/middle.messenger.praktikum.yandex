@@ -1,16 +1,18 @@
-import {ISignInData} from 'api/auth/models'
-import AuthAPI from 'api/auth'
-import {router, ROUTES} from 'modules/router'
+import {ISignInData} from "../api/auth/models";
+import {AuthAPI} from "../api/auth/index";
+import {router, ROUTES} from "../modules/router/index";
+import {dispalyFormError} from "../modules/validation/index";
 
-const authAPI = new AuthAPI()
+const authAPI = new AuthAPI();
 
-const signinController = async (data: ISignInData) => {
-    try {
-        await authAPI.signIn(data)
-        router.go(ROUTES.MESSENGER)
-    } catch (error) {
-        console.log(error)
+export class SigninController {
+    async signin(data: ISignInData) {
+        try {
+            await authAPI.login(data);
+            router.go(ROUTES.HOME);
+        } catch (error) {
+            console.log("signin", error);
+            dispalyFormError(error);
+        }
     }
 }
-
-export default signinController

@@ -6,9 +6,7 @@ global.DOMParser = window.DOMParser
 
 describe('Router', () => {
     it('Добавление роутов должно обновлять массив routes', () => {
-        // @ts-ignore
-        router.use('/settings', class Settings {})
-        // @ts-ignore
+        router.use('/profile', class Settings {})
         router.use('/sign-up', class Signup {})
         expect(router.routes.length).to.eq(2)
     })

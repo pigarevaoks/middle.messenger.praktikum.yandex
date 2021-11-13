@@ -9,11 +9,10 @@ export interface IUser {
     avatar: string
 }
 
-export interface IAvatartData {
-    avatar: string
-}
-
 export interface IPasswordData {
     oldPassword: string
     newPassword: string
+}
+export interface ILoginData {
+    login: string
 }

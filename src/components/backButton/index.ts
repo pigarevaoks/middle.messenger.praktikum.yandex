@@ -1,30 +1,19 @@
-import Block from 'modules/block'
-import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
-import {router} from 'modules/router'
-import {backButtonTemplate} from './backButton.tmpl'
-import './backButton.less'
+import {Block, TProps, TChildren} from "../../modules/block/index";
+import {template} from "./backButton.tmpl";
+import "./backButton.less";
 
-interface IBackButton {
-    events?: Record<string, (event: Event) => void>
+interface IBackButton extends TProps {
+    onClick: (e: Event) => void
 }
 
-class BackButton extends Block {
+export class BackButton extends Block<IBackButton, TChildren> {
     constructor(props: IBackButton) {
-        super({
-            tagName: 'template',
-            events: {
-                click: (event: Event) => {
-                    event.preventDefault()
-                    router.back()
-                }
-            },
-            ...props
-        })
+        super({...props}, {});
     }
 
     render(): string {
-        return makeHtmlFromTemplate(backButtonTemplate, this.props)
+        return template({
+            onClick: this.props.onClick,
+        });
     }
 }
-
-export {BackButton, IBackButton}

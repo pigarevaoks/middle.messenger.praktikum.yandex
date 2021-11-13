@@ -1,21 +1,20 @@
 import 'jsdom-global'
 import {expect} from 'chai'
-import Block from '../index'
+import {Block} from '../index'
 
-// @ts-ignore
 global.DOMParser = window.DOMParser
 
 describe('Block', () => {
     function createBlock() {
-        // @ts-ignore
-        return new Block({})
+        return new Block({}, {})
     }
 
     it('Вызов setProps должен менять props блока', () => {
         const block = createBlock()
-        const newProps = {id: 1}
+        const newProps = {name: 'oksana'}
         block.setProps(newProps)
+        // eslint-disable-next-line
         // @ts-ignore
-        expect(block.props.id).to.equal(1)
+        expect(block.props.name).to.equal('oksana')
     })
 })

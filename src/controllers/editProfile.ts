@@ -1,37 +1,39 @@
-import UserAPI from 'api/user'
-import {IUser, IAvatartData, IPasswordData} from 'api/user/models'
-import {router, ROUTES} from 'modules/router'
-import {userStore} from 'stores/user'
-import {STORE_EVENTS} from 'modules/store/enums'
+import {UserAPI} from '../api/user/index'
+import {IUser, IPasswordData} from '../api/user/models'
+import {router, ROUTES} from '../modules/router/index'
+import {userStore} from '../stores/user'
+// import {userStore} from 'stores/user'
+import {STORE_EVENTS} from '../modules/store/constants'
 
 const userAPI = new UserAPI()
 
-export const editProfileController = async (data: IUser, callback: (storeData?: any) => void) => {
-    userStore.on(STORE_EVENTS.UPDATE, callback)
-    try {
-        const response = await userAPI.editProfile(data)
-        userStore.update(response)
-        router.go(ROUTES.SETTINGS)
-    } catch (error) {
-        console.error(error)
-        router.go(ROUTES.HOME)
+export class EditProfileController {
+    async edit(data: IUser, callback: (storeData: any) => void) {
+        userStore.on(STORE_EVENTS.UPDATE, callback)
+        try {
+            const response = await userAPI.put(data)
+            userStore.update(response)
+            router.go(ROUTES.PROFILE)
+        } catch (error) {
+            console.log('edit', error)
+        }
     }
-}
 
-export const editAvatarController = async (data: IAvatartData) => {
-    try {
-        await userAPI.editAvatar(data)
-        // userStore.update(userData);
-    } catch (error) {
-        throw error
+    async editAvatar(data: FormData) {
+        try {
+            const userData = await userAPI.putAvatar(data)
+            return userData
+        } catch (error) {
+            console.log('editAvatar', error)
+        }
     }
-}
 
-export const editPasswordController = async (data: IPasswordData) => {
-    try {
-        await userAPI.editPassword(data)
-        router.go(ROUTES.SETTINGS)
-    } catch (error) {
-        throw error
+    async editPassword(data: IPasswordData) {
+        try {
+            await userAPI.putPassword(data)
+            router.go(ROUTES.PROFILE)
+        } catch (error) {
+            console.log('editPassword', error)
+        }
     }
 }

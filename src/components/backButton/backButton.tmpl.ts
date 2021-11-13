@@ -1,8 +1,10 @@
-import {EButtonType} from 'common/enums'
-import backImage from 'url:./images/backImage.svg'
+import {EButtonType} from "../../common/constants";
+// eslint-disable-next-line
+// @ts-ignore
+import arrowLeft from "url:../../assets/icons/arrow-left.svg";
 
-export const backButtonTemplate = `
-<button class="backButton" type="${EButtonType.Button}" name="back" id="backButton">
-    <img class="backButton__img" src="${backImage}" />
-</button>
-`
+export const template = Handlebars.compile(`
+    <button class="backButton" type="${EButtonType.Button}" name="back">
+        <img src="${arrowLeft}" class="circle-button"/>
+    </button>
+`);

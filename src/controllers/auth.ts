@@ -1,29 +1,28 @@
-import {router, ROUTES} from 'modules/router'
-// import {parseJSON} from 'utils/parseJSON'
-import AuthAPI from 'api/auth'
-import {userStore} from 'stores/user'
-import {STORE_EVENTS} from 'modules/store/enums'
+import {router, ROUTES} from "../modules/router/index";
+import {AuthAPI} from "../api/auth/index";
+import {userStore} from "../stores/user";
+import {STORE_EVENTS} from "../modules/store/constants";
 
-const authAPI = new AuthAPI()
+const authAPI = new AuthAPI();
 
-export const authController = async (callback: (storeData?: any) => void) => {
-    userStore.on(STORE_EVENTS.UPDATE, callback)
-    try {
-        const response = await authAPI.getUser()
-        // const response = parseJSON(await authAPI.getUser())
-        userStore.update(response)
-    } catch (error) {
-        console.error(error)
-        router.go(ROUTES.HOME)
+export class AuthController {
+    async auth(callback: (storeData: any) => void) {
+        userStore.on(STORE_EVENTS.UPDATE, callback);
+        try {
+            const response = await authAPI.auth();
+            userStore.update(response);
+        } catch (error) {
+            console.error("auth", error);
+            router.go(ROUTES.SIGNIN);
+        }
     }
-}
 
-export const redirectToChatController = async () => {
-    try {
-        await authAPI.getUser()
-        router.go(ROUTES.MESSENGER)
-    } catch (error) {
-        console.error(error)
-        router.go(ROUTES.HOME)
+    async redirectToChat() {
+        try {
+            await authAPI.auth();
+            router.go(ROUTES.HOME);
+        } catch (error) {
+            console.error("redirectToChat", error);
+        }
     }
 }

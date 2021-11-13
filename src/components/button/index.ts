@@ -1,25 +1,26 @@
-import Block from 'modules/block'
-import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
-import {EButtonType} from 'common/enums'
-import {buttonTemplate} from './button.tmpl'
-import './button.less'
+import {Block, TProps, TChildren} from "../../modules/block/index";
+import {EButtonType} from "../../common/constants";
+import {template} from "./button.tmpl";
+import "./button.less";
 
-interface IButton {
+export interface IButton extends TProps {
     title: string
     class?: string
     type: EButtonType
-    name?: string
-    events?: Record<string, (event: Event) => void>
+    onClick: (e: Event) => void
 }
 
-class Button extends Block {
+export class Button extends Block<IButton, TChildren> {
     constructor(props: IButton) {
-        super({tagName: 'template', ...props})
+        super({...props}, {});
     }
 
     render(): string {
-        return makeHtmlFromTemplate(buttonTemplate, this.props)
+        return template({
+            title: this.props.title,
+            class: this.props.class,
+            type: this.props.type,
+            onClick: this.props.onClick,
+        });
     }
 }
-
-export {Button, IButton}

@@ -1,21 +1,18 @@
-import Block, {IBlock} from 'modules/block'
-import template from 'templates/error'
-import {makeHtmlFromTemplate} from 'utils/makeHtmlFromTemplate'
-import {ROUTES} from 'modules/router'
-import 'templates/error/error.less'
+import {Block, IBlock, TChildren, TProps} from "../../modules/block/index";
+import {template} from "../../templates/error/error.tmpl";
+import {ROUTES} from "../../modules/router/index";
+import "../../templates/error/error.less";
 
-export default class Error500 extends Block {
+export default class Error500 extends Block<TProps & IBlock, TChildren> {
     constructor(props: IBlock) {
-        super({
-            tagName: 'template',
-            title: '500',
-            description: 'Мы уже фиксим',
-            link: {title: 'Назад к чатам', href: ROUTES.MESSENGER},
-            ...props
-        })
+        super({...props}, {});
     }
 
     render(): string {
-        return makeHtmlFromTemplate(template, this.props)
+        return template({
+            title: "500",
+            description: "Мы уже фиксим",
+            link: {title: "Назад к чатам", href: ROUTES.HOME},
+        });
     }
 }

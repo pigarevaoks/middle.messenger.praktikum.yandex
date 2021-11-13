@@ -1,36 +1,35 @@
-export default class EventBus {
-    protected listeners: {
-        [name: string]: Function[]
-    }
+type TListener = <T>(...args: T[]) => void
+
+export class EventBus {
+    listeners: {[key: string]: TListener[]}
 
     constructor() {
-        this.listeners = {}
+        this.listeners = {};
     }
 
-    on(event: string | number, callback: Function): void {
+    on(event: string, callback: TListener): void {
         if (!this.listeners[event]) {
-            this.listeners[event] = []
+            this.listeners[event] = [];
         }
 
-        this.listeners[event].push(callback)
+        this.listeners[event].push(callback);
     }
 
-    off(event: string | number, callback: Function): void {
+    off(event: string, callback: TListener): void {
         if (!this.listeners[event]) {
-            throw new Error(`Нет события: ${event}`)
+            throw new Error(`Нет события: ${event}`);
         }
 
         this.listeners[event] = this.listeners[event].filter(
-            (listener: Function) => listener !== callback
-        )
+            (listener: TListener) => listener !== callback
+        );
     }
 
-    // @ts-ignore
-    emit(event: string | number, ...args) {
+    emit<T>(event: string, ...args: T[]): void {
         if (!this.listeners[event]) {
-            throw new Error(`Нет события: ${event}`)
+            throw new Error(`Нет события: ${event}`);
         }
 
-        this.listeners[event].forEach((listener: Function) => listener(...args))
+        this.listeners[event].forEach((listener: TListener) => listener(...args));
     }
 }

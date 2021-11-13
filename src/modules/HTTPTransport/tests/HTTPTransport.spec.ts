@@ -1,9 +1,6 @@
-
-import chai from 'chai'
-import nock from 'nock'
-import HTTPTransport from '../index'
-
-const {assert} = chai
+import {assert} from 'chai'
+const nock = require('nock')
+import {HTTPTransport} from '../index'
 
 describe('Test HTTPTransport module', () => {
     const API_URL = 'https://test'
@@ -11,12 +8,12 @@ describe('Test HTTPTransport module', () => {
 
     it('GET: Вернул ожидаемый результат', async () => {
         const data = {
-            users: [{id: 1}]
+            users: [{id: 1}],
         }
         nock(API_URL)
             .defaultReplyHeaders({
                 'access-control-allow-origin': '*',
-                'access-control-allow-credentials': 'true'
+                'access-control-allow-credentials': 'true',
             })
             .get('/users')
             .reply(200, data)
@@ -27,18 +24,17 @@ describe('Test HTTPTransport module', () => {
     it('PUT: Вернул ожидаемый результат', async () => {
         const data = {
             name: 'oksana',
-            lastname: 'klimova'
+            lastname: 'klimova',
         }
         nock(API_URL)
             .defaultReplyHeaders({
                 'access-control-allow-origin': '*',
-                'access-control-allow-credentials': 'true'
+                'access-control-allow-credentials': 'true',
             })
             .intercept('/profile', 'OPTIONS')
             .reply(200)
             .put('/profile', data)
             .reply(200, data)
-        // @ts-ignore
         const resp = await REQUEST.put(`${API_URL}/profile`, {data})
         assert.isTrue(JSON.stringify(data) === resp, 'PUT: вернул не ожидаемый результат')
     })
@@ -46,34 +42,32 @@ describe('Test HTTPTransport module', () => {
     it('POST: Вернул ожидаемый результат', async () => {
         const data = {
             name: 'oksana',
-            lastname: 'klimova'
+            lastname: 'klimova',
         }
         nock(API_URL)
             .defaultReplyHeaders({
                 'access-control-allow-origin': '*',
-                'access-control-allow-credentials': 'true'
+                'access-control-allow-credentials': 'true',
             })
             .post('/profile', data)
             .reply(200, data)
-        // @ts-ignore
         const res: any = await REQUEST.post(`${API_URL}/profile`, {data})
         assert.isTrue(JSON.stringify(data) === res, 'POST: вернул не ожидаемый результат')
     })
 
     it('DELETE: Вернул ожидаемый результат', async () => {
         const data = {
-            id: 1
+            id: 1,
         }
         nock(API_URL)
             .defaultReplyHeaders({
                 'access-control-allow-origin': '*',
-                'access-control-allow-credentials': 'true'
+                'access-control-allow-credentials': 'true',
             })
             .intercept('/profile', 'OPTIONS')
             .reply(200)
             .delete('/profile', data)
             .reply(200, data)
-        // @ts-ignore
         const res: any = await REQUEST.delete(`${API_URL}/profile`, {data})
         assert.isTrue(JSON.stringify(data) === res, 'DELETE: вернул не ожидаемый результат')
     })

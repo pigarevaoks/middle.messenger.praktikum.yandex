@@ -1,56 +1,91 @@
-import EventBus from '../eventBus'
+import {EventBus} from '../eventBus/index'
+
+export function parseStringToHtml(blockAsString: string): HTMLElement {
+    const blockAsHtml = new DOMParser().parseFromString(blockAsString, 'text/html').body.firstChild
+    return (blockAsHtml as HTMLElement) || document.createElement('div')
+}
+
+export type TProps = {
+    [key: string]: string | number | boolean | undefined | unknown | Array<unknown>
+    onClick?: (e?: Event) => void
+}
+
+export type TChildren = {[key: string]: any}
 
 export interface IBlock {
-    tag?: string
-    title?: string
-    classNames?: Array<string>
-    children?: {[key: string]: HTMLElement}
+    element: HTMLElement
+    init: () => void
+    hide: () => void
+    show: () => void
+    render: () => void
+    componentDidMount: () => void
+    componentDidUpdate: () => boolean
+    setProps: (nextProps: unknown) => void
+    getElement: () => HTMLElement
 }
 
-type Props = {
-    children?: object
-    tagName?: string
-    classNames?: Array<string>
-    attribute?: Record<string, string>
-    events?: Record<string, Function>
-    [key: string]: unknown | object
-}
-
-export default abstract class Block {
-    props: Props
-
+export class Block<T extends TProps, C extends TChildren> implements IBlock {
     static EVENTS = {
         INIT: 'init',
         FLOW_CDM: 'flow:component-did-mount',
         FLOW_CDU: 'flow:component-did-update',
-        FLOW_RENDER: 'flow:render'
+        FLOW_RENDER: 'flow:render',
     }
 
-    protected _element: HTMLElement
-
-    private _meta: Props
-
+    _element: HTMLElement
+    props: T
+    children: C
     eventBus: EventBus
 
-    constructor(props = {}) {
-        this._meta = props
-        this.props = this._makePropsProxy(props)
-        this.eventBus = new EventBus()
+    constructor(props: T, children: C) {
+        const eventBus = new EventBus()
 
-        this._registerEvents()
-        this.eventBus.emit(Block.EVENTS.INIT)
+        this.props = this._makePropsProxy(props) || {}
+        this.children = children || {}
+
+        this.eventBus = eventBus
+
+        this._registerEvents(eventBus)
+        eventBus.emit(Block.EVENTS.INIT)
     }
 
-    _registerEvents() {
-        this.eventBus.on(Block.EVENTS.INIT, this.init.bind(this))
-        this.eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this))
-        this.eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this))
-        this.eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this))
+    _registerEvents(eventBus: EventBus): void {
+        eventBus.on(Block.EVENTS.INIT, this.init.bind(this))
+        eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this))
+        eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this))
+        eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this))
     }
 
-    private _createResources() {
-        const {tagName = 'template', classNames = [], attribute = {}} = this._meta
-        this._element = this._createDocumentElement(tagName, classNames, attribute)
+    _makePropsProxy(props: T): T {
+        const proxyProps = new Proxy(props, {
+            // eslint-disable-next-line
+            // @ts-ignore
+            set(target: T, prop: keyof T, value) {
+                target[prop] = value
+                return true
+            },
+            deleteProperty() {
+                throw new Error('нет доступа')
+            },
+        })
+        return proxyProps
+    }
+
+    _addChildrenEventListeners(children: TChildren): void {
+        for (const name in children) {
+            const childProps = children[name].props
+            if (childProps.onClick) {
+                const elementChildren = this._element.querySelectorAll(`[data-child="${name}"]`)
+                for (const child of elementChildren) {
+                    child.addEventListener('click', childProps.onClick)
+                }
+            }
+        }
+    }
+
+    _createResources(): void {
+        const tagName = 'div'
+        this._element = document.createElement(tagName)
     }
 
     init(): void {
@@ -58,151 +93,64 @@ export default abstract class Block {
         this.eventBus.emit(Block.EVENTS.FLOW_CDM)
     }
 
-    private _componentDidMount() {
+    _componentDidMount(): void {
         this.componentDidMount()
         this.eventBus.emit(Block.EVENTS.FLOW_RENDER)
     }
 
-    componentDidMount() {
-        return this.element as HTMLElement
-    }
-
-    // @ts-ignore
-    private _componentDidUpdate(oldProps, newProps) {
-        const response = this.componentDidUpdate(oldProps, newProps)
-        if (response) {
-            this.eventBus.emit(Block.EVENTS.FLOW_RENDER)
-        }
-    }
-
-    componentDidUpdate(oldProps: unknown, newProps: unknown): boolean {
-        if (oldProps === newProps) {
+    _componentDidUpdate(oldProps: T, newProps: T): boolean {
+        if (JSON.stringify(newProps) == JSON.stringify(oldProps)) {
             return false
         }
+        const response = this.componentDidUpdate()
+        this.eventBus.emit(Block.EVENTS.FLOW_RENDER)
 
-        return true
+        return response
     }
 
-    public setProps = (nextProps: Record<string, unknown>): void => {
+    _render(): void {
+        const block = parseStringToHtml(this.render())
+        this._element.firstElementChild
+            ? this._element.replaceChild(block, this._element.firstElementChild)
+            : this._element.append(block)
+
+        if (this.props.onClick) {
+            block.addEventListener('click', this.props.onClick)
+        }
+        this._addChildrenEventListeners(this.children)
+    }
+
+    setProps = (nextProps: T): void => {
         if (!nextProps) {
             return
         }
-
-        Object.assign(this.props, nextProps)
-        this.eventBus.emit(Block.EVENTS.FLOW_CDU)
+        const oldProps = {...this.props}
+        this.props = {...oldProps, ...nextProps}
+        this.eventBus.emit(Block.EVENTS.FLOW_CDU, oldProps, nextProps)
     }
 
-    get element() {
-        return this._element
-    }
-
-    private _render() {
-        this._removeEvents()
-        const block = this.render()
-        const {children, tagName} = this.props
-        this._element.innerHTML = block
-        // @ts-ignore
-        if (Boolean(this._element.content) && tagName === 'template') {
-            // @ts-ignore
-            this._element = this._element.content.cloneNode(true).firstChild as HTMLElement
-        }
-
-        if (children) {
-            Object.keys(children).forEach((key) => {
-                const _id = `#${key}`
-                const template = this._element.querySelector(_id)
-                // @ts-ignore
-                template?.replaceWith(children[key].getContent())
-            })
-        }
-
-        this._addEvents()
+    componentDidMount(): void {}
+    componentDidUpdate(): boolean {
+        return true
     }
 
     render(): string {
         return ''
     }
 
-    getContent() {
-        return this.element as HTMLElement
+    get element(): HTMLElement {
+        return this._element
     }
 
-    private _addEvents(): void {
-        const {events = {}} = this.props
-
-        Object.keys(events).forEach((eventName) => {
-            let node: HTMLElement | null
-            if (eventName === 'submit') {
-                node = this.element.querySelector('form')
-            } else {
-                node = this.element.querySelector('input')
-            }
-            if (node) {
-                // @ts-ignore
-                node.addEventListener(eventName, events[eventName])
-            } else {
-                // @ts-ignore
-                this.element.addEventListener(eventName, events[eventName])
-            }
-        })
+    getElement(): HTMLElement {
+        return this.element
     }
 
-    private _removeEvents(): void {
-        const {events = {}} = this.props
-
-        Object.keys(events).forEach((eventName) => {
-            // @ts-ignore
-            this.element.removeEventListener(eventName, events[eventName])
-        })
+    show(): void {
+        this.getElement().style.display = 'block'
     }
 
-    // @ts-ignore
-    private _makePropsProxy(props) {
-        const self = this
-        return new Proxy(props, {
-            get(target, prop) {
-                const result = target[prop]
-                return typeof result === 'function' ? result.bind(target) : result
-            },
-            set(target, prop, value) {
-                target[prop] = value
-                self.eventBus.emit(Block.EVENTS.FLOW_CDU, target)
-                return true
-            },
-            deleteProperty() {
-                throw new Error('Нет доступа')
-            }
-        })
-    }
-
-    private _createDocumentElement(
-        tagName: string,
-        classNames: Array<string>,
-        attribute: Record<string, string>
-    ): HTMLElement {
-        const el = document.createElement(tagName)
-        if (attribute) {
-            Object.keys(attribute).forEach((attr) => {
-                el.setAttribute(attr, attribute[attr])
-            })
-        }
-
-        if (classNames.length) {
-            classNames.forEach((className: string): void => {
-                el.classList.add(className)
-            })
-        }
-
-        return el
-    }
-
-    show(query: string) {
-        const root = document.querySelector(query)
-        root?.append(this.element)
-        this.eventBus.emit(Block.EVENTS.FLOW_RENDER)
-    }
-
-    hide() {
-        this.element?.remove()
+    hide(): void {
+        this.getElement().style.display = 'none'
     }
 }
