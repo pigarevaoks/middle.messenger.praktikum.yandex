@@ -1,16 +1,28 @@
-import Block from 'utils/block'
-import renderTemplate from 'utils/renderTemplate'
-import { messageTemplate } from './message.tmpl'
-import { IMessage } from './model'
+import {Block, TProps, TChildren} from '../../modules/block/index'
+import {getDateToFormat} from '../../modules/validation/index'
+import {template} from './template.templ'
 import './message.less'
 
-export class Message extends Block {
-  constructor(props: IMessage) {
-    super('div', props)
-    this.props = props
-  }
+export interface IMessageProps extends TProps {
+    id: number
+    text: string
+    time: string
+    isMyMessage: boolean
+    className?: string
+}
 
-  render() {
-    return renderTemplate(messageTemplate, this.props)
-  }
+export class Message extends Block<IMessageProps, TChildren> {
+    constructor(props: IMessageProps) {
+        super({...props}, {})
+    }
+
+    render(): string {
+        return template({
+            id: this.props.id,
+            text: this.props.text,
+            time: this.props.time ? getDateToFormat(this.props.time) : null,
+            isMyMessage: this.props.isMyMessage,
+            className: this.props.className,
+        })
+    }
 }

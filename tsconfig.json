@@ -1,23 +1,30 @@
 {
-    "compileOnSave": true,
     "compilerOptions": {
-        "moduleResolution": "node",
-        "target": "ES2015",
-        "module": "commonjs",
         "outDir": "./dist",
-        "rootDir": "./src",
-        "strict": true,
+        "allowJs": true,
+        "target": "es6",
         "noImplicitAny": true,
-        "strictNullChecks": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
+        "alwaysStrict": true,
         "sourceMap": true,
-        "esModuleInterop": true,
-        "noImplicitThis": false,
-        "baseUrl": ".",
-        "paths": {
-            "*": ["./src/*"]
-        }
+        "strictNullChecks": true
     },
-    "exclude": ["node_modules/**/*"]
+    "include": ["./src/**/*", "node_modules/handlebars/types"],
+    "lib": ["es6", "dom"],
+    "baseUrl": "./src",
+    "paths": {
+        "api/*": ["api/*"],
+        "controllers/*": ["controllers/*"],
+        "common/*": ["common/*"],
+        "components/*": ["components/*"],
+        "templates/*": ["templates/*"],
+        "utils/*": ["utils/*"],
+        "modules/*": ["modules/*"],
+        "layouts/*": ["layouts/*"],
+        "pages/*": ["pages/*"],
+        "styles/*": ["styles/*"],
+        "stores/*": ["stores/*"],
+        "assets/*": ["assets/*"]
+    }
 }

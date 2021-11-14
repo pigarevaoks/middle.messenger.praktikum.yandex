@@ -1,17 +1,14 @@
 {
     "extends": "stylelint-config-standard",
     "rules": {
-        "color-hex-case": "lower"
+        "indentation": 4
     },
     "ignoreFiles": [
-        "src/fonts/*",
         "dist/*",
         "node_modules/*",
         ".parcel-cache/*",
         "package.json",
         "package-lock.json",
-        "tsconfig.json",
-        ".*",
-        "*.config"
+        "tsconfig.json"
     ]
 }

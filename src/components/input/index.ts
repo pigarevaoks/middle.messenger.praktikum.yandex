@@ -1,16 +1,25 @@
-import Block from 'utils/block'
-import renderTemplate from 'utils/renderTemplate'
-import { inputTemplate } from './input.templ'
-import { IInput } from './model'
+import {Block, TProps, TChildren} from '../../modules/block/index'
+import {template} from './input.templ'
 import './input.less'
 
-export class Input extends Block {
-  constructor(props: IInput) {
-    super('div', props)
-    this.props = props
-  }
+interface IInput extends TProps {
+    isLined?: boolean
+    name: string
+    type: string
+    label: string
+    error?: string
+    value?: string
+    placeholder?: string
+    disabled?: boolean
+    description?: string
+}
 
-  render() {
-    return renderTemplate(inputTemplate, this.props)
-  }
+export class Input extends Block<IInput, TChildren> {
+    constructor(props: IInput) {
+        super({...props}, {})
+    }
+
+    render(): string {
+        return template(this.props)
+    }
 }

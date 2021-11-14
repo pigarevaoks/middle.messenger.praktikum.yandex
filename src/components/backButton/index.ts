@@ -1,16 +1,19 @@
-import Block from 'utils/block'
-import renderTemplate from 'utils/renderTemplate'
-import { backButtonTemplate } from './backButton.tmpl'
-import { IBackButton } from './model'
+import {Block, TProps, TChildren} from '../../modules/block/index'
+import {template} from './backButton.tmpl'
 import './backButton.less'
 
-export class BackButton extends Block {
-  constructor(props: IBackButton) {
-    super('div', props)
-    this.props = props
-  }
+interface IBackButton extends TProps {
+    onClick: (e: Event) => void
+}
 
-  render() {
-    return renderTemplate(backButtonTemplate, this.props)
-  }
+export class BackButton extends Block<IBackButton, TChildren> {
+    constructor(props: IBackButton) {
+        super({...props}, {})
+    }
+
+    render(): string {
+        return template({
+            onClick: this.props.onClick,
+        })
+    }
 }

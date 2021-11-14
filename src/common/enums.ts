@@ -1,6 +1,6 @@
 export enum EButtonType {
     Submit = 'submit',
-    Button = 'buttom',
+    Button = 'button',
     Reset = 'reset',
 }
 
@@ -12,9 +12,8 @@ export enum EFieldType {
     Message = 'message',
 }
 
-export enum EMethod {
-    GET = 'GET',
-    POST = 'POST',
-    PUT = 'PUT',
-    DELETE = 'DELETE',
+export enum EProfileType {
+    Profile = 'profile',
+    ProfileEdit = 'profile_edit',
+    PasswordEdit = 'password_edit',
 }

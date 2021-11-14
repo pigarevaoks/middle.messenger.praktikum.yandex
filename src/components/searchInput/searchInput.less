@@ -1,40 +1,15 @@
-@import 'styles/variables';
+@import '../../styles/variables';
 
 .searchInput {
-  width: 100%;
-  position: relative;
-
-  &__icon {
     display: block;
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 5px;
-    left: 50%;
-    margin-left: -40px;
-  }
-
-  &__input {
-    display: block;
-    height: 32px;
     width: 100%;
+    height: 32px;
+    margin-right: 10px;
+    padding: 0 15px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1;
     background-color: @light-color;
     border-bottom: 1px solid @light-color;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 12px;
-    border-radius: 5px;
-    text-align: center;
-    transition: all 0.2s ease;
-
-    &:focus {
-      text-align: left;
-      padding-left: 30px;
-
-      & + .searchInput__icon {
-        left: 0%;
-        margin-left: 5px;
-      }
-    }
-  }
+    border-radius: 20px;
 }

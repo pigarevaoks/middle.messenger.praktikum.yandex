@@ -1,16 +1,23 @@
-import Block from 'utils/block'
-import renderTemplate from 'utils/renderTemplate'
-import { searchInputTemplate } from './searchInput.tmpl'
-import { ISearchInput } from './model'
+import {Block, TProps, TChildren} from '../../modules/block/index'
+import {template} from './searchInput.tmpl'
 import './searchInput.less'
 
-export class SearchInput extends Block {
-  constructor(props: ISearchInput) {
-    super('div', props)
-    this.props = props
-  }
+interface ISearchInput extends TProps {
+    name: string
+    type: string
+    placeholder: string
+}
 
-  render() {
-    return renderTemplate(searchInputTemplate, this.props)
-  }
+export class SearchInput extends Block<ISearchInput, TChildren> {
+    constructor(props: ISearchInput) {
+        super({...props}, {})
+    }
+
+    render(): string {
+        return template({
+            name: this.props.name,
+            type: this.props.type,
+            placeholder: this.props.placeholder,
+        })
+    }
 }

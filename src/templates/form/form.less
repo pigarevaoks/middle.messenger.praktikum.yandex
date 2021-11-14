@@ -1,0 +1,54 @@
+@import '../../styles/variables';
+
+.form {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 40px;
+
+    &__container {
+        display: block;
+        width: 340px;
+        min-height: 460px;
+        padding: 50px 30px 15px;
+        border-radius: 12px;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 395px;
+    }
+
+    &__title {
+        display: block;
+        margin-bottom: 40px;
+        color: @black-color;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 1;
+        text-align: center;
+    }
+
+    &__fields {
+        display: block;
+    }
+
+    &__buttons {
+        display: block;
+        margin-top: 20px;
+    }
+
+    &__errors {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        margin-top: 7px;
+        color: @red-color;
+        font-size: 12px;
+    }
+}

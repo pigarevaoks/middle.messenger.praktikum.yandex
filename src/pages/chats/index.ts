@@ -1,46 +1,95 @@
-import { ChatContainer } from 'components/chatContainer'
-import { ChatListItem } from 'components/chatListItem'
-import { Image } from 'components/image'
-import { ChatList } from 'components/chatList'
-import { SearchInput } from 'components/searchInput'
-import { MessageInput } from 'components/messageInput'
-import { MessageBlock } from 'components/messageBlock'
-import { Message } from 'components/message'
-import { Chat } from 'components/chat'
-import formValidation from 'utils/formValidation'
-import { EFieldType } from '../../common/enums'
-import { context } from './context'
+import {ChatCard} from '../../components/chatCard/index'
+import {IconButton, EIconButtonType} from '../../components/iconButton/index'
+import {EButtonType} from '../../common/constants'
+import {Block, IBlock, TChildren, TProps} from '../../modules/block/index'
+import {IUser, ILoginData} from '../../api/user/models'
+import {router, ROUTES} from '../../modules/router/index'
+import {IChat} from '../../api/chat/models'
+import {SearchInput} from '../../components/searchInput/index'
+import {ChatController} from '../../controllers/chat'
+import {AuthController} from '../../controllers/auth'
+import {UserController} from '../../controllers/user'
+import {onSubmit} from '../../modules/validation/index'
+import {template} from './chats.tmpl'
+import './chats.less'
 
-const container = document.getElementById('chats') as HTMLElement
+const chatController = new ChatController()
+const authController = new AuthController()
+const userController = new UserController()
 
-const avatar = new Image({}).render()
-const searchInput = new SearchInput({
-  name: 'search',
-  type: 'text',
-  placeholder: 'Поиск',
-}).render()
+interface IChats extends TProps {
+    chats?: IChat[]
+}
 
-const chatListItems = context.messages
-  ?.map((message) => new ChatListItem({ ...message, avatar }).render())
-  .join('')
+export default class Chats extends Block<IChats & IBlock, TChildren> {
+    constructor(props: IBlock) {
+        super(
+            {...props},
+            {
+                searchInput: new SearchInput({
+                    name: 'login',
+                    type: 'text',
+                    placeholder: 'Поиск',
+                }),
+                submitSearchButton: new IconButton({
+                    iconName: EIconButtonType.Search,
+                    type: EButtonType.Submit,
+                    onClick: (e: Event) => {
+                        const data = onSubmit(e)
+                        userController
+                            .findUser(data as ILoginData)
+                            .then((chats: IChat[]) => this.setProps({...this.props, chats}))
+                    },
+                }),
+                createChatButton: new IconButton({
+                    iconName: EIconButtonType.Plus,
+                    type: EButtonType.Button,
+                    text: 'Создать чат',
+                    onClick: () => chatController.createChat(),
+                }),
+                profileButton: new IconButton({
+                    iconName: EIconButtonType.Profile,
+                    onClick: (event: Event) => {
+                        event.preventDefault()
+                        router.go(ROUTES.PROFILE)
+                    },
+                }),
+                goToChatButton: new IconButton({
+                    iconName: EIconButtonType.GoChat,
+                    type: EButtonType.Button,
+                    onClick: (event) => {
+                        event.preventDefault()
+                        // eslint-disable-next-line
+                        // @ts-ignore
+                        const id = event.currentTarget?.parentElement?.id
+                        router.go(`${ROUTES.CHAT}${id}`)
+                    },
+                }),
+            }
+        )
+    }
 
-const messages = context.chats.map((message) => new Message({ text: message }).render()).join('')
+    componentDidMount() {
+        authController.auth((user: IUser) => this.setProps({...this.props, user}))
+        chatController.subscribeChatsUpdate((chats: IChat[]) =>
+            this.setProps({...this.props, chats})
+        )
+        chatController.getChats()
+    }
 
-const messageInput = new MessageInput({
-  name: 'message',
-  type: 'text',
-  placeholder: 'Сообщение',
-  validation: EFieldType.Message,
-  error: 'Сообщение содержит недопустимые символы ~, #, %, &, *, { } , , /, :, <>, ?, -, |',
-}).render()
-
-const messageBlock = new MessageBlock({ messageInput }).render()
-const list = new ChatList({ searchInput, list: chatListItems }).render()
-const chat = new Chat({ messages, messageBlock }).render()
-
-container.insertAdjacentHTML('afterbegin', new ChatContainer({ list, chat }).render())
-
-const submitButton = document.getElementById('sendMessage') as HTMLFormElement
-const formInputs = document.querySelectorAll('input#message') as NodeListOf<HTMLInputElement>
-
-formValidation(submitButton, formInputs)
+    render(): string {
+        return template({
+            profileButton: this.children.profileButton.getElement(),
+            searchInput: this.children.searchInput.getElement(),
+            submitSearchButton: this.children.submitSearchButton.getElement(),
+            createChatButton: this.children.createChatButton.getElement(),
+            chats: this.props.chats
+                ? this.props?.chats.map((chat) =>
+                      new ChatCard(chat, {
+                          goToChatButton: this.children.goToChatButton,
+                      }).getElement()
+                  )
+                : [],
+        })
+    }
+}

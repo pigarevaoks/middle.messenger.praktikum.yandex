@@ -1,0 +1,77 @@
+@import '../../styles/variables';
+
+.chatContainer {
+    display: flex;
+    height: 100vh;
+
+    &__chatsList {
+        display: flex;
+        flex-direction: column;
+        height: 80%;
+        overflow-y: scroll;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        width: 350px;
+        padding: 0 10px;
+        overflow-y: scroll;
+        background-color: @white-ligth-color;
+    }
+
+    &__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 10px;
+    }
+
+    &__chat {
+        display: block;
+        width: 100%;
+    }
+
+    &__searchInput {
+        display: flex;
+        padding: 10px;
+        border-bottom: 1px solid @light-color;
+    }
+
+    &__link {
+        margin-left: 10px;
+        color: @gray-color;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 1;
+        text-align: right;
+        vertical-align: middle;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: @blue-color;
+            cursor: pointer;
+
+            .chatList__arrow {
+                border: solid @blue-color;
+                border-width: 0 2px 2px 0;
+            }
+        }
+    }
+
+    &__empty {
+        position: relative;
+        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: calc(100% - 350px);
+        overflow: hidden;
+        text-align: center;
+
+        span {
+            color: @gray-color;
+            font-size: 14px;
+        }
+    }
+}
