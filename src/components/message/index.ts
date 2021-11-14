@@ -1,7 +1,7 @@
-import {Block, TProps, TChildren} from "../../modules/block/index";
-import {getDateToFormat} from "../../modules/validation/index";
-import {template} from "./template.templ";
-import "./message.less";
+import {Block, TProps, TChildren} from '../../modules/block/index'
+import {getDateToFormat} from '../../modules/validation/index'
+import {template} from './template.templ'
+import './message.less'
 
 export interface IMessageProps extends TProps {
     id: number
@@ -13,7 +13,7 @@ export interface IMessageProps extends TProps {
 
 export class Message extends Block<IMessageProps, TChildren> {
     constructor(props: IMessageProps) {
-        super({...props}, {});
+        super({...props}, {})
     }
 
     render(): string {
@@ -23,6 +23,6 @@ export class Message extends Block<IMessageProps, TChildren> {
             time: this.props.time ? getDateToFormat(this.props.time) : null,
             isMyMessage: this.props.isMyMessage,
             className: this.props.className,
-        });
+        })
     }
 }

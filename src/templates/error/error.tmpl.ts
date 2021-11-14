@@ -4,4 +4,4 @@ export const template = Handlebars.compile(`
     <div class="error__description">{{ description }}</div>
     <a href="{{ link.href }}" class="error__link">{{ link.title }}</a>
   </section>
-`);
+`)

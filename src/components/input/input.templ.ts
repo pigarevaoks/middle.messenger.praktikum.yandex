@@ -19,4 +19,4 @@ export const template = Handlebars.compile(`
         {{#if error}}<div class="field__error">{{error}}</div>{{/if}}
         {{#if description}}<div class="field__description">{{description}}</div>{{/if}}
   </div>
-`);
+`)

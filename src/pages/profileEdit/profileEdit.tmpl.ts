@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 // @ts-ignore
-import user from "url:../../assets/icons/user.svg";
+import user from 'url:../../assets/icons/user.svg'
 
 export const template = Handlebars.compile(`
     <section class="profile" id={{formId}}>
@@ -26,4 +26,4 @@ export const template = Handlebars.compile(`
             </form>
         </div>
     </section>
-`);
+`)

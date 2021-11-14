@@ -18,4 +18,4 @@ export const template = Handlebars.compile(`
       </div>
     </form>
   </section>
-`);
+`)

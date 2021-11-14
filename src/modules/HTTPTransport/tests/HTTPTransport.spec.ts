@@ -1,4 +1,5 @@
 import {assert} from 'chai'
+/* eslint @typescript-eslint/no-var-requires: "off" */
 const nock = require('nock')
 import {HTTPTransport} from '../index'
 

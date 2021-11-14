@@ -5,4 +5,4 @@ export const template = Handlebars.compile(`
         type="{{ type }}"
         placeholder="{{ placeholder }}"
     />
-`);
+`)

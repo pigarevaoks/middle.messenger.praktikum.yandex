@@ -12,9 +12,7 @@
     "rules": {
         "quotes": ["error", "double"],
         "semi": ["error", "always"],
-        "@typescript-eslint/no-empty-function": ["error", {"allow": ["methods"]}],
-        "@typescript-eslint/ban-ts-ignore": "off",
-        "@typescript-eslint/ban-ts-comment": "off"
+        "@typescript-eslint/no-empty-function": ["error", {"allow": ["methods"]}]
     },
     "overrides": [
         {

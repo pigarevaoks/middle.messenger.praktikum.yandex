@@ -1,6 +1,6 @@
-import {parseJSON} from "../../utils/parseJSON";
-import queryStringify from "./queryStringify";
-import {METHOD, CREDENTIALS, MODE} from "./constants";
+import {parseJSON} from '../../utils/parseJSON'
+import queryStringify from './queryStringify'
+import {METHOD, CREDENTIALS, MODE} from './constants'
 
 type Options<TRequest> = {
     method: METHOD
@@ -11,7 +11,7 @@ type Options<TRequest> = {
     data?: TRequest
 }
 
-type OptionsWithoutMethod<TRequest> = Omit<Options<TRequest>, "method">
+type OptionsWithoutMethod<TRequest> = Omit<Options<TRequest>, 'method'>
 
 type TPromiseResponse = {
     response: unknown
@@ -23,33 +23,33 @@ export class HTTPTransport<TRequest> {
         const {response, status} = await this.request(url, {
             ...options,
             method: METHOD.GET,
-        });
+        })
         if (status !== 200) {
-            throw new Error(parseJSON(response).reason);
+            throw new Error(parseJSON(response).reason)
         }
-        return response;
+        return response
     }
 
     put = async (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<unknown> => {
         const {response, status} = await this.request(url, {
             ...options,
             method: METHOD.PUT,
-        });
+        })
         if (status !== 200) {
-            throw new Error(parseJSON(response).reason);
+            throw new Error(parseJSON(response).reason)
         }
-        return response;
+        return response
     }
 
     post = async (url: string, options: OptionsWithoutMethod<TRequest> = {}): Promise<unknown> => {
         const {response, status} = await this.request(url, {
             ...options,
             method: METHOD.POST,
-        });
+        })
         if (status !== 200) {
-            throw new Error(parseJSON(response).reason);
+            throw new Error(parseJSON(response).reason)
         }
-        return response;
+        return response
     }
 
     delete = async (
@@ -59,11 +59,11 @@ export class HTTPTransport<TRequest> {
         const {response, status} = await this.request(url, {
             ...options,
             method: METHOD.DELETE,
-        });
+        })
         if (status !== 200) {
-            throw new Error(parseJSON(response).reason);
+            throw new Error(parseJSON(response).reason)
         }
-        return response;
+        return response
     }
 
     request(
@@ -77,22 +77,22 @@ export class HTTPTransport<TRequest> {
             // headers = {'Content-Type': 'application/json'},
             headers = {},
             timeout = 5000,
-        } = options;
+        } = options
 
         return new Promise((resolve, reject) => {
             if (!method) {
-                reject("No method");
-                return;
+                reject('No method')
+                return
             }
 
-            const xhr = new XMLHttpRequest();
+            const xhr = new XMLHttpRequest()
 
             xhr.open(
                 method,
                 method === METHOD.GET && !!data ? `${url}${queryStringify(data)}` : url
-            );
+            )
 
-            xhr.withCredentials = credentials === CREDENTIALS.include;
+            xhr.withCredentials = credentials === CREDENTIALS.include
 
             // if (method === METHOD.GET || !data) {
             //     xhr.setRequestHeader('Content-Type', 'application/json')
@@ -102,19 +102,19 @@ export class HTTPTransport<TRequest> {
             //     xhr.setRequestHeader('Content-Type', 'application/json')
             // }
 
-            Object.keys(headers).forEach((key) => xhr.setRequestHeader(key, headers[key]));
+            Object.keys(headers).forEach((key) => xhr.setRequestHeader(key, headers[key]))
 
             xhr.onload = function () {
                 resolve({
                     response: xhr.response,
                     status: xhr.status,
-                });
-            };
+                })
+            }
 
-            xhr.onabort = reject;
-            xhr.onerror = reject;
-            xhr.timeout = timeout;
-            xhr.ontimeout = reject;
+            xhr.onabort = reject
+            xhr.onerror = reject
+            xhr.timeout = timeout
+            xhr.ontimeout = reject
 
             // if (method === METHOD.GET || !data) {
             //     xhr.send()
@@ -124,15 +124,15 @@ export class HTTPTransport<TRequest> {
 
             if (method === METHOD.GET || !data) {
                 // xhr.setRequestHeader('Content-Type', 'application/json')
-                xhr.send();
+                xhr.send()
             } else if (data instanceof FormData) {
                 // xhr.setRequestHeader('accept', 'application/json')
                 // xhr.setRequestHeader('Content-Type', 'multipart/form-data')
-                xhr.send(data);
+                xhr.send(data)
             } else {
                 // xhr.setRequestHeader('Content-Type', 'application/json')
-                xhr.send(JSON.stringify(data));
+                xhr.send(JSON.stringify(data))
             }
-        });
+        })
     }
 }
