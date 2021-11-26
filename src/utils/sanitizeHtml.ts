@@ -1,1 +1,1 @@
-export const sanitizeHtml = (str: string) => str.replace(/[&<>"']/gi, '')
+export const sanitizeHtml = (str: string) => str.replace(/[&<>"']/gi, "");

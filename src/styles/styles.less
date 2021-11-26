@@ -1,10 +1,13 @@
 @import './variables';
+@import './normalize';
 
-* {
-    all: initial;
-    box-sizing: border-box;
-    color: @black-color;
+body {
     font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 15px;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
 }
 
 main {
@@ -19,12 +22,6 @@ html {
 *::before,
 *::after {
     box-sizing: inherit;
-}
-
-body {
-    font-size: 13px;
-    font-family: 'Inter', sans-serif;
-    line-height: 15px;
 }
 
 .overflowHidden {

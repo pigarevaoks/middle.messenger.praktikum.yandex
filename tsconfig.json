@@ -10,7 +10,7 @@
         "sourceMap": true,
         "strictNullChecks": true
     },
-    "include": ["./src/**/*", "node_modules/handlebars/types"],
+    "include": ["./src/**/*", "node_modules/handlebars/types", "webpack.config.js"],
     "lib": ["es6", "dom"],
     "baseUrl": "./src",
     "paths": {

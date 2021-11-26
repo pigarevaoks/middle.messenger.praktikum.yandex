@@ -4,6 +4,58 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+
+    &__container {
+        width: 24px;
+        height: 24px;
+        mask-size: contain;
+        border-radius: 50%;
+        background-color: @blue-color;
+
+        &.plus {
+            mask-image: url('../../assets/icons/circle-plus.svg');
+        }
+
+        &.minus {
+            mask-image: url('../../assets/icons/circle-minus.svg');
+        }
+
+        &.user {
+            mask-image: url('../../assets/icons/user.svg');
+        }
+
+        &.del {
+            mask-image: url('../../assets/icons/circle-x.svg');
+        }
+
+        &.arrowLeft {
+            mask-image: url('../../assets/icons/arrow-left.svg');
+        }
+
+        &.send {
+            mask-image: url('../../assets/icons/send.svg');
+        }
+
+        &.prof {
+            mask-image: url('../../assets/icons/profile.svg');
+        }
+
+        &.more {
+            mask-image: url('../../assets/icons/more.svg');
+        }
+
+        &.search {
+            mask-image: url('../../assets/icons/search.svg');
+        }
+
+        &.goChat {
+            mask-image: url('../../assets/icons/go-chat.svg');
+        }
+    }
 
     &__text {
         display: inline-block;

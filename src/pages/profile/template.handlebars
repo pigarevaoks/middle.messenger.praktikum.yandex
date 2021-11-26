@@ -1,0 +1,25 @@
+<section class="profile" id="profile">
+    <div class="profile__content">
+        {{$childComponent this "backButton"}}
+        {{#if avatar}}
+            <img src={{ avatar }} alt="avatar" class="profile__image">
+            {{else}}
+            <div class="profile__image-block" ></div>
+        {{/if}}
+        <div class="profile__form">
+            <div class="profile__inputs">
+                {{$childComponent this "emailInput"}}
+                {{$childComponent this "loginInput"}}
+                {{$childComponent this "firstNameInput"}}
+                {{$childComponent this "secondNameInput"}}
+                {{$childComponent this "displayNameInput"}}
+                {{$childComponent this "phoneInput"}}
+            </div>
+            <div class="profile__buttons" id="buttons">
+                {{ $childComponent this "changeProfile" }}
+                {{ $childComponent this "changePassword" }}
+                {{ $childComponent this "logoutButton" }}
+            </div>
+        </div>
+    </div>
+</section>

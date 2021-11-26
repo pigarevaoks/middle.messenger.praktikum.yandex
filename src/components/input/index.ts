@@ -1,6 +1,8 @@
-import {Block, TProps, TChildren} from '../../modules/block/index'
-import {template} from './input.templ'
-import './input.less'
+import {Block, TProps, TChildren} from "../../modules/block/index";
+// eslint-disable-next-line
+// @ts-ignore
+import template from "./template.handlebars";
+import "./input.less";
 
 interface IInput extends TProps {
     isLined?: boolean
@@ -16,10 +18,10 @@ interface IInput extends TProps {
 
 export class Input extends Block<IInput, TChildren> {
     constructor(props: IInput) {
-        super({...props}, {})
+        super({...props}, {});
     }
 
     render(): string {
-        return template(this.props)
+        return template(this.props);
     }
 }

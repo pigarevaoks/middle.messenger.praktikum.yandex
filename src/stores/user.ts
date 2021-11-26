@@ -1,3 +1,3 @@
-import Store from '../modules/store/index'
+import Store from "../modules/store/index";
 
-export const userStore = new Store()
+export const userStore = new Store();
