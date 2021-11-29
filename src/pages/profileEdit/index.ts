@@ -1,16 +1,14 @@
-import {Block, TChildren, TProps} from "../../modules/block/index";
-import {BackButton} from "../../components/backButton/index";
-import {router, ROUTES} from "../../modules/router/index";
-import {IUser} from "../../api/user/models";
-import {AuthController} from "../../controllers/auth";
-import {Button} from "../../components/button/index";
-import {EButtonType, RESOURCES_URL} from "../../common/constants";
-import {Input} from "../../components/input/index";
-import {onSubmit, getAvatarData} from "../../modules/validation/index";
-import {EditProfileController} from "../../controllers/editProfile";
-import {INPUTS} from "./const";
-// eslint-disable-next-line
-// @ts-ignore
+import { Block, TChildren, TProps } from "../../modules/block/index";
+import { BackButton } from "../../components/backButton/index";
+import { router, ROUTES } from "../../modules/router/index";
+import { IUser } from "../../api/user/models";
+import { AuthController } from "../../controllers/auth";
+import { Button } from "../../components/button/index";
+import { EButtonType, RESOURCES_URL } from "../../common/constants";
+import { Input } from "../../components/input/index";
+import { onSubmit, getAvatarData } from "../../modules/validation/index";
+import { EditProfileController } from "../../controllers/editProfile";
+import { INPUTS } from "./const";
 import template from "./template.handlebars";
 import "../../styles/profile.less";
 
@@ -19,13 +17,13 @@ const authController = new AuthController();
 const formId = "profileEdit";
 
 interface IProfileEdit extends TProps {
-    user?: IUser
+    user?: IUser;
 }
 
 export default class ProfileEdit extends Block<IProfileEdit, TChildren> {
     constructor(props: IUser) {
         super(
-            {...props},
+            { ...props },
             {
                 backButton: new BackButton({
                     onClick: (event: Event) => {
@@ -41,8 +39,10 @@ export default class ProfileEdit extends Block<IProfileEdit, TChildren> {
                     onClick: (event: Event) => {
                         event.preventDefault();
                         const user = onSubmit(event);
-                        editProfileController.edit(user as IUser, (user: IUser) =>
-                            this.setProps({...this.props, user})
+                        editProfileController.edit(
+                            user as IUser,
+                            (user: IUser) =>
+                                this.setProps({ ...this.props, user })
                         );
                     },
                 }),
@@ -56,7 +56,9 @@ export default class ProfileEdit extends Block<IProfileEdit, TChildren> {
                         const data = getAvatarData();
                         editProfileController
                             .editAvatar(data as FormData)
-                            .then((user: IUser) => this.setProps({...this.props, user}));
+                            .then((user: IUser) =>
+                                this.setProps({ ...this.props, user })
+                            );
                     },
                 }),
             }
@@ -64,14 +66,18 @@ export default class ProfileEdit extends Block<IProfileEdit, TChildren> {
     }
 
     componentDidMount() {
-        authController.auth((user: IUser) => this.setProps({...this.props, user}));
+        authController.auth((user: IUser) =>
+            this.setProps({ ...this.props, user })
+        );
     }
 
     render(): string {
         return template({
             formId,
             backButton: this.children.backButton.getElement(),
-            avatar: this.props?.user?.avatar ? RESOURCES_URL + this.props?.user?.avatar : null,
+            avatar: this.props?.user?.avatar
+                ? RESOURCES_URL + this.props?.user?.avatar
+                : null,
             saveProfile: this.children.saveProfile.getElement(),
             submitButton: this.children.submitButton.getElement(),
             emailInput: new Input({

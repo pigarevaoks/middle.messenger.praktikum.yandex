@@ -1,16 +1,14 @@
-import {Block, IBlock, TChildren, TProps} from "../../modules/block/index";
-import {ISignUpData} from "../../api/auth/models";
-import {Button} from "../../components/button/index";
-import {Input} from "../../components/input/index";
-// eslint-disable-next-line
-// @ts-ignore
+import { Block, IBlock, TChildren, TProps } from "../../modules/block/index";
+import { ISignUpData } from "../../api/auth/models";
+import { Button } from "../../components/button/index";
+import { Input } from "../../components/input/index";
 import template from "../../templates/form/template.handlebars";
-import {AuthController} from "../../controllers/auth";
-import {SignupController} from "../../controllers/signup";
-import {router, ROUTES} from "../../modules/router/index";
-import {getFormValidation, onSubmit} from "../../modules/validation/index";
-import {EButtonType} from "../../common/constants";
-import {INPUTS} from "./const";
+import { AuthController } from "../../controllers/auth";
+import { SignupController } from "../../controllers/signup";
+import { router, ROUTES } from "../../modules/router/index";
+import { getFormValidation, onSubmit } from "../../modules/validation/index";
+import { EButtonType } from "../../common/constants";
+import { INPUTS } from "./const";
 import "../../templates/form/form.less";
 
 const authController = new AuthController();
@@ -20,7 +18,7 @@ const formId = "signupForm";
 export default class Signup extends Block<TProps & IBlock, TChildren> {
     constructor(props: IBlock) {
         super(
-            {...props},
+            { ...props },
             {
                 primaryButton: new Button({
                     type: EButtonType.Submit,

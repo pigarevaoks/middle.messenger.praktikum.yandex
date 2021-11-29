@@ -1,21 +1,19 @@
-import {Block, TProps, TChildren} from "../../modules/block/index";
-import {IChat} from "../../api/chat/models";
-import {RESOURCES_URL} from "../../common/constants";
-import {getDateToFormat} from "../../modules/validation/index";
-import {ROUTES} from "../../modules/router/index";
-// eslint-disable-next-line
-// @ts-ignore
+import { Block, TProps, TChildren } from "../../modules/block/index";
+import { IChat } from "../../api/chat/models";
+import { RESOURCES_URL } from "../../common/constants";
+import { getDateToFormat } from "../../modules/validation/index";
+import { ROUTES } from "../../modules/router/index";
 import template from "./template.handlebars";
 import "./chatCard.less";
 
 export class ChatCard extends Block<IChat & TProps, TChildren> {
     constructor(props: IChat) {
-        super({...props}, {});
+        super({ ...props }, {});
     }
 
     render(): string {
         const getTitle = () => {
-            const {display_name, title, first_name, second_name} = this.props;
+            const { display_name, title, first_name, second_name } = this.props;
             if (display_name) {
                 return display_name;
             }
@@ -35,7 +33,9 @@ export class ChatCard extends Block<IChat & TProps, TChildren> {
             routes: ROUTES,
             id: this.props.id,
             title: getTitle(),
-            avatar: this.props?.avatar ? RESOURCES_URL + this.props?.avatar : null,
+            avatar: this.props?.avatar
+                ? RESOURCES_URL + this.props?.avatar
+                : null,
             description: this.props.phone || this.props?.last_message?.content,
             time: formattedDate,
             unread_count: this.props?.unread_count,

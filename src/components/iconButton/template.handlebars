@@ -1,33 +1,4 @@
 <button type={{type}} class="iconButton" type="button">
-    {{#if ($isEqual iconName "plus")}}
-        <div class="iconButton__container plus"></div>
-    {{/if}}
-    {{#if ($isEqual iconName "minus")}}
-        <div class="iconButton__container minus"></div>
-    {{/if}}
-    {{#if ($isEqual iconName "user")}}
-        <div class="iconButton__container user"></div>
-    {{/if}}
-     {{#if ($isEqual iconClassName "del")}}
-        <div class="iconButton__container del"></div>
-    {{/if}}
-    {{#if ($isEqual iconName "arrowLeft")}}
-        <div class="iconButton__container arrowLeft"></div>
-    {{/if}}
-    {{#if ($isEqual iconName "profile")}}
-        <div class="iconButton__container prof"></div>
-    {{/if}}
-    {{#if ($isEqual iconName "send")}}
-        <div class="iconButton__container send"></div>
-    {{/if}}
-    {{#if ($isEqual iconName "more")}}
-        <div class="iconButton__container more"></div>
-    {{/if}}
-    {{#if ($isEqual iconName "search")}}
-        <div class="iconButton__container search"></div>
-    {{/if}}
-    {{#if ($isEqual iconName "goChat")}}
-        <div class="iconButton__container goChat"></div>
-    {{/if}}
+    <div class="iconButton__container {{ iconName }}"></div>
     {{#if text}}<span class="iconButton__text">{{ text }}</span>{{/if}}
 </button>

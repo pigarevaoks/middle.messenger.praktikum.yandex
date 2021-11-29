@@ -1,28 +1,26 @@
-import {Block, IBlock, TChildren, TProps} from "../../modules/block/index";
-import {BackButton} from "../../components/backButton/index";
-import {Button} from "../../components/button/index";
-import {router, ROUTES} from "../../modules/router/index";
-import {AuthController} from "../../controllers/auth";
-import {EButtonType, RESOURCES_URL} from "../../common/constants";
-import {IUser} from "../../api/user/models";
-import {LogoutController} from "../../controllers/logout";
-import {Input} from "../../components/input/index";
-// eslint-disable-next-line
-// @ts-ignore
+import { Block, IBlock, TChildren, TProps } from "../../modules/block/index";
+import { BackButton } from "../../components/backButton/index";
+import { Button } from "../../components/button/index";
+import { router, ROUTES } from "../../modules/router/index";
+import { AuthController } from "../../controllers/auth";
+import { EButtonType, RESOURCES_URL } from "../../common/constants";
+import { IUser } from "../../api/user/models";
+import { LogoutController } from "../../controllers/logout";
+import { Input } from "../../components/input/index";
 import template from "./template.handlebars";
-import {INPUTS} from "./const";
+import { INPUTS } from "./const";
 
 const authController = new AuthController();
 const logoutController = new LogoutController();
 
 interface IProfile extends TProps {
-    user?: IUser
+    user?: IUser;
 }
 
 export default class Profile extends Block<IProfile, TChildren> {
     constructor(props: IBlock) {
         super(
-            {...props},
+            { ...props },
             {
                 backButton: new BackButton({
                     onClick: (event: Event) => {
@@ -65,7 +63,9 @@ export default class Profile extends Block<IProfile, TChildren> {
     }
 
     componentDidMount() {
-        authController.auth((user: IUser) => this.setProps({...this.props, user}));
+        authController.auth((user: IUser) =>
+            this.setProps({ ...this.props, user })
+        );
     }
 
     render(): string {
@@ -74,7 +74,9 @@ export default class Profile extends Block<IProfile, TChildren> {
             changeProfile: this.children.changeProfile.getElement(),
             changePassword: this.children.changePassword.getElement(),
             logoutButton: this.children.logoutButton.getElement(),
-            avatar: this.props?.user?.avatar ? RESOURCES_URL + this.props?.user?.avatar : null,
+            avatar: this.props?.user?.avatar
+                ? RESOURCES_URL + this.props?.user?.avatar
+                : null,
             emailInput: new Input({
                 ...INPUTS.email,
                 value: this.props?.user?.email || "",

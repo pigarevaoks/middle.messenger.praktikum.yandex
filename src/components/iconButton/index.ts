@@ -1,7 +1,5 @@
-import {Block, TProps, TChildren} from "../../modules/block/index";
-import {EButtonType} from "../../common/constants";
-// eslint-disable-next-line
-// @ts-ignore
+import { Block, TProps, TChildren } from "../../modules/block/index";
+import { EButtonType } from "../../common/constants";
 import template from "./template.handlebars";
 import "./iconButton.less";
 
@@ -12,7 +10,7 @@ export enum EIconButtonType {
     Delete = "del",
     User = "user",
     ArrowLeft = "arrowLeft",
-    Profile = "profile",
+    Profile = "prof",
     Send = "send",
     More = "more",
     Search = "search",
@@ -20,15 +18,15 @@ export enum EIconButtonType {
 }
 
 export interface IIconButton extends TProps {
-    text?: string
-    type?: EButtonType
-    iconName: EIconButtonType
-    onClick: (e: Event) => void
+    text?: string;
+    type?: EButtonType;
+    iconName: EIconButtonType;
+    onClick: (e: Event) => void;
 }
 
 export class IconButton extends Block<IIconButton, TChildren> {
     constructor(props: IIconButton) {
-        super({...props}, {});
+        super({ ...props }, {});
     }
 
     render(): string {

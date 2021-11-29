@@ -1,21 +1,19 @@
-import {Block, TProps, TChildren} from "../../modules/block/index";
-import {getDateToFormat} from "../../modules/validation/index";
-// eslint-disable-next-line
-// @ts-ignore
+import { Block, TProps, TChildren } from "../../modules/block/index";
+import { getDateToFormat } from "../../modules/validation/index";
 import template from "./template.handlebars";
 import "./message.less";
 
 export interface IMessageProps extends TProps {
-    id: number
-    text: string
-    time: string
-    isMyMessage: boolean
-    className?: string
+    id: number;
+    text: string;
+    time: string;
+    isMyMessage: boolean;
+    className?: string;
 }
 
 export class Message extends Block<IMessageProps, TChildren> {
     constructor(props: IMessageProps) {
-        super({...props}, {});
+        super({ ...props }, {});
     }
 
     render(): string {

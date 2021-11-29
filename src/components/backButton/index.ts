@@ -1,16 +1,14 @@
-import {Block, TProps, TChildren} from "../../modules/block/index";
-// eslint-disable-next-line
-// @ts-ignore
+import { Block, TProps, TChildren } from "../../modules/block/index";
 import template from "./template.handlebars";
 import "./backButton.less";
 
 interface IBackButton extends TProps {
-    onClick: (e: Event) => void
+    onClick: (e: Event) => void;
 }
 
 export class BackButton extends Block<IBackButton, TChildren> {
     constructor(props: IBackButton) {
-        super({...props}, {});
+        super({ ...props }, {});
     }
 
     render(): string {

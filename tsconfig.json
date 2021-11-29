@@ -1,30 +1,36 @@
 {
-    "compilerOptions": {
-        "outDir": "./dist",
-        "allowJs": true,
-        "target": "es6",
-        "noImplicitAny": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "alwaysStrict": true,
-        "sourceMap": true,
-        "strictNullChecks": true
-    },
-    "include": ["./src/**/*", "node_modules/handlebars/types", "webpack.config.js"],
-    "lib": ["es6", "dom"],
-    "baseUrl": "./src",
-    "paths": {
-        "api/*": ["api/*"],
-        "controllers/*": ["controllers/*"],
-        "common/*": ["common/*"],
-        "components/*": ["components/*"],
-        "templates/*": ["templates/*"],
-        "utils/*": ["utils/*"],
-        "modules/*": ["modules/*"],
-        "layouts/*": ["layouts/*"],
-        "pages/*": ["pages/*"],
-        "styles/*": ["styles/*"],
-        "stores/*": ["stores/*"],
-        "assets/*": ["assets/*"]
-    }
+  "compilerOptions": {
+    "outDir": "./dist",
+    "allowJs": true,
+    "target": "es6",
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "alwaysStrict": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "moduleResolution": "node"
+  },
+  "include": [
+    "./src/**/*",
+    "node_modules/handlebars/types",
+    "webpack.config.js",
+    "index.d.ts"
+  ],
+  "lib": ["es6", "dom"],
+  "baseUrl": "./src",
+  "paths": {
+    "api/*": ["api/*"],
+    "controllers/*": ["controllers/*"],
+    "common/*": ["common/*"],
+    "components/*": ["components/*"],
+    "templates/*": ["templates/*"],
+    "utils/*": ["utils/*"],
+    "modules/*": ["modules/*"],
+    "layouts/*": ["layouts/*"],
+    "pages/*": ["pages/*"],
+    "styles/*": ["styles/*"],
+    "stores/*": ["stores/*"],
+    "assets/*": ["assets/*"]
+  }
 }

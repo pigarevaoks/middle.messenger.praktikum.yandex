@@ -1,17 +1,15 @@
-import {ChatCard} from "../../components/chatCard/index";
-import {IconButton, EIconButtonType} from "../../components/iconButton/index";
-import {EButtonType} from "../../common/constants";
-import {Block, IBlock, TChildren, TProps} from "../../modules/block/index";
-import {IUser, ILoginData} from "../../api/user/models";
-import {router, ROUTES} from "../../modules/router/index";
-import {IChat} from "../../api/chat/models";
-import {SearchInput} from "../../components/searchInput/index";
-import {ChatController} from "../../controllers/chat";
-import {AuthController} from "../../controllers/auth";
-import {UserController} from "../../controllers/user";
-import {onSubmit} from "../../modules/validation/index";
-// eslint-disable-next-line
-// @ts-ignore
+import { ChatCard } from "../../components/chatCard/index";
+import { IconButton, EIconButtonType } from "../../components/iconButton/index";
+import { EButtonType } from "../../common/constants";
+import { Block, IBlock, TChildren, TProps } from "../../modules/block/index";
+import { IUser, ILoginData } from "../../api/user/models";
+import { router, ROUTES } from "../../modules/router/index";
+import { IChat } from "../../api/chat/models";
+import { SearchInput } from "../../components/searchInput/index";
+import { ChatController } from "../../controllers/chat";
+import { AuthController } from "../../controllers/auth";
+import { UserController } from "../../controllers/user";
+import { onSubmit } from "../../modules/validation/index";
 import template from "./template.handlebars";
 import "./chats.less";
 
@@ -20,13 +18,13 @@ const authController = new AuthController();
 const userController = new UserController();
 
 interface IChats extends TProps {
-    chats?: IChat[]
+    chats?: IChat[];
 }
 
 export default class Chats extends Block<IChats & IBlock, TChildren> {
     constructor(props: IBlock) {
         super(
-            {...props},
+            { ...props },
             {
                 searchInput: new SearchInput({
                     name: "login",
@@ -40,7 +38,9 @@ export default class Chats extends Block<IChats & IBlock, TChildren> {
                         const data = onSubmit(e);
                         userController
                             .findUser(data as ILoginData)
-                            .then((chats: IChat[]) => this.setProps({...this.props, chats}));
+                            .then((chats: IChat[]) =>
+                                this.setProps({ ...this.props, chats })
+                            );
                     },
                 }),
                 createChatButton: new IconButton({
@@ -72,9 +72,11 @@ export default class Chats extends Block<IChats & IBlock, TChildren> {
     }
 
     componentDidMount() {
-        authController.auth((user: IUser) => this.setProps({...this.props, user}));
+        authController.auth((user: IUser) =>
+            this.setProps({ ...this.props, user })
+        );
         chatController.subscribeChatsUpdate((chats: IChat[]) =>
-            this.setProps({...this.props, chats})
+            this.setProps({ ...this.props, chats })
         );
         chatController.getChats();
     }
@@ -86,7 +88,9 @@ export default class Chats extends Block<IChats & IBlock, TChildren> {
             submitSearchButton: this.children.submitSearchButton.getElement(),
             createChatButton: this.children.createChatButton.getElement(),
             chats: this.props.chats
-                ? this.props?.chats.map((chat) => new ChatCard(chat).getElement())
+                ? this.props?.chats.map((chat) =>
+                      new ChatCard(chat).getElement()
+                  )
                 : [],
         });
     }

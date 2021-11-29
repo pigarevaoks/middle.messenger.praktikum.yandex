@@ -19,19 +19,27 @@ module.exports = {
     },
     module: {
         rules: [
-            {test: /\.ts$/, use: "ts-loader"},
-            {test: /\.handlebars$/, use: "handlebars-loader"},
+            { test: /\.ts$/, use: "ts-loader" },
+            { test: /\.handlebars$/, use: "handlebars-loader" },
             {
                 test: /\.less$/i,
-                use: ["style-loader", "css-loader", "less-loader", "postcss-loader"],
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "less-loader",
+                    "postcss-loader",
+                ],
             },
-            {test: /\.(png|svg|jpg|jpeg)$/i, type: "asset/resource"},
+            { test: /\.(png|svg|jpg|jpeg)$/i, type: "asset/resource" },
         ],
     },
     resolve: {
         extensions: [".ts", ".js"],
         fallback: {
-            childComponent: path.join(__dirname, "src/utils/handlebars/childComponent.js"),
+            childComponent: path.join(
+                __dirname,
+                "src/utils/handlebars/childComponent.js"
+            ),
             childComponentArray: path.join(
                 __dirname,
                 "src/utils/handlebars/childComponentArray.js"

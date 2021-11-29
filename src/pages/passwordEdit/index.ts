@@ -1,16 +1,14 @@
-import {Block, IBlock, TChildren, TProps} from "../../modules/block/index";
-import {BackButton} from "../../components/backButton/index";
-import {EButtonType, RESOURCES_URL} from "../../common/constants";
-import {IUser} from "../../api/user/models";
-import {router, ROUTES} from "../../modules/router/index";
-import {AuthController} from "../../controllers/auth";
-import {Button} from "../../components/button/index";
-import {Input} from "../../components/input/index";
-import {getFormValidation, onSubmit} from "../../modules/validation/index";
-import {EditProfileController} from "../../controllers/editProfile";
-import {INPUTS} from "./const";
-// eslint-disable-next-line
-// @ts-ignore
+import { Block, IBlock, TChildren, TProps } from "../../modules/block/index";
+import { BackButton } from "../../components/backButton/index";
+import { EButtonType, RESOURCES_URL } from "../../common/constants";
+import { IUser } from "../../api/user/models";
+import { router, ROUTES } from "../../modules/router/index";
+import { AuthController } from "../../controllers/auth";
+import { Button } from "../../components/button/index";
+import { Input } from "../../components/input/index";
+import { getFormValidation, onSubmit } from "../../modules/validation/index";
+import { EditProfileController } from "../../controllers/editProfile";
+import { INPUTS } from "./const";
 import template from "./template.handlebars";
 
 const editPasswordController = new EditProfileController();
@@ -18,10 +16,14 @@ const editPasswordController = new EditProfileController();
 const authController = new AuthController();
 const formId = "passwordEdit";
 
-export default class PasswordEdit extends Block<TProps & IBlock, TChildren> {
+interface IPasswordEdit extends TProps {
+    user?: IUser;
+}
+
+export default class PasswordEdit extends Block<IPasswordEdit, TChildren> {
     constructor(props: IBlock) {
         super(
-            {...props},
+            { ...props },
             {
                 backButton: new BackButton({
                     onClick: (event: Event) => {
@@ -39,8 +41,11 @@ export default class PasswordEdit extends Block<TProps & IBlock, TChildren> {
                         const isValid = getFormValidation(formId);
                         if (isValid) {
                             const data = onSubmit(event);
-                            const {oldPassword, newPassword} = data as any;
-                            editPasswordController.editPassword({oldPassword, newPassword});
+                            const { oldPassword, newPassword } = data as any;
+                            editPasswordController.editPassword({
+                                oldPassword,
+                                newPassword,
+                            });
                         }
                     },
                 }),
@@ -49,7 +54,9 @@ export default class PasswordEdit extends Block<TProps & IBlock, TChildren> {
     }
 
     componentDidMount() {
-        authController.auth((user: IUser) => this.setProps({...this.props, user}));
+        authController.auth((user: IUser) =>
+            this.setProps({ ...this.props, user })
+        );
     }
 
     render(): string {
@@ -58,9 +65,9 @@ export default class PasswordEdit extends Block<TProps & IBlock, TChildren> {
             description:
                 "Пароль должен состоять из заглавных и обычных букв, цифр, доп символов и длиной более 6 символов",
             backButton: this.children.backButton.getElement(),
-            // eslint-disable-next-line
-            // @ts-ignore
-            avatar: this.props?.user?.avatar ? RESOURCES_URL + this.props?.user?.avatar : null,
+            avatar: this.props?.user?.avatar
+                ? RESOURCES_URL + this.props?.user?.avatar
+                : null,
             savePassword: this.children.savePassword.getElement(),
             oldPassword: new Input({
                 ...INPUTS.oldPassword,
@@ -71,14 +78,6 @@ export default class PasswordEdit extends Block<TProps & IBlock, TChildren> {
             repeatNewPassword: new Input({
                 ...INPUTS.repeatNewPassword,
             }).getElement(),
-            // inputs: INPUTS.map((input) =>
-            //     new Input({
-            //         ...input,
-            //         // eslint-disable-next-line
-            //         // @ts-ignore
-            //         value: this.props?.user[input.name] || '',
-            //     }).getElement()
-            // ),
         });
     }
 }
