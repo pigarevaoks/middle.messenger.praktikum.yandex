@@ -1,15 +1,23 @@
 const express = require("express");
-const path = require("path");
+const webpack = require("webpack");
+const webpackDevMiddleware = require("webpack-dev-middleware");
+const historyApiFallback = require("connect-history-api-fallback");
 
 const app = express();
+const config = require("./webpack.config.js");
+const compiler = webpack(config);
+
+const HOSTNAME = "0.0.0.0";
 const PORT = process.env.PORT || 3000;
 
-app.use(express.static(`${__dirname}/dist`));
-
-app.use((request, response) => {
-    response.sendFile(path.resolve(`${__dirname}/dist/index.html`));
+const instance = webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath,
 });
 
-app.listen(PORT, () => {
-    console.log(`Example app listening on port ${PORT}!`);
+app.use(instance);
+app.use(historyApiFallback());
+app.use(instance);
+
+app.listen(PORT, HOSTNAME, function () {
+    console.log(`Server running at http://${HOSTNAME}:${PORT}/`);
 });

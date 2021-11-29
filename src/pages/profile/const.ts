@@ -1,46 +1,46 @@
-import {EFieldType} from '../../common/constants'
+import {EFieldType} from "../../common/constants";
 
-export const INPUTS = [
-    {
-        name: 'email',
-        label: 'Почта',
+export const INPUTS = {
+    email: {
+        name: "email",
+        label: "Почта",
         type: EFieldType.Text,
         disabled: true,
         isLined: true,
     },
-    {
-        name: 'login',
-        label: 'Логин',
+    login: {
+        name: "login",
+        label: "Логин",
         type: EFieldType.Text,
         disabled: true,
         isLined: true,
     },
-    {
-        name: 'first_name',
-        label: 'Имя',
+    first_name: {
+        name: "first_name",
+        label: "Имя",
         type: EFieldType.Text,
         disabled: true,
         isLined: true,
     },
-    {
-        name: 'second_name',
-        label: 'Фамилия',
+    second_name: {
+        name: "second_name",
+        label: "Фамилия",
         type: EFieldType.Text,
         disabled: true,
         isLined: true,
     },
-    {
-        name: 'display_name',
-        label: 'Имя в чате',
+    display_name: {
+        name: "display_name",
+        label: "Имя в чате",
         type: EFieldType.Text,
         disabled: true,
         isLined: true,
     },
-    {
-        name: 'phone',
-        label: 'Телефон',
+    phone: {
+        name: "phone",
+        label: "Телефон",
         type: EFieldType.Text,
         disabled: true,
         isLined: true,
     },
-]
+};

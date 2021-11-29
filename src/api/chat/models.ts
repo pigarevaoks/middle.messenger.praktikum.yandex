@@ -1,4 +1,4 @@
-import {IUser} from '../user/models'
+import {IUser} from "../user/models";
 
 export interface IChat {
     id: number
@@ -13,11 +13,11 @@ export interface IChat {
 }
 export interface IMessage {
     id: number
+    content: string
     user_id: number
     chat_id: number
     time: string
     type: string
-    content: string
 }
 
 export interface IDeletedDataChat {

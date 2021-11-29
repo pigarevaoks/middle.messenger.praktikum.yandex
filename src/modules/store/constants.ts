@@ -1,3 +1,3 @@
 export enum STORE_EVENTS {
-    UPDATE = 'update',
+    UPDATE = "update",
 }

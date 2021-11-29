@@ -1,21 +1,16 @@
-const fs = require("fs");
-const less = require("postcss-less");
-const postcss = require("postcss");
-
-const code = fs.readFileSync("input.less", "utf8");
-
-postcss([
-    require("stylelint")(),
-    require("postcss-reporter")({clearReportedMessages: true}),
-    require("autoprefixer"),
-    require("postcss-utilities")(),
-    require("postcss-nested"),
-    require("postcss-flexbugs-fixes"),
-    require("postcss-font-magician")({}),
-    require("postcss-autoreset")(),
-])
-    .process(code, {
-        from: "input.less",
-        syntax: less,
-    })
-    .catch((err) => console.error(err.stack));
+module.exports = {
+    plugins: [
+        require("postcss-autoreset")({
+            reset: {
+                margin: 0,
+                padding: 0,
+                borderRadius: 0,
+                background: "transparent",
+                border: "none",
+                fontFamily: "Inter, sans-serif",
+                boxSizing: "border-box",
+            },
+        }),
+        require("autoprefixer"),
+    ],
+};

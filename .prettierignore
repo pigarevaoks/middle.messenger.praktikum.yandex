@@ -1,8 +1,0 @@
-**/node_modules
-.parcel-cache
-.cache
-dist
-!.prettierrc
-package.json
-package-lock.json
-src/fonts
